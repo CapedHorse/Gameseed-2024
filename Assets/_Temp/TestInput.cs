@@ -19,6 +19,7 @@ public class TestInput : MonoBehaviour
     private bool isDashing;
     private bool moveDirToRight;
 
+    public PlayerInput testPlayerInput;
     /*
     private void Update()
     {
@@ -75,6 +76,7 @@ public class TestInput : MonoBehaviour
 
         moveDirToRight = obj.ReadValue<Vector2>().x > 0;
         testAnimator.SetBool("MoveRight", moveDirToRight);
+        testAnimator.SetBool("MoveLeft", !moveDirToRight);
     }
 
     private void Fire(InputAction.CallbackContext obj)
