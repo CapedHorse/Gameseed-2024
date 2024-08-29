@@ -8,54 +8,63 @@ namespace UI.Panel
 {
     public class MainMenuPanel : UIPanel
     {
-        [SerializeField] private ButtonHighlight mainMenuButtonHighlight;
-        [SerializeField] private Button[] mainMenuButtons;
+        [SerializeField] private ButtonParent[] buttonParents;
+        
 
         //caches
-        private int currentButtonId;
         
+        private int currentButtonParentsId = -1;
+
+        public override void ShowPanel()
+        {
+            base.ShowPanel();
+            //Have animation transition first
+            ShowNextButtonParent();
+            FinishShowPanel();
+        }
+
         protected override void FinishShowPanel()
         {
             base.FinishShowPanel();
-            
-            SelectButton();
         }
-
-        public void NavigateButton(bool toUp)
+        
+        public void ShowNextButtonParent()
         {
-            currentButtonId = Mathf.Clamp(toUp? currentButtonId - 1: currentButtonId + 1, 0, mainMenuButtons.Length - 1);
-
-            if (toUp)
+            //Hide previous if not the first button parent to show at start
+            if (currentButtonParentsId != -1)
             {
-                currentButtonId--;
-                if (currentButtonId <= 0)
-                {
-                    currentButtonId = mainMenuButtons.Length -1;
-                }
+                GetCurrentButtonParent().HideButtonParent();
             }
-            else
-            {
-                currentButtonId++;
-                if (currentButtonId >= mainMenuButtons.Length)
-                {
-                    currentButtonId = 0;
-                }
-            }
-
-            SelectButton();
-
-        }
-
-        private void SelectButton()
-        {
             
-            mainMenuButtons[currentButtonId].Select();
-            mainMenuButtonHighlight.MoveSelection(mainMenuButtons[currentButtonId].transform);
+            currentButtonParentsId++;
+
+            if (currentButtonParentsId >= buttonParents.Length)
+            {
+                currentButtonParentsId = 0;
+            }
+            
+            GetCurrentButtonParent().ShowButtonParent();
         }
 
-        public void ProceedMenu()
+        public void ShowPrevButtonParent()
         {
-            mainMenuButtons[currentButtonId].onClick.Invoke();
+            GetCurrentButtonParent().HideButtonParent();
+
+            currentButtonParentsId--;
+
+            if (currentButtonParentsId < 0)
+            {
+                currentButtonParentsId = buttonParents.Length - 1;
+            }
+            
+            GetCurrentButtonParent().ShowButtonParent();
         }
+
+        public ButtonParent GetCurrentButtonParent()
+        {
+            return buttonParents[currentButtonParentsId];
+        }
+
+        
     }
 }

@@ -7,14 +7,11 @@ namespace UI.Panel
     {
         [SerializeField] private GameObject panelParent;
 
+        [HideInInspector]
         public UnityEvent OnPanelBeginShow, OnPanelFinishShow;
+        [HideInInspector]
         public UnityEvent OnPanelBeginHide, OnPanelFinishHide;
-
-        private void Start()
-        {
-            panelParent.SetActive(false);
-        }
-
+        
         public virtual void ShowPanel()
         {
             OnPanelBeginShow.Invoke();    
@@ -38,5 +35,7 @@ namespace UI.Panel
             panelParent.SetActive(false);
             OnPanelFinishHide.Invoke();
         }
+
+       
     }
 }

@@ -20,13 +20,18 @@ namespace UI
         }
 
         [SerializeField] private Canvas UICanvas;
-        [SerializeField] private UIPanel[] panels;
+        [SerializeField] private UIPanelWrapper[] panels;
 
         protected Dictionary<string, UIPanel> panelMap;
-        
-        private void Start()
+
+        protected virtual void Start()
         {
+            panelMap = new Dictionary<string, UIPanel>();
             
+            foreach (var panel in panels)
+            {
+                panelMap.Add(panel.panelName, panel.panel);
+            }
         }
     }
 }

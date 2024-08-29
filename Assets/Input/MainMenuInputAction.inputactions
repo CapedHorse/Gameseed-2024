@@ -20,7 +20,7 @@
                     "id": "3519c54e-3b20-4388-bdf2-32cd044547f7",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": "",
+                    "interactions": "Press",
                     "initialStateCheck": false
                 },
                 {
@@ -147,6 +147,151 @@
             ]
         },
         {
+            "name": "GameModeMenu",
+            "id": "3ed4b439-c464-4890-937a-ee7304b44a3d",
+            "actions": [
+                {
+                    "name": "NavigateMenu",
+                    "type": "Value",
+                    "id": "ac099fbe-064e-47bf-84cf-14bde41d4d03",
+                    "expectedControlType": "Axis",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "ConfirmGameMode",
+                    "type": "Button",
+                    "id": "fc865089-549f-4d61-bc46-1b969e6c723a",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Press",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "BackToMainMenu",
+                    "type": "Button",
+                    "id": "7e6bbbf5-e901-406f-920a-56004f1eb849",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "Updown",
+                    "id": "69e3b2b9-83ce-4e43-88e4-fd077733c484",
+                    "path": "1DAxis",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "NavigateMenu",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "negative",
+                    "id": "ba83372d-866e-41d9-944b-5164f565751e",
+                    "path": "<Keyboard>/downArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "NavigateMenu",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "positive",
+                    "id": "b59c776c-0a24-4983-af7a-458f91a27365",
+                    "path": "<Keyboard>/upArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "NavigateMenu",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "DPad",
+                    "id": "f2cc72ec-daf9-426f-85d4-4ccd3a2e2a3d",
+                    "path": "1DAxis",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "NavigateMenu",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "negative",
+                    "id": "2c246084-ea57-4f5e-b759-17f9ff958581",
+                    "path": "<Gamepad>/dpad/down",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "NavigateMenu",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "positive",
+                    "id": "7c3a3372-2395-4431-9244-5e815c26f236",
+                    "path": "<Gamepad>/dpad/up",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "NavigateMenu",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "2bec56d8-685e-4ef3-a757-764c34afdaac",
+                    "path": "<Keyboard>/enter",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "ConfirmGameMode",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "1b4bdae6-1c1e-41a5-93fe-e8f3d56d82a3",
+                    "path": "<Gamepad>/buttonSouth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "ConfirmGameMode",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "b0b5802e-02f7-48f9-b8ab-9334e7a6e1de",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "BackToMainMenu",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "e57fc3a8-124e-48b0-a3cd-6dcb9538c767",
+                    "path": "<Gamepad>/buttonEast",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "BackToMainMenu",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
             "name": "Settings",
             "id": "7e1b96fb-3d9a-460e-b0ec-de35e84cb0dd",
             "actions": [
@@ -165,7 +310,7 @@
                     "id": "ecb5cce3-0304-4d0c-ad07-4ad71c57c2cd",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": "",
+                    "interactions": "Press",
                     "initialStateCheck": false
                 },
                 {
@@ -527,6 +672,12 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "None",
+            "id": "ea90e359-9d55-4faa-b217-9a50bcef9fad",
+            "actions": [],
+            "bindings": []
         }
     ],
     "controlSchemes": [

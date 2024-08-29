@@ -18,5 +18,15 @@ namespace Core
             
             Destroy(gameObject);
         }
+
+        public void StartStoryMode()
+        {
+            
+        }
+
+        public void StartFreeMode(int levelId)
+        {
+            
+        }
     }
 }
