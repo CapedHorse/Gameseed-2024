@@ -1,19 +1,17 @@
+using Components.ExtraComponents;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 namespace Components.Player_Control_Components
 {
-    public class ClawMachineControl : PlayerControl
+    public class ClawMachineControl : BasicMovingControl
     {
-        // Start is called before the first frame update
-        void Start()
-        {
-        
-        }
+        [SerializeField]
+        private ClawComponent clawComponent;
 
-        // Update is called once per frame
-        void Update()
+        protected override void MainActionInputStarted(InputAction.CallbackContext obj)
         {
-        
+            clawComponent.LaunchClaw();
         }
     }
 }

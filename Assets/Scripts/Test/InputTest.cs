@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -19,6 +20,11 @@ public class InputTest : MonoBehaviour
         jumpIA.action.started += TestJump;
         shootIA.action.started += TestShoot;
         grabIA.action.started += TestGrab;
+    }
+
+    private void Update()
+    {
+        Debug.Log("Current control Scheme " + testControlPlayerInput.currentControlScheme);
     }
 
     private void TestGrab(InputAction.CallbackContext obj)
