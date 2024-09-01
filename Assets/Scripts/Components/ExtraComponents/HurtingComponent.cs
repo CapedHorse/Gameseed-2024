@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 namespace Components.ExtraComponents
 {
-    public class HurtingComponent : ObjectBase
+    public class HurtingComponent : ComponentBase
     {
         protected override void EnteredTrigger(Collider2D other)
         {

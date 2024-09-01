@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace Components.ExtraComponents
 {
-    public class ClawComponent : ObjectBase
+    public class ClawComponent : ComponentBase
     {
         [SerializeField] private Transform clawVine;
         [SerializeField] private float clawSpeed = 10;
@@ -71,8 +71,8 @@ namespace Components.ExtraComponents
 
         protected override void EnteredTrigger(Collider2D other)
         {
-            GrabableObject grabableObject = other.GetComponent<GrabableObject>();
-            if (grabableObject != null)
+            GrabableComponent grabableComponent = other.GetComponent<GrabableComponent>();
+            if (grabableComponent != null)
             {
                 _clawRetracted = true;
             }

@@ -11,6 +11,7 @@ TagManager:
   - Object
   - Platform
   - Claw
+  - Bullet
   layers:
   - Default
   - TransparentFX
