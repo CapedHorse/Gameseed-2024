@@ -21,16 +21,11 @@ namespace Components.Player_Control_Components
         {
             _flyDirection = obj.ReadValue<Vector2>();
             _flyDirection.Normalize();  
+            
             Vector2 dir = Vector2.zero;
             dir.x = _flyDirection.x;
             dir.y = _flyDirection.y;
-
-            /*if (moveJoystick.Direction != Vector2.zero)
-            {
-                dir = moveJoystick.Direction;
-            }*/
-
-            //the turn part of my code
+            
             float angle = Mathf.Atan2(-dir.x, dir.y) * Mathf.Rad2Deg;
             transform.rotation = Quaternion.Euler(0f, 0f, angle);
         }
@@ -43,8 +38,6 @@ namespace Components.Player_Control_Components
         private void Fly()
         {
             rb.velocity = _flyDirection * flySpeed;
-            
-            
         }
 
         private void StopFly()

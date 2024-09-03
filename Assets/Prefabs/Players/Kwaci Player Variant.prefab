@@ -26,7 +26,7 @@ Transform:
   m_GameObject: {fileID: 2206000443557171807}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.257, z: 0}
   m_LocalScale: {x: 0.4875, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -74,7 +74,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.5849056, g: 0.4161641, b: 0.1462264, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -126,7 +126,19 @@ PrefabInstance:
     - target: {fileID: 1165661995794232163, guid: c3a20852e1a20764fa2f2946b4634d63, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 7482667652216324306, guid: 75f5f34dc1b5347e0b8351032682f224, type: 3}
+      objectReference: {fileID: 3625043607559282579, guid: 19fb86013d8c24d6cb8410c0aadf30fa, type: 3}
+    - target: {fileID: 1165661995794232163, guid: c3a20852e1a20764fa2f2946b4634d63, type: 3}
+      propertyPath: m_Color.b
+      value: 0.1462264
+      objectReference: {fileID: 0}
+    - target: {fileID: 1165661995794232163, guid: c3a20852e1a20764fa2f2946b4634d63, type: 3}
+      propertyPath: m_Color.g
+      value: 0.4161641
+      objectReference: {fileID: 0}
+    - target: {fileID: 1165661995794232163, guid: c3a20852e1a20764fa2f2946b4634d63, type: 3}
+      propertyPath: m_Color.r
+      value: 0.5849056
+      objectReference: {fileID: 0}
     - target: {fileID: 1256869173096001161, guid: c3a20852e1a20764fa2f2946b4634d63, type: 3}
       propertyPath: m_Name
       value: Kwaci Player Variant
@@ -228,6 +240,12 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1256869173096001161, guid: c3a20852e1a20764fa2f2946b4634d63, type: 3}
       insertIndex: -1
       addedObject: {fileID: 702994817385072352}
+    - targetCorrespondingSourceObject: {fileID: 1256869173096001161, guid: c3a20852e1a20764fa2f2946b4634d63, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2368000367716551404}
+    - targetCorrespondingSourceObject: {fileID: 1256869173096001161, guid: c3a20852e1a20764fa2f2946b4634d63, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1760974816567314774}
   m_SourcePrefab: {fileID: 100100000, guid: c3a20852e1a20764fa2f2946b4634d63, type: 3}
 --- !u!1 &223572439349027878 stripped
 GameObject:
@@ -278,12 +296,12 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 0, y: 0.42766017}
-      - {x: -0.15614033, y: 0.21998635}
-      - {x: -0.17104945, y: -0.23836686}
-      - {x: 0.0036996678, y: -0.386433}
-      - {x: 0.18078816, y: -0.23667711}
-      - {x: 0.16249943, y: 0.22634582}
+    - - {x: 0.0043764114, y: 0.59396404}
+      - {x: -0.13863468, y: 0.49570075}
+      - {x: -0.39424738, y: 0.0023362488}
+      - {x: -0.005053155, y: -0.18949401}
+      - {x: 0.38210356, y: -0.0003504157}
+      - {x: 0.096853256, y: 0.5283187}
   m_UseDelaunayMesh: 0
 --- !u!114 &702994817385072352
 MonoBehaviour:
@@ -301,9 +319,35 @@ MonoBehaviour:
   mainActionInputRef: {fileID: -3071281848014471728, guid: 7e30df38041ab064fb414373347f3cec, type: 3}
   rb: {fileID: 8758498041995828804}
   flySpeed: 7.5
-  bulletPrefab: {fileID: 1949660860220030603, guid: 067779707a968d14d961870a74034c0e, type: 3}
+  bulletComponentPrefab: {fileID: 1949660860220030603, guid: 067779707a968d14d961870a74034c0e, type: 3}
   bulletHose: {fileID: 1917653528756449582}
   bulletCooldown: 0.1
+--- !u!114 &2368000367716551404
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 223572439349027878}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a361070a87f1496dbb395164e3a2eff7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targeterID: Gate
+--- !u!114 &1760974816567314774
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 223572439349027878}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6db215d3f44f441b8f947a50d4a796f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pushingForce: 50
 --- !u!4 &5907154226758103400 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4868795064709348295, guid: c3a20852e1a20764fa2f2946b4634d63, type: 3}

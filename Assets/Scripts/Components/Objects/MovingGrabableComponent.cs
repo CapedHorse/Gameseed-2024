@@ -13,26 +13,33 @@ namespace Components.Objects
         {
             initialXPos = transform.localPosition.x;
             targetXPos = initialXPos * -1;
+            
         }
 
         private void FixedUpdate()
         {
             if (_grabbed)
                 return;
-            
-            if (transform.localPosition.x != targetXPos)
+
+            transform.localPosition =
+                new Vector2(transform.localPosition.x + Time.fixedDeltaTime * moveSpeed * Mathf.Sign(targetXPos), transform.localPosition.y);
+
+            if (targetXPos < 0)
             {
-                transform.localPosition =
-                    new Vector2(transform.localPosition.x + Time.fixedDeltaTime * moveSpeed * Mathf.Sign(targetXPos), transform.localPosition.y);    
+                if (transform.localPosition.x <= targetXPos)
+                {
+                    transform.localPosition = new Vector2(initialXPos, transform.localPosition.y);        
+                }
             }
-            else if(transform.localPosition.x == targetXPos)
+            else
             {
-                transform.localPosition = new Vector2(initialXPos, transform.localPosition.y);
+                if (transform.localPosition.x >= targetXPos)
+                {
+                    transform.localPosition = new Vector2(initialXPos, transform.localPosition.y);        
+                }
             }
             
-            
-            
-            
+
         }
     }
 }

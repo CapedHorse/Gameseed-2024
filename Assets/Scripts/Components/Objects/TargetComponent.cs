@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Components.Objects
 {
@@ -16,6 +17,7 @@ namespace Components.Objects
                 if (targeter.TargeterID == targetID)
                 {
                     Debug.Log("Goal!!!");
+                    SceneManager.LoadScene(SceneManager.GetActiveScene().name);
                 }
             }
         }

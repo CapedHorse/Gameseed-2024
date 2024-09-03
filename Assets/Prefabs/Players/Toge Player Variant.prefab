@@ -213,6 +213,7 @@ GameObject:
   - component: {fileID: 5138527593131069285}
   - component: {fileID: 3924242472443687038}
   - component: {fileID: 3936085233016386236}
+  - component: {fileID: 3660682595423879318}
   m_Layer: 0
   m_Name: Claw
   m_TagString: Claw
@@ -324,6 +325,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1495a9e64c2e406098bbef1165406715, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &3660682595423879318
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7944643032235864116}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6db215d3f44f441b8f947a50d4a796f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pushingForce: 50
 --- !u!1001 &6047533512978477809
 PrefabInstance:
   m_ObjectHideFlags: 0
