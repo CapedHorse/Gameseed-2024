@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.Events;
 
 namespace UI.Panel
@@ -11,7 +12,7 @@ namespace UI.Panel
         public UnityEvent OnPanelBeginShow, OnPanelFinishShow;
         [HideInInspector]
         public UnityEvent OnPanelBeginHide, OnPanelFinishHide;
-        
+
         public virtual void ShowPanel()
         {
             OnPanelBeginShow.Invoke();    

@@ -1,5 +1,5 @@
 {
-    "name": "Cutscene",
+    "name": "SimpleGameplayUI",
     "maps": [
         {
             "name": "CutsceneControl",
@@ -42,6 +42,56 @@
                     "name": "",
                     "id": "91ce8c4c-75e5-45a3-bc5a-03d51b12aafa",
                     "path": "<Gamepad>/buttonSouth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "Next",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "TutorialUIControl",
+            "id": "0833ecd4-6fec-4ce1-80dc-1740c3f16d49",
+            "actions": [
+                {
+                    "name": "Next",
+                    "type": "Button",
+                    "id": "74633671-1a5d-4405-8df4-1d399781fb56",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "38e53623-9a17-491a-96f3-c3872c95de13",
+                    "path": "<Keyboard>/enter",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "Next",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "1aa61e81-7956-4f08-86fb-783e5413e4d0",
+                    "path": "<Gamepad>/buttonWest",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "Next",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d1e789ad-77f9-4aea-b958-2a923c5115a8",
+                    "path": "<XInputController>/buttonWest",
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",

@@ -1,0 +1,32 @@
+Tech story:
+
+Game manager gameplay input disabled
+
+From Main menu:
+Play -> MenuManager disable menu input -> has intro?
+
+hasn't intro -> fade in -> load intro -> fade out -> enable cutscene input -> cutscene next next -> unlock level 1 in player Data -> has intro = true
+
+has intro -> fade in -> load level selection panel -> fade out -> enable level select input
+
+Opening selection panel:
+
+Set all button disabled, check game manager player data, if level unlocked, set enabled
+
+select one level -> level unlocked?
+
+Selecting Level:
+
+level locked -> cannot click -> show feedback
+
+level unlocked -> has tutorial?
+
+hasn't tutorial -> fade in -> load tutorial scene -> load tutorial prefab of that level -> Tutorial Session setting control input disabled -> fade out -> Count down start tutorial -> tutorial session enable control input
+
+Tutorial playing:
+Tutorial manager load condition -> load this condition task UI -> interact with some condition -> condition met -> check next condition -> last tutor?
+
+not last Tutor-> control input disabled deactivate last, activate next, Tutorial session reset player control, control input enabled agian
+last tutor -> control input disabled ->  enable tutorial input, show the UI
+
+has tutorial -> fade in -> load game session scene -> load selected level, game session prefab 1, set play false, set health from the settings by HealthManager, set timer UI -> fade out -> start counting, enable gameplay input -> play start, timer running, game session handle the rest

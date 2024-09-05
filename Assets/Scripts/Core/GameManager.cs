@@ -1,6 +1,9 @@
 using System;
 using Level;
+using Tutorial;
+using UI.Cutscene;
 using UI.Overlay;
+using UI.Panel;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
@@ -12,8 +15,10 @@ namespace Core
     {
         public static GameManager instance;
 
-        [SerializeField] private OverlayUIManager overlayManager;
+        private FadingManager fadingManager;
+        private CutsceneUIManager cutsceneManager;
         [SerializeField] private PlayerInput gameManagerInput;
+        [SerializeField] private LevelSelectionPanel levelSelectionPanel;
         
         public GameSettings gameSettings;
         public PlayerData playerData;
@@ -32,94 +37,101 @@ namespace Core
 
         private void Start()
         {
+            fadingManager = FadingManager.instance;
+            cutsceneManager = CutsceneUIManager.instance;
+            
+            gameManagerInput.DeactivateInput();
+            
             playerData = new PlayerData();
+            foreach (var level in gameSettings.levelList)
+            {
+                LevelData newLevel = new LevelData();
+                newLevel.levelName = level.levelName;
+                newLevel.hasPlayed = false;
+                playerData.levelDatas.Add(newLevel);
+            }
         }
 
-        public void PlayStoryMode()
+        public void PlayGame()
         {
-            
+            fadingManager.FadeIn(() =>
+            {
+                if (playerData.hasIntro)
+                {
+                    levelSelectionPanel.OnPanelFinishShow.AddListener(() =>
+                    {
+                        fadingManager.FadeOut(() =>
+                        {
+                            levelSelectionPanel.ToggleLevelInput(true);
+                        });
+                    });
+                    levelSelectionPanel.ShowPanel();
+                }
+                else
+                {
+                    cutsceneManager.IntroCutscene(true);
+                    fadingManager.FadeOut(() =>
+                    {
+                        cutsceneManager.SetCutsceneInputEnabled(true);
+                    });
+                }
+            });
         }
-
-        public void PlayFreeMode(int levelId, int miniGame)
-        {
-            //After select level, open character select first
-        }
-
-        void OpenCutscene()
-        {
-            
-        }
-
-        public void CompleteCutscene()
+        
+        public void CompleteIntroCutscene()
         {
             Debug.Log("Cutscene Finished");
-            //Will open a tutorial scene
+            playerData.hasIntro = true;
+            playerData.levelDatas[0].unlocked = true;
+            fadingManager.Fading(() =>
+            {
+                cutsceneManager.IntroCutscene(false);
+                levelSelectionPanel.ShowPanel();
+            }, () =>
+            {
+                levelSelectionPanel.ToggleLevelInput(true);
+            });
         }
 
-        void OpenTutorial()
+        public void OpenLevel(int levelId)
         {
             
+            fadingManager.FadeIn(() =>
+            {
+                levelSelectionPanel.HidePanel();
+                levelSelectionPanel.ToggleLevelInput(false);
+                
+                if (playerData.levelDatas[levelId].hasPlayed)
+                {
+                    OpenGameSession(levelId);
+                }
+                else
+                {
+                    OpenTutorial(levelId);
+                }
+            });
         }
 
-        public void CompleteTutorial()
+        void OpenTutorial(int levelId)
         {
+            SceneManager.sceneLoaded += (Scene arg0, LoadSceneMode arg1) =>
+            {
+                TutorialManager.instance.LoadTutorialSession(gameSettings.levelList[levelId].tutorialLevel);
+                fadingManager.FadeOut();
+            };
             
+            SceneManager.LoadScene("Tutorial");
         }
 
-        void OpenGameSession()
+        void OpenGameSession(int levelId)
         {
+            SceneManager.sceneLoaded += (Scene arg0, LoadSceneMode arg1) =>
+            {
+                GameSessionManager.instance.LoadGameSession(gameSettings.levelList[levelId].gameSessionPrefabList);
+                fadingManager.FadeOut();
+            };
             
+            SceneManager.LoadScene("GameSession");
         }
-        
-        
-        public void CompleteGameSession()
-        {
-            //will add last session to player data
-            //Check if this game session is the last in the level, proceed to next level
-        }
-        
-        public void RetryCurrentGameSession()
-        {
-            
-        }
-
-        public void RetryFirstGameSession()
-        {
-            
-        }
-
-        void OpenLevel()
-        {
-            
-        }
-        
-        void CompleteLevel()
-        {
-            
-        }
-
-        void FinalCutscene()
-        {
-            
-        }
-
-        //Utility
-        void LoadScene(string sceneName)
-        {
-            SceneManager.LoadScene(sceneName);
-        }
-
-
-        void BackToMenu()
-        {
-            
-        }
-
-        void Pause(bool onPause)
-        {
-            
-        }
-
-
     }
 }

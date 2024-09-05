@@ -1,4 +1,5 @@
 ﻿using System;
+using Core;
 using UI.Panel;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -76,22 +77,22 @@ namespace UI
 
             if (value > 0)
             {
-                mainMenuPanel.GetCurrentButtonParent().NavigateButton(true);
+                // mainMenuPanel.GetCurrentButtonParent().NavigateButton(true);
             }
             else
             {
-                mainMenuPanel.GetCurrentButtonParent().NavigateButton(false);
+                // mainMenuPanel.GetCurrentButtonParent().NavigateButton(false);
             }
         }
 
         private void OnMenuPressed(InputAction.CallbackContext obj)
         {
-            mainMenuPanel.GetCurrentButtonParent().ProceedMenu();
+            // mainMenuPanel.GetCurrentButtonParent().ProceedMenu();
         }
 
         private void OnQuitPressed(InputAction.CallbackContext obj)
         {
-            mainMenuPanel.GetCurrentButtonParent().ProceedMenu();
+            // mainMenuPanel.GetCurrentButtonParent().ProceedMenu();
             
         }
 
@@ -123,17 +124,16 @@ namespace UI
 
         #region Public Inspector Functions
         
-        public void OpenGameModeSelection()
+        public void PlayGame()
         {
             mainMenuUIInput.DeactivateInput();
-            mainMenuPanel.ShowNextButtonParent();
-            OnGameModeSelectionShown();
+            GameManager.instance.PlayGame();
         }
 
         public void CloseGameModeSelection()
         {
             mainMenuUIInput.DeactivateInput();
-            mainMenuPanel.ShowPrevButtonParent();
+            // mainMenuPanel.ShowPrevButtonParent();
             OnGameModeSelectionClosed();
         }
 

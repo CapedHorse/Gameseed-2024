@@ -25,6 +25,16 @@ namespace Components.Objects
             
         }
 
+        private void OnCollisionStay2D(Collision2D other)
+        {
+            StayedCollision(other);
+        }
+
+        protected virtual void StayedCollision(Collision2D other)
+        {
+            
+        }
+
         private void OnTriggerEnter2D(Collider2D other)
         {
             EnteredTrigger(other);

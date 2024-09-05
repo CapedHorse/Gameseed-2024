@@ -1,5 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Level;
+using UnityEditor;
 using UnityEngine;
 
 namespace Core
@@ -8,7 +10,6 @@ namespace Core
     public class GameSettings : ScriptableObject
     {
         public float playerHealthEachLevel;
-        public List<LevelData> levelList;
-        public string lastCutsceneSceneName;
+        public List<LevelSettings> levelList;
     }
 }

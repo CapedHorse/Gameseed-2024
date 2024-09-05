@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+using UI.GameSession;
 using UnityEngine;
 
 namespace Level
@@ -6,9 +8,14 @@ namespace Level
     public class GameSessionManager : MonoBehaviour
     {
         public static GameSessionManager instance;
-        private bool startGame;
-        private float currentPlayTime;
-        private float targetPlayTime;
+
+        private GameUIManager _gameUIManager;
+
+        private int _currentGameSessionId = 0;
+        private bool _startGame;
+        private float _currentPlayTime;
+        private float _targetPlayTime;
+        
         private void Awake()
         {
             if (instance == null)
@@ -20,6 +27,11 @@ namespace Level
             Destroy(gameObject);
         }
 
+        private void Start()
+        {
+            _gameUIManager = GameUIManager.instance;
+        }
+
         public virtual void InitializeGame(GameSessionData gameSesData)
         {
             
@@ -27,12 +39,12 @@ namespace Level
 
         private void Update()
         {
-            if (!startGame)
+            if (!_startGame)
                 return;
 
-            currentPlayTime += Time.deltaTime;
+            _currentPlayTime += Time.deltaTime;
 
-            if (currentPlayTime >= targetPlayTime)
+            if (_currentPlayTime >= _targetPlayTime)
             {
                 //Will make the game session fail
             }
@@ -47,7 +59,11 @@ namespace Level
         {
             
         }
-        
-        
+
+
+        public void LoadGameSession(List<GameSession> gameSessionPrefabList)
+        {
+            Instantiate(gameSessionPrefabList[_currentGameSessionId], transform);
+        }
     }
 }

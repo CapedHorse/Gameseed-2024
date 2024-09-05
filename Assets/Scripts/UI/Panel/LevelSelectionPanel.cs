@@ -1,9 +1,67 @@
-﻿using UnityEngine;
+﻿using System;
+using Core;
+using UnityEngine;
+using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 namespace UI.Panel
 {
-    public class LevelSelectionPanel : MonoBehaviour
+    public class LevelSelectionPanel : UIPanel
     {
-        
+        [SerializeField] private PlayerInput levelSelectInput;
+        [SerializeField] private Button[] levelButtons;
+
+        private void Start()
+        {
+            ToggleLevelInput(false);
+        }
+
+        public void ToggleLevelInput(bool inputOn)
+        {
+            if(inputOn)
+                levelSelectInput.ActivateInput();
+            else
+                levelSelectInput.DeactivateInput();
+        }
+
+        public override void ShowPanel()
+        {
+            base.ShowPanel();
+
+            for (int i = 0; i < GameManager.instance.playerData.levelDatas.Count; i++)
+            {
+                int levelId = i;
+                LevelData levelData = GameManager.instance.playerData.levelDatas[levelId];
+
+                if (levelData.unlocked)
+                {
+                    levelButtons[levelId].interactable = true;
+                    levelButtons[levelId].onClick.RemoveAllListeners();
+                    levelButtons[levelId].onClick.AddListener(() =>
+                    {
+                        GameManager.instance.OpenLevel(levelId);
+                    });
+                }
+            }
+
+            FinishShowPanel();
+        }
+
+        protected override void FinishShowPanel()
+        {
+            base.FinishShowPanel();
+        }
+
+        public override void HidePanel()
+        {
+            base.HidePanel();
+            
+            FinishHidePanel();
+        }
+
+        protected override void FinishHidePanel()
+        {
+            base.FinishHidePanel();
+        }
     }
 }

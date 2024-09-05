@@ -170,6 +170,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 400b0f9c65724b19bad568624b49f6b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerInput: {fileID: 2315787340319029909}
   movingInputRef: {fileID: -9140325293303809555, guid: 7e30df38041ab064fb414373347f3cec, type: 3}
   mainActionInputRef: {fileID: -7493825663748469437, guid: 7e30df38041ab064fb414373347f3cec, type: 3}
   rb: {fileID: 7808223513394013921}
@@ -213,6 +214,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pushingForce: 50
+--- !u!114 &2315787340319029909 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2853127136495028383, guid: c3a20852e1a20764fa2f2946b4634d63, type: 3}
+  m_PrefabInstance: {fileID: 557052527902700042}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1642203663862144131}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!50 &7808223513394013921 stripped
 Rigidbody2D:
   m_CorrespondingSourceObject: {fileID: 7775303922820601067, guid: c3a20852e1a20764fa2f2946b4634d63, type: 3}

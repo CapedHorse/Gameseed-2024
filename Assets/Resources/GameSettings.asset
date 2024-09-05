@@ -14,15 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerHealthEachLevel: 3
   levelList:
-  - levelCutsceneName: Cutscene_1
-    gameSessionList:
-    - gameSessionSceneName: Tutorial_1
-      gameType: 1
-      gameSessionTime: 0
-    - gameSessionSceneName: GameSession_1_1
-      gameType: 0
-      gameSessionTime: 10
-    - gameSessionSceneName: GameSession_1_2
-      gameType: 0
-      gameSessionTime: 10
-  lastCutsceneSceneName: Final_Cutscene
+  - levelName: Corn
+    tutorialLevel: {fileID: 4223457508821383488, guid: b0ad68882cc0f114ea4f13b4155b253c, type: 3}
+    gameSessionPrefabList:
+    - {fileID: 5195733494576432641, guid: 48e6c437adbc1734789a1a695fb9309b, type: 3}
+    - {fileID: 5195733494576432641, guid: e48462e46e4b7724ca4f44905e4fff7f, type: 3}

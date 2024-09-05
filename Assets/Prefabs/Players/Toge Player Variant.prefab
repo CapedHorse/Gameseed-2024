@@ -451,8 +451,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e01c344f7b46954e9daacb98333d6a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerInput: {fileID: 8391753890764847726}
   movingInputRef: {fileID: 4297928160245493733, guid: 7e30df38041ab064fb414373347f3cec, type: 3}
   mainActionInputRef: {fileID: 3199168532419013817, guid: 7e30df38041ab064fb414373347f3cec, type: 3}
   rb: {fileID: 4038121417000511002}
   moveSpeed: 10
   clawComponent: {fileID: 3273369480185491323}
+--- !u!114 &8391753890764847726 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2853127136495028383, guid: c3a20852e1a20764fa2f2946b4634d63, type: 3}
+  m_PrefabInstance: {fileID: 6047533512978477809}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4799830509013998712}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

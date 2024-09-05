@@ -7,6 +7,7 @@ namespace Components.Player_Control_Components
     public class PlayerControl : MonoBehaviour
     {
         public static PlayerControl instance;
+        [SerializeField] private PlayerInput playerInput;
 
         private void Awake()
         {
@@ -72,6 +73,16 @@ namespace Components.Player_Control_Components
             mainActionInputRef.action.started -= MainActionInputStarted;
             mainActionInputRef.action.performed -= MainActionInputPerformed;
             mainActionInputRef.action.canceled -= MainActionInputCanceled;
+        }
+
+        public void EnableInput()
+        {
+            playerInput.ActivateInput();
+        }
+
+        public void DisableInput()
+        {
+            playerInput.DeactivateInput();
         }
     }
 }

@@ -9,7 +9,7 @@ namespace Components.ExtraComponents
     {
         protected override void EnteredTrigger(Collider2D other)
         {
-            //teporary, should've make the player lose if this grabable can hurt
+            //temporary, should've make the player lose if this grabable can hurt, custom event
             ClawMachineControl clawMachine = other.GetComponent<ClawMachineControl>();
             if (clawMachine != null)
             {

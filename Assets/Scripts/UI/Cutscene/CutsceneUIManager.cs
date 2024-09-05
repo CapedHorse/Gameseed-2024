@@ -9,8 +9,9 @@ namespace UI.Cutscene
     {
         public static CutsceneUIManager instance;
 
-        [SerializeField] private Transform cutscenePanelParent;
-
+        [SerializeField] private PlayerInput cutscenePlayerInput;
+        [SerializeField] private Transform introCutscenePanel;
+        [SerializeField] private Transform outroCutscenePanel;
         [SerializeField] private InputActionReference nextPanelInputRef;
 
         private int currentPanelId;
@@ -27,26 +28,75 @@ namespace UI.Cutscene
 
         private void Start()
         {
-            for (int i = 0; i < cutscenePanelParent.childCount; i++)
-            {
-                cutscenePanelParent.GetChild(i).gameObject.SetActive(false);
-            }
-
-            cutscenePanelParent.GetChild(0).gameObject.SetActive(true);
-            
-            nextPanelInputRef.action.started += NextPanel;
+            SetCutsceneInputEnabled(false);
         }
 
-        private void NextPanel(InputAction.CallbackContext obj)
+        private void StartCutscene(Transform cutscenePanel)
+        {
+            cutscenePanel.gameObject.SetActive(true);
+            
+            for (int i = 0; i < introCutscenePanel.childCount; i++)
+            {
+                cutscenePanel.GetChild(i).gameObject.SetActive(false);
+            }
+
+            cutscenePanel.GetChild(0).gameObject.SetActive(true);
+            
+            nextPanelInputRef.action.started += (InputAction.CallbackContext ctx) =>
+            {
+                NextPanel(cutscenePanel);
+            };
+        }
+
+        public void SetCutsceneInputEnabled(bool enabled)
+        {
+            if(enabled)
+                cutscenePlayerInput.ActivateInput();
+            else
+                cutscenePlayerInput.DeactivateInput();
+        }
+
+        private void NextPanel(Transform cutscenePanel)
         {
             currentPanelId++;
-            if (currentPanelId >= cutscenePanelParent.childCount)
+            if (currentPanelId >= cutscenePanel.childCount)
             {
-                GameManager.instance.CompleteCutscene();
+                GameManager.instance.CompleteIntroCutscene();
             }
             else
             {
-                cutscenePanelParent.GetChild(currentPanelId).gameObject.SetActive(true);
+                cutscenePanel.GetChild(currentPanelId).gameObject.SetActive(true);
+            }
+        }
+
+        private void EndCutscene(Transform cutscenePanel)
+        {
+            currentPanelId = 0;
+            cutscenePanel.gameObject.SetActive(false);
+            SetCutsceneInputEnabled(false);
+        }
+
+        public void IntroCutscene(bool isStart)
+        {
+            if (isStart)
+            {
+                StartCutscene(introCutscenePanel);
+            }
+            else
+            {
+                EndCutscene(introCutscenePanel);
+            }
+        }
+
+        public void OutroCutscene(bool isStart)
+        {
+            if (isStart)
+            {
+                StartCutscene(outroCutscenePanel);
+            }
+            else
+            {
+                EndCutscene(outroCutscenePanel);
             }
         }
     }

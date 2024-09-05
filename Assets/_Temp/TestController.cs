@@ -72,7 +72,6 @@ public class TestController : MonoBehaviour
     private void Move(InputAction.CallbackContext obj)
     {
         _moveDirection = obj.ReadValue<Vector2>();
-        // rb.velocity = new Vector2(_moveDirection.x * moveSpeed, _moveDirection.y * moveSpeed);
 
         moveDirToRight = obj.ReadValue<Vector2>().x > 0;
         testAnimator.SetBool("MoveRight", moveDirToRight);
