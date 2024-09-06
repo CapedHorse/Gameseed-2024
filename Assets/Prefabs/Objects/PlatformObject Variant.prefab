@@ -10,13 +10,13 @@ GameObject:
   m_Component:
   - component: {fileID: 8332592547983954323}
   - component: {fileID: 6391793082441839492}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: PlatformFloor
   m_TagString: Floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &8332592547983954323
 Transform:
   m_ObjectHideFlags: 0
@@ -47,7 +47,7 @@ BoxCollider2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 8
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
@@ -137,13 +137,25 @@ PrefabInstance:
       propertyPath: m_LocalScale.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 3366796404978582362, guid: b820992165049b545b45ac132651b6c2, type: 3}
+      propertyPath: m_Color.b
+      value: 0.3962264
+      objectReference: {fileID: 0}
+    - target: {fileID: 3366796404978582362, guid: b820992165049b545b45ac132651b6c2, type: 3}
+      propertyPath: m_Color.g
+      value: 0.3962264
+      objectReference: {fileID: 0}
+    - target: {fileID: 3366796404978582362, guid: b820992165049b545b45ac132651b6c2, type: 3}
+      propertyPath: m_Color.r
+      value: 0.3962264
+      objectReference: {fileID: 0}
     - target: {fileID: 5126923885782437596, guid: b820992165049b545b45ac132651b6c2, type: 3}
       propertyPath: m_Name
       value: PlatformObject Variant
       objectReference: {fileID: 0}
     - target: {fileID: 5126923885782437596, guid: b820992165049b545b45ac132651b6c2, type: 3}
       propertyPath: m_Layer
-      value: 6
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5126923885782437596, guid: b820992165049b545b45ac132651b6c2, type: 3}
       propertyPath: m_TagString
@@ -197,4 +209,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   floorPlatform: {fileID: 8735900054691292096}
+  floorCol: {fileID: 6391793082441839492}
+  playerAboveLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  playerBelowLayer:
+    serializedVersion: 2
+    m_Bits: 8
   distancePlayerToPlatform: 0.5
+  playerTransform: {fileID: 0}

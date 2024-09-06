@@ -39,7 +39,7 @@ namespace UI.Panel
                     levelButtons[levelId].onClick.RemoveAllListeners();
                     levelButtons[levelId].onClick.AddListener(() =>
                     {
-                        GameManager.instance.OpenLevel(levelId);
+                        GameManager.instance.StartLevel(levelId);
                     });
                 }
             }

@@ -1,19 +1,21 @@
 ﻿using Components.Objects;
 using Components.Player_Control_Components;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 
 namespace Components.ExtraComponents
 {
     public class HurtingComponent : ComponentBase
     {
+        
         protected override void EnteredTrigger(Collider2D other)
         {
-            //temporary, should've make the player lose if this grabable can hurt, custom event
-            ClawMachineControl clawMachine = other.GetComponent<ClawMachineControl>();
-            if (clawMachine != null)
+            
+            HurtComponent hurtComponent = other.GetComponent<HurtComponent>();
+            if (hurtComponent != null)
             {
-                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+                hurtComponent.GotHurt();
             }
         }
     }

@@ -1,6 +1,7 @@
 using Components.ExtraComponents;
 using Components.Player_Control_Components;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 
 namespace Components.Objects
@@ -9,6 +10,7 @@ namespace Components.Objects
     {
         protected bool _grabbed;
 
+        public UnityEvent onGrabbedEvent;
         protected override void EnteredTrigger(Collider2D other)
         {
             ClawComponent claw = other.GetComponent<ClawComponent>();
@@ -16,6 +18,7 @@ namespace Components.Objects
             {
                 _grabbed = true;
                 transform.SetParent(claw.transform);
+                onGrabbedEvent.Invoke();
             }
         }
     }

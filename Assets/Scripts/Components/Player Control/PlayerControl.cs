@@ -6,20 +6,7 @@ namespace Components.Player_Control_Components
 {
     public class PlayerControl : MonoBehaviour
     {
-        public static PlayerControl instance;
         [SerializeField] private PlayerInput playerInput;
-
-        private void Awake()
-        {
-            if (instance == null)
-            {
-                instance = this;
-                return;
-            }
-            
-            Destroy(gameObject);
-        }
-
         [SerializeField] private InputActionReference movingInputRef;
         [SerializeField] private InputActionReference mainActionInputRef;
 

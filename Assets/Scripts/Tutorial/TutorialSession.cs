@@ -1,18 +1,12 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class TutorialSession : MonoBehaviour
+namespace Tutorial
 {
-    // Start is called before the first frame update
-    void Start()
+    public class TutorialSession : MonoBehaviour
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        public void TutorSessionEnded()
+        {
+            TutorialManager.instance.CanEndTutor();
+        }
     }
 }

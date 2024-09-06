@@ -93,7 +93,7 @@ namespace Core
             });
         }
 
-        public void OpenLevel(int levelId)
+        public void StartLevel(int levelId)
         {
             
             fadingManager.FadeIn(() =>
@@ -116,7 +116,7 @@ namespace Core
         {
             SceneManager.sceneLoaded += (Scene arg0, LoadSceneMode arg1) =>
             {
-                TutorialManager.instance.LoadTutorialSession(gameSettings.levelList[levelId].tutorialLevel);
+                TutorialManager.instance.LoadTutorialSession(gameSettings.levelList[levelId].tutorialLevel, levelId);
                 fadingManager.FadeOut();
             };
             
@@ -132,6 +132,12 @@ namespace Core
             };
             
             SceneManager.LoadScene("GameSession");
+        }
+
+        public void TutorialEnded(int thisLevelId)
+        {
+            playerData.levelDatas[thisLevelId].hasPlayed = true;
+            StartLevel(thisLevelId);
         }
     }
 }

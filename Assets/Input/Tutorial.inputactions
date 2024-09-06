@@ -1,56 +1,6 @@
 {
-    "name": "SimpleGameplayUI",
+    "name": "Tutorial",
     "maps": [
-        {
-            "name": "CutsceneControl",
-            "id": "fedf3817-65b3-484e-9f32-97301e69a72f",
-            "actions": [
-                {
-                    "name": "Next",
-                    "type": "Button",
-                    "id": "8830e2cf-ebca-464d-b376-c6644fd8b967",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                }
-            ],
-            "bindings": [
-                {
-                    "name": "",
-                    "id": "3cc0bbae-dd95-4845-81c4-902881aa05ef",
-                    "path": "<Keyboard>/space",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard",
-                    "action": "Next",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "2eebd7d7-8c39-4dfb-8171-c72b60d63e39",
-                    "path": "<XInputController>/buttonSouth",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Gamepad",
-                    "action": "Next",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "91ce8c4c-75e5-45a3-bc5a-03d51b12aafa",
-                    "path": "<Gamepad>/buttonSouth",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Gamepad",
-                    "action": "Next",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                }
-            ]
-        },
         {
             "name": "TutorialUIControl",
             "id": "0833ecd4-6fec-4ce1-80dc-1740c3f16d49",
@@ -80,7 +30,7 @@
                 {
                     "name": "",
                     "id": "1aa61e81-7956-4f08-86fb-783e5413e4d0",
-                    "path": "<Gamepad>/buttonWest",
+                    "path": "<Gamepad>/buttonNorth",
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",
@@ -91,7 +41,7 @@
                 {
                     "name": "",
                     "id": "d1e789ad-77f9-4aea-b958-2a923c5115a8",
-                    "path": "<XInputController>/buttonWest",
+                    "path": "<XInputController>/buttonNorth",
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",

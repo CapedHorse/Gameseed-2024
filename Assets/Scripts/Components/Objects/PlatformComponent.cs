@@ -7,26 +7,34 @@ namespace Components.Objects
     public class PlatformComponent : ComponentBase
     {
         [SerializeField] private GameObject floorPlatform;
+        [SerializeField] private Collider2D floorCol;
+        [SerializeField] private LayerMask playerAboveLayer, playerBelowLayer;
         [SerializeField] private float distancePlayerToPlatform = 1f;
+        [SerializeField] private Transform playerTransform;
         private bool _hasActivated;
 
 
         private void Update()
         {
-            if (PlayerControl.instance.transform.position.y >= transform.position.y + distancePlayerToPlatform)
+            if (playerTransform)
             {
-                if (!_hasActivated)
+                if (playerTransform.position.y >= transform.position.y + distancePlayerToPlatform)
                 {
-                    _hasActivated = true;
-                    floorPlatform.SetActive(true);
+                    if (!_hasActivated)
+                    {
+                        _hasActivated = true;
+                        floorCol.excludeLayers = playerAboveLayer;
+                        // floorPlatform.SetActive(true);
+                    }
                 }
-            }
-            else
-            {
-                if (_hasActivated)
+                else
                 {
-                    _hasActivated = false;
-                    floorPlatform.SetActive(false);
+                    if (_hasActivated)
+                    {
+                        _hasActivated = false;
+                        floorCol.excludeLayers = playerBelowLayer;
+                        // floorPlatform.SetActive(false);
+                    }
                 }
             }
         }
