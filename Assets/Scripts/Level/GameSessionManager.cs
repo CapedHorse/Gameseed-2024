@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Core;
 using UI.GameSession;
 using UnityEngine;
 
@@ -10,9 +11,13 @@ namespace Level
         public static GameSessionManager instance;
 
         private GameUIManager _gameUIManager;
-
+        private GameSession _currentGameSession;
         private int _currentGameSessionId = 0;
         private bool _startGame;
+        public bool StartedGame => _startGame;
+
+        private int _playerHealth;
+        
         private float _currentPlayTime;
         private float _targetPlayTime;
         
@@ -30,11 +35,7 @@ namespace Level
         private void Start()
         {
             _gameUIManager = GameUIManager.instance;
-        }
-
-        public virtual void InitializeGame(GameSessionData gameSesData)
-        {
-            
+            _startGame = false;
         }
 
         private void Update()
@@ -61,9 +62,28 @@ namespace Level
         }
 
 
-        public void LoadGameSession(List<GameSession> gameSessionPrefabList)
+        public void LoadGameSession(GameSession gameSessionPrefab)
         {
-            Instantiate(gameSessionPrefabList[_currentGameSessionId], transform);
+            _currentGameSession = Instantiate(gameSessionPrefab, transform);
         }
+
+        public void InitializeGameSession()
+        {
+            GameSettings gameSettings = GameManager.instance.gameSettings;
+            LevelSettings gameSettingsLevel = gameSettings.levelList[_currentGameSessionId];
+            _playerHealth = gameSettings.playerHealthEachLevel;
+            LoadGameSession(gameSettingsLevel.gameSessionPrefabList[_currentGameSessionId]);
+        }
+
+        public void EndedGameSession(GameEndType type)
+        {
+            
+        }
+    }
+
+    public enum GameEndType
+    {
+        Success,
+        Failed
     }
 }

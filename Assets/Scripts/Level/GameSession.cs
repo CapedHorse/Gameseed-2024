@@ -7,25 +7,25 @@ namespace Level
     public class GameSession : MonoBehaviour
     {
         [SerializeField] private PlayerControl playerControl;
+        public UnityEvent onGameStarted, onGameEnded;
+        virtual public void StartGame()
+        {
+            onGameStarted.Invoke();
+        }
+
+        virtual public void EndGame()
+        {
+            onGameEnded.Invoke();
+        }
         
-        private int currentHealth;
-
-        public UnityEvent onGameSessionSuccess, onGameSessionFailed;
-
         virtual public void GameSessionSuccess()
         {
-            
+            GameSessionManager.instance.EndedGameSession(GameEndType.Success);
         }
 
         virtual public void GameSessionFailed()
         {
-            currentHealth--;
-
-            //Notify the UI
-            if (currentHealth <= 0)
-            {
-                //Told the game manager to fail the game
-            }
+            GameSessionManager.instance.EndedGameSession(GameEndType.Failed);
         }
     }
 }

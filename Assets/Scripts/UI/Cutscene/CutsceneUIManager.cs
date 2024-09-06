@@ -12,6 +12,7 @@ namespace UI.Cutscene
         [SerializeField] private PlayerInput cutscenePlayerInput;
         [SerializeField] private Transform introCutscenePanel;
         [SerializeField] private Transform outroCutscenePanel;
+        [SerializeField] private GameObject nextControlGuide;
         [SerializeField] private InputActionReference nextPanelInputRef;
 
         private int currentPanelId;
@@ -34,7 +35,7 @@ namespace UI.Cutscene
         private void StartCutscene(Transform cutscenePanel)
         {
             cutscenePanel.gameObject.SetActive(true);
-            
+            nextControlGuide.SetActive(true);
             for (int i = 0; i < introCutscenePanel.childCount; i++)
             {
                 cutscenePanel.GetChild(i).gameObject.SetActive(false);
@@ -73,6 +74,7 @@ namespace UI.Cutscene
         {
             currentPanelId = 0;
             cutscenePanel.gameObject.SetActive(false);
+            nextControlGuide.SetActive(false);
             SetCutsceneInputEnabled(false);
         }
 

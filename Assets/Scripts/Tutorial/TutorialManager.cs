@@ -14,10 +14,9 @@ namespace Tutorial
         [SerializeField] private GameObject endLevelGuideUI;
         [SerializeField] private PlayerInput tutorialPlayerInput;
         [SerializeField] private InputActionReference endTutorialReference;
-        [SerializeField] private InGameFading inGameFading;
+        [FormerlySerializedAs("inGameFading")] [SerializeField] private InGameFadingTransition inGameFadingTransition;
 
-        private TutorialSession _tutorialSession;
-        private TutorialSession _thisTutorialPrefab;
+        private TutorialSession _tutorialSession; 
         private int _thisLevelId;
 
         private void Awake()
@@ -41,13 +40,12 @@ namespace Tutorial
         public void LoadTutorialSession(TutorialSession tutorialLevel, int levelId)
         {
             _thisLevelId = levelId;
-            _thisTutorialPrefab = tutorialLevel;
             _tutorialSession = Instantiate(tutorialLevel, transform);
         }
 
         public void CanEndTutor()
         {
-            inGameFading.Fading(() =>
+            inGameFadingTransition.Fading(() =>
             {
                 endLevelGuideUI.SetActive(true);
                 ReloadSession();
@@ -61,7 +59,7 @@ namespace Tutorial
         private void ReloadSession()
         {
             Destroy(_tutorialSession.gameObject);
-            _tutorialSession = Instantiate(_thisTutorialPrefab, transform);
+            _tutorialSession = Instantiate(GameManager.instance.gameSettings.levelList[_thisLevelId].tutorialLevel, transform);
         }
         
         
@@ -70,5 +68,9 @@ namespace Tutorial
             GameManager.instance.TutorialEnded(_thisLevelId);
         }
 
+        public void CanStartTutor()
+        {
+            _tutorialSession.StartTutor();
+        }
     }
 }

@@ -1,6 +1,8 @@
 ﻿using System.Threading.Tasks;
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.Serialization;
 
 namespace UI.Overlay
 {
@@ -9,6 +11,8 @@ namespace UI.Overlay
         public static FadingManager instance;
 
         [SerializeField] private GameObject generalFadingPanel;
+        [SerializeField] private CanvasGroup generalFadingCG;
+        [FormerlySerializedAs("FadingSpeed")] [SerializeField] private float fadingSpeed = 0.25f;
         [SerializeField] private GameObject completePanel;
         [SerializeField] private GameObject failedPanel;
         
@@ -25,26 +29,20 @@ namespace UI.Overlay
 
         public void FadeIn(UnityAction fadeInAction = null)
         {
+            generalFadingCG.DOFade(0, 0);
             generalFadingPanel.SetActive(true);
-            fadeInAction?.Invoke();
+            generalFadingCG.DOFade(1, fadingSpeed).onComplete = () => fadeInAction?.Invoke();
+            
         }
 
         public void FadeOut(UnityAction fadeOutAction = null)
         {
-            generalFadingPanel.SetActive(false);
-            fadeOutAction?.Invoke();
+            generalFadingCG.DOFade(0, fadingSpeed).onComplete = () =>
+            {
+                generalFadingPanel.SetActive(false);
+                fadeOutAction?.Invoke();
+            };
         }
-
-        /*
-        public async void Fading(UnityAction fadeInAction, UnityAction fadeOutAction)
-        {
-            await AsyncFadeIn();
-            Task awaitingFadeInAction = new Task(() => fadeInAction?.Invoke());
-            awaitingFadeInAction.Start();
-            await awaitingFadeInAction;
-            await AsyncFadeOut();
-            fadeOutAction?.Invoke();
-        }*/
         
         public void Fading(UnityAction fadeInAction, UnityAction fadeOutAction)
         {

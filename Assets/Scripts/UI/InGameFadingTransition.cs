@@ -4,8 +4,9 @@ using UnityEngine.Events;
 
 namespace UI
 {
-    public class InGameFading : MonoBehaviour
+    public class InGameFadingTransition : MonoBehaviour
     {
+        [SerializeField] private Transform inGameTransitionTransform;
         [SerializeField] private CanvasGroup inGameFadingCG;
         [SerializeField] private float fadingDuration;
 
@@ -20,6 +21,11 @@ namespace UI
                     afterFadeAction?.Invoke();
                 };
             };
+        }
+
+        public void Transition(UnityAction transitionAction, UnityAction afterTransitionAction)
+        {
+            
         }
     }
 }

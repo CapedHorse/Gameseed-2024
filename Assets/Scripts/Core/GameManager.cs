@@ -22,7 +22,8 @@ namespace Core
         
         public GameSettings gameSettings;
         public PlayerData playerData;
-        
+        private int _currentLevelId = -1;
+
         private void Awake()
         {
             if (instance == null)
@@ -114,24 +115,34 @@ namespace Core
 
         void OpenTutorial(int levelId)
         {
-            SceneManager.sceneLoaded += (Scene arg0, LoadSceneMode arg1) =>
-            {
-                TutorialManager.instance.LoadTutorialSession(gameSettings.levelList[levelId].tutorialLevel, levelId);
-                fadingManager.FadeOut();
-            };
-            
+            SceneManager.sceneLoaded += TutorialSceneLoaded;
+            _currentLevelId = levelId;
             SceneManager.LoadScene("Tutorial");
+        }
+
+        private void TutorialSceneLoaded(Scene arg0, LoadSceneMode arg1)
+        {
+            SceneManager.sceneLoaded -= TutorialSceneLoaded;
+            _currentLevelId = -1;
+            TutorialManager.instance.LoadTutorialSession(gameSettings.levelList[_currentLevelId].tutorialLevel, _currentLevelId);
+            fadingManager.FadeOut(() =>
+            {
+                TutorialManager.instance.CanStartTutor();
+            });
         }
 
         void OpenGameSession(int levelId)
         {
-            SceneManager.sceneLoaded += (Scene arg0, LoadSceneMode arg1) =>
-            {
-                GameSessionManager.instance.LoadGameSession(gameSettings.levelList[levelId].gameSessionPrefabList);
-                fadingManager.FadeOut();
-            };
-            
+            SceneManager.sceneLoaded += GameSceneLoaded;
+            _currentLevelId = levelId;
             SceneManager.LoadScene("GameSession");
+        }
+
+        private void GameSceneLoaded(Scene arg0, LoadSceneMode arg1)
+        {
+            SceneManager.sceneLoaded -= GameSceneLoaded;
+            GameSessionManager.instance.InitializeGameSession();
+            fadingManager.FadeOut();
         }
 
         public void TutorialEnded(int thisLevelId)
