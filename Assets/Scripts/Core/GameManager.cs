@@ -1,4 +1,3 @@
-using System;
 using Level;
 using Tutorial;
 using UI.Cutscene;
@@ -7,7 +6,6 @@ using UI.Panel;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
-using UnityEngine.Serialization;
 
 namespace Core
 {

@@ -60,6 +60,21 @@ namespace Level
 
         public virtual void FinishGameSession()
         {
+            GameSettings gameSettings = GameManager.instance.gameSettings;
+            LevelSettings gameSettingsLevel = gameSettings.levelList[_currentGameLevelId];
+            _currentGameSessionId++;
+            if (_currentGameSessionId >= gameSettingsLevel.gameSessionPrefabList.Count)
+            {
+                //Do tell that you finished the level
+            }
+            else
+            {
+                Destroy(_currentGameSession);
+                _gameUIManager.Transition(GameStateType.Success, () =>
+                {
+                    LoadGameSession(gameSettingsLevel.gameSessionPrefabList[_currentGameSessionId]);
+                });    
+            }
             
         }
 
@@ -67,7 +82,6 @@ namespace Level
         public void LoadGameSession(GameSession gameSessionPrefab)
         {
             _currentGameSession = Instantiate(gameSessionPrefab, transform);
-            GameManager.instance.FreezeTime();
         }
 
         public void InitializeGameSession(int levelId)
@@ -76,6 +90,8 @@ namespace Level
             GameSettings gameSettings = GameManager.instance.gameSettings;
             LevelSettings gameSettingsLevel = gameSettings.levelList[_currentGameLevelId];
             _playerHealth = gameSettings.playerHealthEachLevel;
+            GameManager.instance.FreezeTime();
+            // _gameUIManager.Transition();
             LoadGameSession(gameSettingsLevel.gameSessionPrefabList[_currentGameSessionId]);
         }
 

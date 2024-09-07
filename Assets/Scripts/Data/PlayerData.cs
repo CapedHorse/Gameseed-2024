@@ -7,7 +7,6 @@ public class PlayerData
     public string playerName;
     
     //Level related
-    public int lastLevelID;
     public List<LevelData> levelDatas;
     
     //Score related
@@ -36,7 +35,7 @@ public class LevelData
     public string levelName = "";
     public bool unlocked = false;
     public bool hasPlayed = false;
-    public int lastGameId = 0;
+    public int completedGames = 0;
 
     public LevelData()
     {

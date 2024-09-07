@@ -54,7 +54,7 @@ namespace UI.GameSession
             }
         }
 
-        public void Transition(GameStateType gameStateType, UnityAction transitionAction, UnityAction afterTransitionAction)
+        public void Transition(GameStateType gameStateType, UnityAction transitionAction = null, UnityAction afterTransitionAction = null)
         {
             //gamestate
             ResetGameStateUI();
@@ -86,8 +86,14 @@ namespace UI.GameSession
 
             gameCountdownValueText.text = GameManager.instance.gameSettings.countDownTime.ToString();
 
+            
             inGameTransitionTransform.DOMoveY(1080, 0);
             inGameTransitionTransform.gameObject.SetActive(true);
+            inGameTransitionTransform.DOMoveY(0, transitionDuration).onComplete = () =>
+            {
+                transitionAction?.Invoke();
+                
+            };
         }
     }
 }

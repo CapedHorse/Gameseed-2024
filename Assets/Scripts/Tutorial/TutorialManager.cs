@@ -60,6 +60,7 @@ namespace Tutorial
         {
             Destroy(_tutorialSession.gameObject);
             _tutorialSession = Instantiate(GameManager.instance.gameSettings.levelList[_thisLevelId].tutorialLevel, transform);
+            CanStartTutor();
         }
         
         
