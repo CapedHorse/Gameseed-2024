@@ -8,7 +8,7 @@ namespace Components.Objects.SpecificObjects.MatchPicture
     {
         private bool _entered;
         public bool IsEntered => _entered;
-        
+        public GameObject correctSign, wrongSign;
         public UnityEvent onSelected, onDeselected;
         protected override void EnteredTrigger(Collider2D other)
         {
@@ -25,6 +25,18 @@ namespace Components.Objects.SpecificObjects.MatchPicture
             {
                 _entered = false;
                 onDeselected.Invoke();
+            }
+        }
+
+        public void CheckedAnswer(bool correct)
+        {
+            if (correct)
+            {
+                correctSign.SetActive(true);
+            }
+            else
+            {
+                wrongSign.SetActive(true);
             }
         }
     }
