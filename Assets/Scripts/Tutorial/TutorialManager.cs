@@ -42,9 +42,8 @@ namespace Tutorial
         public void LoadTutorialSession(int levelId)
         {
             _thisLevelId = levelId;
-            // _tutorialSession = Instantiate(tutorialLevel, transform);
-
             _tutorialSessionName = GameManager.instance.gameSettings.levelList[_thisLevelId].tutorialSceneName;
+            GameManager.instance.FreezeTime();
             SceneManager.sceneLoaded += TutorialSceneLoaded;
             SceneManager.LoadScene(_tutorialSessionName, LoadSceneMode.Additive);
 
@@ -55,20 +54,7 @@ namespace Tutorial
             SceneManager.sceneLoaded -= TutorialSceneLoaded;
             _tutorialSession = FindObjectOfType<TutorialSession>();
         }
-
-        public void CanEndTutor()
-        {
-            inGameFadingTransition.Fading(() =>
-            {
-                endLevelGuideUI.SetActive(true);
-                ReloadSession();
-            }, () =>
-            {
-                tutorialPlayerInput.SwitchCurrentActionMap("TutorialUIControl");
-                tutorialPlayerInput.ActivateInput();    
-            });
-        }
-
+        
         private void ReloadSession()
         {
             // Destroy(_tutorialSession.gameObject);
@@ -99,7 +85,23 @@ namespace Tutorial
 
         public void CanStartTutor()
         {
+            GameManager.instance.UnfreezeTime();
             _tutorialSession.StartTutor();
         }
+        
+        public void CanEndTutor()
+        {
+            GameManager.instance.FreezeTime();
+            inGameFadingTransition.Fading(() =>
+            {
+                endLevelGuideUI.SetActive(true);
+                ReloadSession();
+            }, () =>
+            {
+                tutorialPlayerInput.SwitchCurrentActionMap("TutorialUIControl");
+                tutorialPlayerInput.ActivateInput();    
+            });
+        }
+
     }
 }

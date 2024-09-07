@@ -12,16 +12,18 @@ namespace Level
 
         private GameUIManager _gameUIManager;
         private GameSession _currentGameSession;
+        private string _currentGameSessionLevelId;
         private int _currentGameLevelId;
-        private int _currentGameSessionId = 0;
+        public int CurrentLevelId => _currentGameLevelId;
+        
+        private int _completedGameSession = 0;
+        public int CompletedGameSession => _completedGameSession;
+        
         private bool _startGame;
         public bool StartedGame => _startGame;
 
         private int _playerHealth;
         public int PlayerHeath => _playerHealth;
-        
-        private float _currentPlayTime;
-        private float _targetPlayTime;
         
         private void Awake()
         {
@@ -40,19 +42,6 @@ namespace Level
             _startGame = false;
         }
 
-        private void Update()
-        {
-            if (!_startGame)
-                return;
-
-            _currentPlayTime += Time.deltaTime;
-
-            if (_currentPlayTime >= _targetPlayTime)
-            {
-                //Will make the game session fail
-            }
-        }
-
         public virtual void FailedGameSession()
         {
             
@@ -62,8 +51,8 @@ namespace Level
         {
             GameSettings gameSettings = GameManager.instance.gameSettings;
             LevelSettings gameSettingsLevel = gameSettings.levelList[_currentGameLevelId];
-            _currentGameSessionId++;
-            if (_currentGameSessionId >= gameSettingsLevel.gameSessionPrefabList.Count)
+            _completedGameSession++;
+            if (_completedGameSession >= gameSettingsLevel.gameSessionPrefabList.Count)
             {
                 //Do tell that you finished the level
             }
@@ -72,7 +61,7 @@ namespace Level
                 Destroy(_currentGameSession);
                 _gameUIManager.Transition(GameStateType.Success, () =>
                 {
-                    LoadGameSession(gameSettingsLevel.gameSessionPrefabList[_currentGameSessionId]);
+                    LoadGameSession(gameSettingsLevel.gameSessionPrefabList[_completedGameSession]);
                 });    
             }
             
@@ -92,7 +81,7 @@ namespace Level
             _playerHealth = gameSettings.playerHealthEachLevel;
             GameManager.instance.FreezeTime();
             // _gameUIManager.Transition();
-            LoadGameSession(gameSettingsLevel.gameSessionPrefabList[_currentGameSessionId]);
+            LoadGameSession(gameSettingsLevel.gameSessionPrefabList[_completedGameSession]);
         }
 
         public void EndedGameSession(GameStateType type)
@@ -105,6 +94,7 @@ namespace Level
     {
         Begin = 0,
         Success,
-        Failed
+        Failed,
+        Completed
     }
 }

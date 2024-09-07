@@ -7,7 +7,26 @@ namespace Level
     public class GameSession : MonoBehaviour
     {
         [SerializeField] private PlayerControl playerControl;
-        public UnityEvent onGameStarted, onGameEnded;
+        public UnityEvent onTimerRunsOut, onGameStarted, onGameEnded;
+        
+        
+        private float _currentPlayTime;
+        private float _targetPlayTime;
+
+        
+        private void Update()
+        {
+            if (!GameSessionManager.instance.StartedGame)
+                return;
+
+            _currentPlayTime += Time.deltaTime;
+
+            if (_currentPlayTime >= _targetPlayTime)
+            {
+                TimerRunsOut();
+            }
+        }
+
         virtual public void StartGame()
         {
             onGameStarted.Invoke();
@@ -16,6 +35,11 @@ namespace Level
         virtual public void EndGame()
         {
             onGameEnded.Invoke();
+        }
+
+        virtual public void TimerRunsOut()
+        {
+            onTimerRunsOut.Invoke();
         }
         
         virtual public void GameSessionSuccess()
