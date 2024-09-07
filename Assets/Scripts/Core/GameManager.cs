@@ -124,10 +124,7 @@ namespace Core
         {
             SceneManager.sceneLoaded -= TutorialSceneLoaded;
             TutorialManager.instance.LoadTutorialSession(_currentLevelId);
-            fadingManager.FadeOut(() =>
-            {
-                TutorialManager.instance.CanStartTutor();
-            });
+            //Dipanggil sama manager aja fade out nya
             _currentLevelId = -1;
         }
 

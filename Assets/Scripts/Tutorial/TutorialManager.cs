@@ -1,6 +1,7 @@
 using System;
 using Core;
 using UI;
+using UI.Overlay;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
@@ -53,6 +54,7 @@ namespace Tutorial
         {
             SceneManager.sceneLoaded -= TutorialSceneLoaded;
             _tutorialSession = FindObjectOfType<TutorialSession>();
+            FadingManager.instance.FadeOut(CanStartTutor);
         }
         
         private void ReloadSession()

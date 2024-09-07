@@ -12,10 +12,10 @@ namespace UI
 
         public void Fading(UnityAction fadingAction, UnityAction afterFadeAction)
         {
-            inGameFadingCG.DOFade(1, fadingDuration).onComplete = () =>
+            inGameFadingCG.DOFade(1, fadingDuration).SetUpdate(true).onComplete = () =>
             {
                 fadingAction?.Invoke();
-                inGameFadingCG.DOFade(0, fadingDuration).onComplete = () =>
+                inGameFadingCG.DOFade(0, fadingDuration).SetUpdate(true).onComplete = () =>
                 {
                     afterFadeAction?.Invoke();
                 };

@@ -29,15 +29,15 @@ namespace UI.Overlay
 
         public void FadeIn(UnityAction fadeInAction = null)
         {
-            generalFadingCG.DOFade(0, 0);
+            generalFadingCG.DOFade(0, 0).SetUpdate(true);
             generalFadingPanel.SetActive(true);
-            generalFadingCG.DOFade(1, fadingSpeed).onComplete = () => fadeInAction?.Invoke();
+            generalFadingCG.DOFade(1, fadingSpeed).SetUpdate(true).onComplete = () => fadeInAction?.Invoke();
             
         }
 
         public void FadeOut(UnityAction fadeOutAction = null)
         {
-            generalFadingCG.DOFade(0, fadingSpeed).onComplete = () =>
+            generalFadingCG.DOFade(0, fadingSpeed).SetUpdate(true).onComplete = () =>
             {
                 generalFadingPanel.SetActive(false);
                 fadeOutAction?.Invoke();
