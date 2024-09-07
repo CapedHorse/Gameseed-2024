@@ -13,15 +13,15 @@ MonoBehaviour:
   m_Name: GameSettings
   m_EditorClassIdentifier: 
   playerHealthEachLevel: 3
-  timeEachPlay: 15
+  timeEachPlay: 12
   countDownTime: 3
   delayBeforeRealPlay: 1.5
-  delayWhenShowingDelay: 2
+  delayWhenShowingState: 2
   levelList:
   - levelName: Corn
     tutorialLevel: {fileID: 4223457508821383488, guid: b0ad68882cc0f114ea4f13b4155b253c, type: 3}
     tutorialSceneName: Tutorial_1
     gameSessionNames:
-    - Pull The Carrot
-    - Pull The Carrot
+    - Pull Carrot!
+    - Match Picture!
     - Pull The Carrot
