@@ -9,6 +9,7 @@ namespace Level
     {
         public string levelName;
         public TutorialSession tutorialLevel;
+        public string tutorialSceneName = "Tutorial_1";
         public List<GameSession> gameSessionPrefabList;
     }
 }

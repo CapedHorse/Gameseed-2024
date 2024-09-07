@@ -3,6 +3,7 @@ using Core;
 using UI;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 using UnityEngine.Serialization;
 
 namespace Tutorial
@@ -16,7 +17,8 @@ namespace Tutorial
         [SerializeField] private InputActionReference endTutorialReference;
         [FormerlySerializedAs("inGameFading")] [SerializeField] private InGameFadingTransition inGameFadingTransition;
 
-        private TutorialSession _tutorialSession; 
+        private TutorialSession _tutorialSession;
+        private string _tutorialSessionName;
         private int _thisLevelId;
 
         private void Awake()
@@ -37,10 +39,21 @@ namespace Tutorial
             endTutorialReference.action.started += EndTutorial;
         }
 
-        public void LoadTutorialSession(TutorialSession tutorialLevel, int levelId)
+        public void LoadTutorialSession(int levelId)
         {
             _thisLevelId = levelId;
-            _tutorialSession = Instantiate(tutorialLevel, transform);
+            // _tutorialSession = Instantiate(tutorialLevel, transform);
+
+            _tutorialSessionName = GameManager.instance.gameSettings.levelList[_thisLevelId].tutorialSceneName;
+            SceneManager.sceneLoaded += TutorialSceneLoaded;
+            SceneManager.LoadScene(_tutorialSessionName, LoadSceneMode.Additive);
+
+        }
+
+        private void TutorialSceneLoaded(Scene arg0, LoadSceneMode arg1)
+        {
+            SceneManager.sceneLoaded -= TutorialSceneLoaded;
+            _tutorialSession = FindObjectOfType<TutorialSession>();
         }
 
         public void CanEndTutor()
@@ -58,12 +71,27 @@ namespace Tutorial
 
         private void ReloadSession()
         {
-            Destroy(_tutorialSession.gameObject);
-            _tutorialSession = Instantiate(GameManager.instance.gameSettings.levelList[_thisLevelId].tutorialLevel, transform);
+            // Destroy(_tutorialSession.gameObject);
+            // _tutorialSession = Instantiate(GameManager.instance.gameSettings.levelList[_thisLevelId].tutorialLevel, transform);
+            SceneManager.sceneUnloaded += TutorialSceneUnloaded;
+            SceneManager.UnloadSceneAsync(_tutorialSessionName);
+        }
+
+        private void TutorialSceneUnloaded(Scene arg0)
+        {
+            SceneManager.sceneUnloaded -= TutorialSceneUnloaded;
+            SceneManager.sceneLoaded += TutorialSceneReloaded;
+            SceneManager.LoadScene(_tutorialSessionName, LoadSceneMode.Additive);
+        }
+
+        private void TutorialSceneReloaded(Scene arg0, LoadSceneMode arg1)
+        {
+            SceneManager.sceneLoaded -= TutorialSceneReloaded;
+            _tutorialSession = FindObjectOfType<TutorialSession>();
             CanStartTutor();
         }
-        
-        
+
+
         private void EndTutorial(InputAction.CallbackContext obj)
         {
             GameManager.instance.TutorialEnded(_thisLevelId);

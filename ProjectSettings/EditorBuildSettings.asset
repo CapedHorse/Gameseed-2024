@@ -9,13 +9,13 @@ EditorBuildSettings:
     path: Assets/Scenes/MainMenuScene.unity
     guid: f5bfccdee200ed54e875c35e08de6f9e
   - enabled: 1
-    path: Assets/Scenes/Templates/Cutscene.unity
-    guid: 73d36baf628f0ec4e89ca20f24430efe
-  - enabled: 1
     path: Assets/Scenes/Templates/Tutorial.unity
     guid: 2ab811cd15567d94aa1e3b8b1acb621d
   - enabled: 1
     path: Assets/Scenes/Templates/GameSession.unity
     guid: edd1069123629cf47a9cc323f9dd7a00
+  - enabled: 1
+    path: Assets/Scenes/Minigame Scenes/Level 1/Tutorial_1.unity
+    guid: aab1cfc7dccec664fb79cd4839c87d12
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 25b3c39620c0329449edb9b96b8f50df, type: 2}

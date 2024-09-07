@@ -123,7 +123,7 @@ namespace Core
         private void TutorialSceneLoaded(Scene arg0, LoadSceneMode arg1)
         {
             SceneManager.sceneLoaded -= TutorialSceneLoaded;
-            TutorialManager.instance.LoadTutorialSession(gameSettings.levelList[_currentLevelId].tutorialLevel, _currentLevelId);
+            TutorialManager.instance.LoadTutorialSession(_currentLevelId);
             fadingManager.FadeOut(() =>
             {
                 TutorialManager.instance.CanStartTutor();
