@@ -84,13 +84,15 @@ namespace Core
             Debug.Log("Cutscene Finished");
             playerData.hasIntro = true;
             playerData.levelDatas[0].unlocked = true;
-            fadingManager.Fading(() =>
+            fadingManager.FadeIn(() =>
             {
                 cutsceneManager.IntroCutscene(false);
                 levelSelectionPanel.ShowPanel();
-            }, () =>
-            {
-                levelSelectionPanel.ToggleLevelInput(true);
+
+                fadingManager.FadeOut(() =>
+                {
+                    levelSelectionPanel.ToggleLevelInput(true);
+                });
             });
         }
 
@@ -123,12 +125,12 @@ namespace Core
         private void TutorialSceneLoaded(Scene arg0, LoadSceneMode arg1)
         {
             SceneManager.sceneLoaded -= TutorialSceneLoaded;
-            _currentLevelId = -1;
             TutorialManager.instance.LoadTutorialSession(gameSettings.levelList[_currentLevelId].tutorialLevel, _currentLevelId);
             fadingManager.FadeOut(() =>
             {
                 TutorialManager.instance.CanStartTutor();
             });
+            _currentLevelId = -1;
         }
 
         void OpenGameSession(int levelId)
@@ -150,6 +152,16 @@ namespace Core
         {
             playerData.levelDatas[thisLevelId].hasPlayed = true;
             StartLevel(thisLevelId);
+        }
+
+        public void FreezeTime()
+        {
+            Time.timeScale = 0f;
+        }
+
+        public void UnfreezeTime()
+        {
+            Time.timeScale = 1f;
         }
     }
 }

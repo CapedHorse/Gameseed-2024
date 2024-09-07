@@ -67,6 +67,7 @@ namespace Level
         public void LoadGameSession(GameSession gameSessionPrefab)
         {
             _currentGameSession = Instantiate(gameSessionPrefab, transform);
+            GameManager.instance.FreezeTime();
         }
 
         public void InitializeGameSession(int levelId)

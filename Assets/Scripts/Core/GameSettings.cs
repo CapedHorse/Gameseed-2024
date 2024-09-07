@@ -11,6 +11,8 @@ namespace Core
     {
         public int playerHealthEachLevel = 3;
         public float timeEachPlay = 15f;
+        public float countDownTime = 3f;
+        public float delayBeforeRealPlay = 1.5f;
         public List<LevelSettings> levelList;
     }
 }
