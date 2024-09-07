@@ -152,6 +152,7 @@ namespace Level
         private void OnNextGameLoaded(Scene arg0, LoadSceneMode arg1)
         {
             SceneManager.sceneLoaded -= OnNextGameLoaded;
+            _currentGameSession = FindObjectOfType<GameSession>();
             StartCoroutine(PrepareStartGame());
         }
 
@@ -176,6 +177,7 @@ namespace Level
         private void OnCurrentFailedGameReloaded(Scene arg0, LoadSceneMode arg1)
         {
             SceneManager.sceneLoaded -= OnCurrentFailedGameReloaded;
+            _currentGameSession = FindObjectOfType<GameSession>();
             StartCoroutine(PrepareStartGame());
         }
 
