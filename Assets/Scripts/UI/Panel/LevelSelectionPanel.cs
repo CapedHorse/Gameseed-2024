@@ -9,6 +9,7 @@ namespace UI.Panel
     public class LevelSelectionPanel : UIPanel
     {
         [SerializeField] private PlayerInput levelSelectInput;
+        [SerializeField] private LevelSelectButton[] levelSelectButtons;
         [SerializeField] private Button[] levelButtons;
 
         private void Start()
@@ -35,12 +36,15 @@ namespace UI.Panel
 
                 if (levelData.unlocked)
                 {
-                    levelButtons[levelId].interactable = true;
-                    levelButtons[levelId].onClick.RemoveAllListeners();
-                    levelButtons[levelId].onClick.AddListener(() =>
+                    levelSelectButtons[levelId].SetUnlocked();
+                    levelSelectButtons[levelId].AddListenerToButton(() =>
                     {
                         GameManager.instance.StartLevel(levelId);
                     });
+                }
+                else
+                {
+                    levelSelectButtons[levelId].SetLocked();
                 }
             }
 

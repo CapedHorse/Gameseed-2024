@@ -33,7 +33,7 @@ namespace UI.GameSession
         [SerializeField] private string startingStr = "Starting In..";
         [SerializeField] private string nextGameStr = "Next Start In..";
         [SerializeField] private string retryingStr = "Retrying In..";
-        
+
         [SerializeField] private TextMeshProUGUI gameCountdownValueText;
         
         private void Awake()
@@ -58,25 +58,28 @@ namespace UI.GameSession
             }
         }
 
-        public void Transition(GameStateType gameStateType, UnityAction transitionAction = null, UnityAction afterTransitionAction = null)
+        public void TransitionIn(GameStateType gameStateType, UnityAction transitionAction = null)
         {
             SetupGameStateUI(gameStateType);
-
             SetupGameProgress();
-
             SetupPlayerHealth();
-            
             SetupCountdown(gameStateType);
-
             SetupTimer();
-
-
-            inGameTransitionTransform.DOMoveY(1080, 0);
+            
+            inGameTransitionTransform.DOLocalMoveY(1080, 0).SetUpdate(true);
             inGameTransitionTransform.gameObject.SetActive(true);
-            inGameTransitionTransform.DOMoveY(0, transitionDuration).onComplete = () =>
+            inGameTransitionTransform.DOLocalMoveY(0, transitionDuration).SetUpdate(true).onComplete = () =>
             {
                 transitionAction?.Invoke();
-                
+            };
+        }
+
+        public void TransitionOut(UnityAction transitionAction = null)
+        {
+            inGameTransitionTransform.DOLocalMoveY(1080, transitionDuration).SetUpdate(true).onComplete = () =>
+            {
+                inGameTransitionTransform.gameObject.SetActive(false);
+                transitionAction?.Invoke();
             };
         }
 
@@ -90,9 +93,9 @@ namespace UI.GameSession
         private void SetupGameProgress()
         {
             GameSessionManager gameSessionManager = GameSessionManager.instance;
-            currentCompletedGameText.text = (gameSessionManager.CompletedGameSession + 1).ToString();
+            currentCompletedGameText.text = (gameSessionManager.CompletedGameSessionCount + 1).ToString();
             maxCompletedGameText.text = GameManager.instance.gameSettings
-                .levelList[gameSessionManager.CurrentLevelId].gameSessionPrefabList.ToString();
+                .levelList[gameSessionManager.CurrentLevelId].gameSessionNames.Count.ToString();
 
         }
 
@@ -117,8 +120,11 @@ namespace UI.GameSession
                 case GameStateType.Success:
                     gameCountdownText.text = nextGameStr;
                     break;
-                case GameStateType.Failed:
+                case GameStateType.Retry:
                     gameCountdownText.text = retryingStr;
+                    break;
+                case GameStateType.Failed:
+                    gameCountdownText.gameObject.SetActive(false);
                     break;
                 case GameStateType.Completed:
                     gameCountdownText.gameObject.SetActive(false);
@@ -139,5 +145,25 @@ namespace UI.GameSession
             timerFill.color = Color.white;
         }
 
+        public void CountdownUI(int countdownValue)
+        {
+            gameCountdownValueText.text = countdownValue.ToString();
+        }
+        
+        public void HideGameName()
+        {
+            gameNameText.gameObject.SetActive(false);
+        }
+
+        public void ShowGameName(string gameName)
+        {
+            gameNameText.text = gameName;
+            gameNameText.gameObject.SetActive(true);
+        }
+
+        public void SetTimerValue(float currentPlayTime)
+        {
+            timerSlider.value = currentPlayTime;
+        }
     }
 }

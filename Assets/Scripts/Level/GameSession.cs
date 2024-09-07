@@ -1,4 +1,6 @@
 ﻿using Components.Player_Control_Components;
+using Core;
+using UI.GameSession;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -7,34 +9,16 @@ namespace Level
     public class GameSession : MonoBehaviour
     {
         [SerializeField] private PlayerControl playerControl;
-        public UnityEvent onTimerRunsOut, onGameStarted, onGameEnded;
-        
-        
-        private float _currentPlayTime;
-        private float _targetPlayTime;
-
-        
-        private void Update()
-        {
-            if (!GameSessionManager.instance.StartedGame)
-                return;
-
-            _currentPlayTime += Time.deltaTime;
-
-            if (_currentPlayTime >= _targetPlayTime)
-            {
-                TimerRunsOut();
-            }
-        }
+        public UnityEvent onTimerRunsOut, onGameStarted, onGameSuccess, onGameFailed;
 
         virtual public void StartGame()
         {
             onGameStarted.Invoke();
         }
 
-        virtual public void EndGame()
+        public void StopGame()
         {
-            onGameEnded.Invoke();
+            
         }
 
         virtual public void TimerRunsOut()
@@ -44,12 +28,14 @@ namespace Level
         
         virtual public void GameSessionSuccess()
         {
+            onGameSuccess.Invoke();   
             GameSessionManager.instance.EndedGameSession(GameStateType.Success);
         }
 
         virtual public void GameSessionFailed()
         {
-            GameSessionManager.instance.EndedGameSession(GameStateType.Failed);
+            onGameFailed.Invoke();
+            GameSessionManager.instance.EndedGameSession(GameStateType.Retry);
         }
     }
 }

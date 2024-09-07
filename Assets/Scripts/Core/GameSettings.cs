@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Level;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Core
 {
@@ -11,8 +12,9 @@ namespace Core
     {
         public int playerHealthEachLevel = 3;
         public float timeEachPlay = 15f;
-        public float countDownTime = 3f;
+        public int countDownTime = 3;
         public float delayBeforeRealPlay = 1.5f;
+        [FormerlySerializedAs("delayWhenShowingDelay")] public float delayWhenShowingState = 2f;
         public List<LevelSettings> levelList;
     }
 }

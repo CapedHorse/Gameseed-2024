@@ -35,9 +35,9 @@ namespace UI.Overlay
             
         }
 
-        public void FadeOut(UnityAction fadeOutAction = null)
+        public void FadeOut(UnityAction fadeOutAction = null, float fadeOutSpeed = 0)
         {
-            generalFadingCG.DOFade(0, fadingSpeed).SetUpdate(true).onComplete = () =>
+            generalFadingCG.DOFade(0,  fadeOutSpeed == 0 ? fadingSpeed : fadeOutSpeed).SetUpdate(true).onComplete = () =>
             {
                 generalFadingPanel.SetActive(false);
                 fadeOutAction?.Invoke();

@@ -54,7 +54,7 @@ namespace Tutorial
         {
             SceneManager.sceneLoaded -= TutorialSceneLoaded;
             _tutorialSession = FindObjectOfType<TutorialSession>();
-            FadingManager.instance.FadeOut(CanStartTutor);
+            FadingManager.instance.FadeOut(CanStartTutor, 0.5f);
         }
         
         private void ReloadSession()

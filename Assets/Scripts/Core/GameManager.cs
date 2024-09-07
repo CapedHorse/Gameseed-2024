@@ -21,6 +21,7 @@ namespace Core
         public GameSettings gameSettings;
         public PlayerData playerData;
         private int _currentLevelId = -1;
+        private bool _timeIsFrozen;
 
         private void Awake()
         {
@@ -96,7 +97,6 @@ namespace Core
 
         public void StartLevel(int levelId)
         {
-            
             fadingManager.FadeIn(() =>
             {
                 levelSelectionPanel.HidePanel();
@@ -125,7 +125,7 @@ namespace Core
             SceneManager.sceneLoaded -= TutorialSceneLoaded;
             TutorialManager.instance.LoadTutorialSession(_currentLevelId);
             //Dipanggil sama manager aja fade out nya
-            _currentLevelId = -1;
+            
         }
 
         void OpenGameSession(int levelId)
@@ -139,8 +139,6 @@ namespace Core
         {
             SceneManager.sceneLoaded -= GameSceneLoaded;
             GameSessionManager.instance.InitializeGameSession(_currentLevelId);
-            fadingManager.FadeOut();
-            _currentLevelId = -1;
         }
 
         public void TutorialEnded(int thisLevelId)
@@ -151,11 +149,13 @@ namespace Core
 
         public void FreezeTime()
         {
+            _timeIsFrozen = true;
             Time.timeScale = 0f;
         }
 
         public void UnfreezeTime()
         {
+            _timeIsFrozen = false;
             Time.timeScale = 1f;
         }
     }
