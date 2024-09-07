@@ -2310,6 +2310,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   generalFadingPanel: {fileID: 8497531645128859058}
+  generalFadingCG: {fileID: 0}
+  fadingSpeed: 0.25
   completePanel: {fileID: 0}
   failedPanel: {fileID: 0}
 --- !u!1 &8497531645128859058
@@ -2327,7 +2329,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &765197231782175849
 RectTransform:
   m_ObjectHideFlags: 0

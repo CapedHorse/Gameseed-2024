@@ -24,6 +24,7 @@ namespace UI.GameSession
         [SerializeField] private TextMeshProUGUI scoreCompletitionText;
         [SerializeField] private TextMeshProUGUI gameCountdownText;
         [SerializeField] private TextMeshProUGUI gameCountdownValueText;
+        
         private void Awake()
         {
             if (instance == null)
