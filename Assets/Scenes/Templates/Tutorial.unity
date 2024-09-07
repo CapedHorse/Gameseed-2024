@@ -755,7 +755,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.36862746}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.7294118}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1045,7 +1045,7 @@ MonoBehaviour:
   endLevelGuideUI: {fileID: 777692010}
   tutorialPlayerInput: {fileID: 1351323990}
   endTutorialReference: {fileID: -5112255937331736129, guid: c231e9d875b8f1a47ba945dcf617f0a7, type: 3}
-  inGameFading: {fileID: 754192330}
+  inGameFadingTransition: {fileID: 754192330}
 --- !u!1 &1769841622
 GameObject:
   m_ObjectHideFlags: 0
