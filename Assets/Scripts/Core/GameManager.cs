@@ -141,8 +141,9 @@ namespace Core
         private void GameSceneLoaded(Scene arg0, LoadSceneMode arg1)
         {
             SceneManager.sceneLoaded -= GameSceneLoaded;
-            GameSessionManager.instance.InitializeGameSession();
+            GameSessionManager.instance.InitializeGameSession(_currentLevelId);
             fadingManager.FadeOut();
+            _currentLevelId = -1;
         }
 
         public void TutorialEnded(int thisLevelId)

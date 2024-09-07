@@ -6,7 +6,6 @@ namespace UI
 {
     public class InGameFadingTransition : MonoBehaviour
     {
-        [SerializeField] private Transform inGameTransitionTransform;
         [SerializeField] private CanvasGroup inGameFadingCG;
         [SerializeField] private float fadingDuration;
 
@@ -21,11 +20,6 @@ namespace UI
                     afterFadeAction?.Invoke();
                 };
             };
-        }
-
-        public void Transition(UnityAction transitionAction, UnityAction afterTransitionAction)
-        {
-            
         }
     }
 }

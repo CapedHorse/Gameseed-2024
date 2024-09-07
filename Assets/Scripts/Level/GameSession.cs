@@ -20,12 +20,12 @@ namespace Level
         
         virtual public void GameSessionSuccess()
         {
-            GameSessionManager.instance.EndedGameSession(GameEndType.Success);
+            GameSessionManager.instance.EndedGameSession(GameStateType.Success);
         }
 
         virtual public void GameSessionFailed()
         {
-            GameSessionManager.instance.EndedGameSession(GameEndType.Failed);
+            GameSessionManager.instance.EndedGameSession(GameStateType.Failed);
         }
     }
 }

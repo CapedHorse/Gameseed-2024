@@ -12,11 +12,13 @@ namespace Level
 
         private GameUIManager _gameUIManager;
         private GameSession _currentGameSession;
+        private int _currentGameLevelId;
         private int _currentGameSessionId = 0;
         private bool _startGame;
         public bool StartedGame => _startGame;
 
         private int _playerHealth;
+        public int PlayerHeath => _playerHealth;
         
         private float _currentPlayTime;
         private float _targetPlayTime;
@@ -67,22 +69,24 @@ namespace Level
             _currentGameSession = Instantiate(gameSessionPrefab, transform);
         }
 
-        public void InitializeGameSession()
+        public void InitializeGameSession(int levelId)
         {
+            _currentGameLevelId = levelId;
             GameSettings gameSettings = GameManager.instance.gameSettings;
-            LevelSettings gameSettingsLevel = gameSettings.levelList[_currentGameSessionId];
+            LevelSettings gameSettingsLevel = gameSettings.levelList[_currentGameLevelId];
             _playerHealth = gameSettings.playerHealthEachLevel;
             LoadGameSession(gameSettingsLevel.gameSessionPrefabList[_currentGameSessionId]);
         }
 
-        public void EndedGameSession(GameEndType type)
+        public void EndedGameSession(GameStateType type)
         {
             
         }
     }
 
-    public enum GameEndType
+    public enum GameStateType
     {
+        Begin = 0,
         Success,
         Failed
     }
