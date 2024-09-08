@@ -35,7 +35,6 @@ namespace Components.Objects.SpecificObjects.BoxSpillingSeeds
                 rb.bodyType = RigidbodyType2D.Static;
                 rb.gravityScale = 0f;
                 transform.position = other.GetContact(0).point;
-                thisSpriteRenderer.sprite = grownPlantSprite;
                 thisSpriteRenderer.gameObject.SetActive(false);
                 thisPlantSpriteRenderer.gameObject.SetActive(true);
                 seedPlantedEvent.Invoke();
