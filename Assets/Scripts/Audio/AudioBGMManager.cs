@@ -52,7 +52,7 @@ namespace Audio
 
         public void PlayBGM(AudioClip bgmClip)
         {
-            bgmSource.clip = levelSelectionClip;
+            bgmSource.clip = bgmClip;
             bgmSource.Play();
         }
     }
