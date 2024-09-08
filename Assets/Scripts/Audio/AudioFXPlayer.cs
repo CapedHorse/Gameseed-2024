@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace Audio
 {
-    public class AudioFXOneShotPlayer : MonoBehaviour
+    public class AudioFXPlayer : MonoBehaviour
     {
         [SerializeField]
         private AudioSource oneShotSource;
@@ -10,6 +10,11 @@ namespace Audio
         public void PlayClip(AudioClip clip)
         {
             oneShotSource.PlayOneShot(clip);
+        }
+
+        public void PlayBGM(AudioClip bgmClip)
+        {
+            AudioBGMManager.instance.PlayBGM(bgmClip);
         }
     }
 }
