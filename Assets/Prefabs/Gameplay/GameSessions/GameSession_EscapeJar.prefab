@@ -711,7 +711,7 @@ GameObject:
   - component: {fileID: 4625174582479356050}
   - component: {fileID: 5195733494576432641}
   m_Layer: 0
-  m_Name: GameSession_PullTheCarrot
+  m_Name: GameSession_EscapeJar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -735,7 +735,7 @@ Transform:
   - {fileID: 8915851971057449786}
   - {fileID: 8299804916191989714}
   - {fileID: 9106447611721417758}
-  - {fileID: 8674902907161589875}
+  - {fileID: 6433742502149599963}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &5195733494576432641
@@ -882,6 +882,34 @@ PrefabInstance:
       propertyPath: playerTransform
       value: 
       objectReference: {fileID: 8299804916191989714}
+    - target: {fileID: 1603462637519951681, guid: 089c8979a496fce4789cd3b564cb638c, type: 3}
+      propertyPath: onPlatformStepped.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1603462637519951681, guid: 089c8979a496fce4789cd3b564cb638c, type: 3}
+      propertyPath: onPlatformStepped.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1603462637519951681, guid: 089c8979a496fce4789cd3b564cb638c, type: 3}
+      propertyPath: onPlatformStepped.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1083668287120906593}
+    - target: {fileID: 1603462637519951681, guid: 089c8979a496fce4789cd3b564cb638c, type: 3}
+      propertyPath: onPlatformStepped.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1603462637519951681, guid: 089c8979a496fce4789cd3b564cb638c, type: 3}
+      propertyPath: onPlatformStepped.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: PlayOneShot
+      objectReference: {fileID: 0}
+    - target: {fileID: 1603462637519951681, guid: 089c8979a496fce4789cd3b564cb638c, type: 3}
+      propertyPath: onPlatformStepped.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: UnityEngine.AudioSource, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 1603462637519951681, guid: 089c8979a496fce4789cd3b564cb638c, type: 3}
+      propertyPath: onPlatformStepped.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.AudioClip, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 1948974173903840767, guid: 089c8979a496fce4789cd3b564cb638c, type: 3}
       propertyPath: m_LocalScale.x
       value: 2
@@ -1624,7 +1652,7 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1246039820790723460, guid: 8dff56da39bdcb240837f6d8299bf30a, type: 3}
   m_PrefabInstance: {fileID: 5900132533868326586}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &6688468102435354841
+--- !u!1001 &9077140019312570993
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -1681,8 +1709,13 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 49ecc282b18ce0e409d24bdf9e7791d1, type: 3}
---- !u!4 &8674902907161589875 stripped
+--- !u!82 &1083668287120906593 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 8282555473386351376, guid: 49ecc282b18ce0e409d24bdf9e7791d1, type: 3}
+  m_PrefabInstance: {fileID: 9077140019312570993}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &6433742502149599963 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2643969733521440938, guid: 49ecc282b18ce0e409d24bdf9e7791d1, type: 3}
-  m_PrefabInstance: {fileID: 6688468102435354841}
+  m_PrefabInstance: {fileID: 9077140019312570993}
   m_PrefabAsset: {fileID: 0}

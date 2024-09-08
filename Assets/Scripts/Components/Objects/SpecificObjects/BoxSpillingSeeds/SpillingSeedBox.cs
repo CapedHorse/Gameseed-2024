@@ -8,16 +8,22 @@ namespace Components.Objects.SpecificObjects.BoxSpillingSeeds
     public class SpillingSeedBox : ComponentBase
     {
         [SerializeField] List<SpilledSeed> spilledSeeds;
-
-        public UnityEvent onSeedSpilledEvent;
+        
+        public UnityEvent onSeedSpilledEvent, onSpilledDoneEvent;
         protected override void EnteredCollision(Collision2D other)
         {
             PlayerControl playerControl = other.gameObject.GetComponent<PlayerControl>();
             if (playerControl)
             {
-                spilledSeeds[spilledSeeds.Count - 1].LaunchSeed();
-                spilledSeeds.RemoveAt(spilledSeeds.Count - 1);
+                spilledSeeds[0].LaunchSeed();
+                spilledSeeds.RemoveAt(0);
                 onSeedSpilledEvent.Invoke();
+
+
+                if (spilledSeeds.Count <= 0)
+                {
+                    onSpilledDoneEvent.Invoke();
+                }
             }
         }
     }

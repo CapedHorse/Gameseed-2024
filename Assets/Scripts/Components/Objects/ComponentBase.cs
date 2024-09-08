@@ -5,6 +5,7 @@ namespace Components.Objects
 {
     public class ComponentBase : MonoBehaviour
     {
+        
         private void OnCollisionEnter2D(Collision2D other)
         {
             EnteredCollision(other);

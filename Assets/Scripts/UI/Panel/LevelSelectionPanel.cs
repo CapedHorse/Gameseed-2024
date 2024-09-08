@@ -36,7 +36,7 @@ namespace UI.Panel
 
                 if (levelData.unlocked)
                 {
-                    levelSelectButtons[levelId].SetUnlocked();
+                    levelSelectButtons[levelId].SetUnlocked(levelData);
                     levelSelectButtons[levelId].AddListenerToButton(() =>
                     {
                         GameManager.instance.StartLevel(levelId);

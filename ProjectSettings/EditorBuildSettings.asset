@@ -23,5 +23,14 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Minigame Scenes/Level 1/Match Picture!.unity
     guid: a3ddd91ecb091094aac35dee448ee0af
+  - enabled: 1
+    path: Assets/Scenes/Minigame Scenes/Level 1/Escape Jar!.unity
+    guid: c9ce37b58cb2d8a4fb905141bb758c38
+  - enabled: 1
+    path: Assets/Scenes/Minigame Scenes/Level 1/Hit Pumpkin!.unity
+    guid: 47431da29bd821542aea877d490d8bb5
+  - enabled: 1
+    path: Assets/Scenes/Minigame Scenes/Level 1/Water Plant!.unity
+    guid: 7df517890aa48954a8ae2529eabc4525
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 25b3c39620c0329449edb9b96b8f50df, type: 2}

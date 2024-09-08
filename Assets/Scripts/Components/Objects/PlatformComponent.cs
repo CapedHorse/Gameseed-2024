@@ -1,6 +1,7 @@
 ﻿using System;
 using Components.Player_Control_Components;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Components.Objects
 {
@@ -13,6 +14,7 @@ namespace Components.Objects
         [SerializeField] private Transform playerTransform;
         private bool _hasActivated;
 
+        public UnityEvent onPlatformStepped, onPlatformLeft;
 
         private void Update()
         {
@@ -24,7 +26,6 @@ namespace Components.Objects
                     {
                         _hasActivated = true;
                         floorCol.excludeLayers = playerAboveLayer;
-                        // floorPlatform.SetActive(true);
                     }
                 }
                 else
@@ -33,7 +34,6 @@ namespace Components.Objects
                     {
                         _hasActivated = false;
                         floorCol.excludeLayers = playerBelowLayer;
-                        // floorPlatform.SetActive(false);
                     }
                 }
             }

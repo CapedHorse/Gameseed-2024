@@ -133,7 +133,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &9106447611721417758
 Transform:
   m_ObjectHideFlags: 0
@@ -190,8 +190,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 8
-  m_Sprite: {fileID: 21300000, guid: ab5281094f8407b4c834a13f78bbfdd9, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.4745098}
+  m_Sprite: {fileID: 21300000, guid: 29bac4517c69d914aac63d4352c6a795, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.8509804}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 1
@@ -437,7 +437,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -3
-  m_Sprite: {fileID: 21300000, guid: a56db14b049ec0c49b40ebc90372d8f9, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 89a8393d38cef3d46b43fb769e92780f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -711,7 +711,7 @@ GameObject:
   - component: {fileID: 4625174582479356050}
   - component: {fileID: 5195733494576432641}
   m_Layer: 0
-  m_Name: GameSession_PullTheCarrot
+  m_Name: GameSession_HitThePumpkin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

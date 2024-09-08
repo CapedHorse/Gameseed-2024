@@ -21,7 +21,7 @@ namespace UI
             levelSelectButton.interactable = false;
         }
 
-        public void SetUnlocked()
+        public void SetUnlocked(LevelData levelData)
         {
             levelSelectButton.interactable = true;
         }
