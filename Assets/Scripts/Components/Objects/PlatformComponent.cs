@@ -7,7 +7,6 @@ namespace Components.Objects
 {
     public class PlatformComponent : ComponentBase
     {
-        [SerializeField] private GameObject floorPlatform;
         [SerializeField] private Collider2D floorCol;
         [SerializeField] private LayerMask playerAboveLayer, playerBelowLayer;
         [SerializeField] private float distancePlayerToPlatform = 1f;

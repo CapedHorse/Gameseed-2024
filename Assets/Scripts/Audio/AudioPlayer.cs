@@ -2,19 +2,20 @@ using UnityEngine;
 
 namespace Audio
 {
-    public class AudioFXPlayer : MonoBehaviour
+    public class AudioPlayer : MonoBehaviour
     {
         [SerializeField]
         private AudioSource oneShotSource;
-
+        /*[SerializeField]
+        private AudioSource bgmSource;*/
         public void PlayClip(AudioClip clip)
         {
             oneShotSource.PlayOneShot(clip);
         }
 
-        public void PlayBGM(AudioClip bgmClip)
+        public void PlayBGM(AudioClip clip)
         {
-            AudioBGMManager.instance.PlayBGM(bgmClip);
+            AudioBGMManager.instance.PlayBGM(clip);
         }
     }
 }

@@ -29,7 +29,7 @@ namespace Audio
             bgmSource.Play();
         }
 
-        public void PlayLevelSelecClip()
+        public void PlayLevelSelectClip()
         {
             bgmSource.clip = levelSelectionClip;
             bgmSource.Play();
