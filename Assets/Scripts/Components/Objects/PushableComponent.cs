@@ -9,14 +9,18 @@ namespace Components.Objects
     {
         [SerializeField] private Rigidbody2D rb;
         public UnityEvent onPushedEvent;
-
+        private bool _pushedEventInvoked;
         protected override void EnteredCollision(Collision2D other)
         {
             PushingComponent pusher = other.gameObject.GetComponent<PushingComponent>();
 
             if (pusher)
             {
+                if (_pushedEventInvoked)
+                    return;
+                
                 onPushedEvent.Invoke();
+                _pushedEventInvoked = true;
             }
         }
 
@@ -27,6 +31,7 @@ namespace Components.Objects
             if (pusher)
             {
                 rb.velocity = Vector2.zero;
+                _pushedEventInvoked = false;
             }
         }
     }
