@@ -1,7 +1,9 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using Components.Objects.SpecificObjects.MatchPicture;
 using DG.Tweening;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Level.GameSessionSpecific
 {
@@ -13,7 +15,8 @@ namespace Level.GameSessionSpecific
         [SerializeField] private MatchPictureBox correctAnswer;
         [SerializeField] float memorizeTime = 4f;
 
-
+        public UnityEvent onMemorizedShownEvent, onAnswersShownEvent;
+        
         public void CheckCorrectAnswer()
         {
             foreach (var option in optionBoxes)
@@ -45,31 +48,23 @@ namespace Level.GameSessionSpecific
         IEnumerator InitiateMemorizing()
         {
             answersParent.gameObject.SetActive(false);
-            memorizedParent.DOScale(0, 0);
+            memorizedParent.DOScale(0, 0).SetUpdate(true);
             memorizedParent.gameObject.SetActive(true);
-            memorizedParent.DOScale(Vector2.one, 0.25f);
+            memorizedParent.DOScale(Vector2.one, 0.25f).SetUpdate(true);
+            onMemorizedShownEvent.Invoke();
             yield return new WaitForSeconds(memorizeTime);
-            memorizedParent.DOScale(0, 0.25f);
-            answersParent.DOMoveX(12f, 0);
+            memorizedParent.DOScale(0, 0.25f).SetUpdate(true);
+            answersParent.DOMoveX(12f, 0).SetUpdate(true);
             answersParent.gameObject.SetActive(true);
             yield return new WaitForSeconds(0.25f);
-            answersParent.DOMoveX(0, 0.25f);
+            answersParent.DOMoveX(0, 0.25f).SetUpdate(true);
+            onAnswersShownEvent.Invoke();
         }
 
         public override void TimerRunsOut()
         {
             base.TimerRunsOut();
             CheckCorrectAnswer();
-        }
-
-        public override void GameSessionSuccess()
-        {
-            base.GameSessionSuccess();
-        }
-
-        public override void GameSessionFailed()
-        {
-            base.GameSessionFailed();
         }
     }
 }
