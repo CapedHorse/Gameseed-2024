@@ -188,7 +188,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7247420374118383974, guid: e48462e46e4b7724ca4f44905e4fff7f, type: 3}
       propertyPath: m_Name
-      value: GameSession_PullTheCarrot
+      value: Pull Carrot!
       objectReference: {fileID: 0}
     - target: {fileID: 8706486658203961313, guid: e48462e46e4b7724ca4f44905e4fff7f, type: 3}
       propertyPath: m_Layer

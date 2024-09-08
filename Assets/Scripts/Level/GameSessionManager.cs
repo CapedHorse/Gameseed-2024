@@ -65,7 +65,24 @@ namespace Level
                 _currentGameSession.TimerRunsOut();
             }
         }
-#endregion
+        #endregion
+
+        #region TestingSession
+
+        public void InitializeTesting(string testedName)
+        {
+            _currentGameSessionName = testedName;
+            _currentGameSession = FindObjectOfType<GameSession>();
+            gameUIManager.TransitionIn(GameStateType.Begin, () =>
+            {
+                FadingManager.instance.FadeOut(() =>
+                {
+                    StartCoroutine(PrepareStartGame());
+                }, 0.5f);
+            });
+        }
+
+        #endregion
 
         #region New Level Session
 

@@ -200,7 +200,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7247420374118383974, guid: b3089e447113f324b9dc7ee42d6249d7, type: 3}
       propertyPath: m_Name
-      value: GameSession_MatchPicture
+      value: Match Picture!
       objectReference: {fileID: 0}
     - target: {fileID: 8299804916191989714, guid: b3089e447113f324b9dc7ee42d6249d7, type: 3}
       propertyPath: m_LocalPosition.x

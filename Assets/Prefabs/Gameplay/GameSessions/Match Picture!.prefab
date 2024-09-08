@@ -211,7 +211,7 @@ GameObject:
   - component: {fileID: 4625174582479356050}
   - component: {fileID: 5005960290659852610}
   m_Layer: 0
-  m_Name: GameSession_MatchPicture
+  m_Name: Match Picture!
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
