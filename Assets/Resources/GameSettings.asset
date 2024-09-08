@@ -19,11 +19,18 @@ MonoBehaviour:
   delayWhenShowingState: 2
   levelList:
   - levelName: Corn
-    tutorialLevel: {fileID: 4223457508821383488, guid: b0ad68882cc0f114ea4f13b4155b253c, type: 3}
     tutorialSceneName: Tutorial_1
     gameSessionNames:
     - Pull Carrot!
-    - Match Picture!
     - Hit Pumpkin!
+    - Match Picture!
     - Escape Jar!
     - Water Plant!
+  - levelName: Pistachio
+    tutorialSceneName: Tutorial_2
+    gameSessionNames:
+    - Match Temperature!
+    - Match Temperature!
+    - Match Temperature!
+    - Match Temperature!
+    - Match Temperature!

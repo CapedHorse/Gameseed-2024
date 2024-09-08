@@ -1,9 +1,7 @@
-﻿using System;
-using Core;
+﻿using Core;
 using UI.Panel;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.Serialization;
 
 namespace UI
 {

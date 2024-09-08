@@ -1,11 +1,10 @@
-﻿using System;
-using Components.ExtraComponents;
+﻿using Components.ExtraComponents;
 using Lean.Pool;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Serialization;
 
-namespace Components.Player_Control_Components
+namespace Components.Player_Control
 {
     public class FlyingShootingControl : FlyingControl
     {

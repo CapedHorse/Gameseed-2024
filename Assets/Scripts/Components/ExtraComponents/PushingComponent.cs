@@ -8,5 +8,6 @@ namespace Components.ExtraComponents
         [SerializeField] private float pushingForce = 5f;
 
         public float PushingForce => pushingForce;
+        
     }
 }

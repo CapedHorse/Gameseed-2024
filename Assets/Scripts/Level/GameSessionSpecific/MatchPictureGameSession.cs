@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using Components.Objects.SpecificObjects.MatchPicture;
 using DG.Tweening;
 using UnityEngine;

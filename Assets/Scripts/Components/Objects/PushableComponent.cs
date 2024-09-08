@@ -1,4 +1,3 @@
-using System;
 using Components.ExtraComponents;
 using UnityEngine;
 using UnityEngine.Events;
@@ -11,9 +10,10 @@ namespace Components.Objects
         public UnityEvent onPushedEvent, onCollidedEvent;
         private bool _pushedEventInvoked;
         
+        //Physics can be improved, by checking contact point position, check the distance, which axis is the closest to collider center 
+        
         protected override void EnteredCollision(Collision2D other)
         {
-            
             PushingComponent pusher = other.gameObject.GetComponent<PushingComponent>();
 
             if (pusher)

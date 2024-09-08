@@ -1,5 +1,5 @@
 ﻿using Components.Objects;
-using Components.Player_Control_Components;
+using Components.Player_Control;
 using UnityEngine;
 
 namespace Components.ExtraComponents

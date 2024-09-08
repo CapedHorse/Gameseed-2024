@@ -1,35 +1,26 @@
-﻿using System;
-using DG.Tweening;
-using UnityEngine;
+﻿using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.InputSystem;
 
-namespace Components.Player_Control_Components
+namespace Components.Player_Control
 {
     public class PlatformingControl : BasicMovingControl
     {
         [SerializeField] private float jumpPower = 0.5f;
-        private bool _hasJumped;
-        private bool _fallingDown;
-        private TweenCallback jumpingTweener;
+        public UnityEvent onPlayerJumpEvent;
 
-        private void Update()
-        {
-            /*if (_hasJumped)
-            {
-                
-            }*/
-        }
+        public bool HasJumped => _hasJumped;
+        private bool _hasJumped;
+
+        
 
         protected override void MainActionInputStarted(InputAction.CallbackContext obj)
         {
             if (_hasJumped)
                 return;
-
-            _hasJumped = true;
             
-            /*rb.bodyType = RigidbodyType2D.Dynamic;
-            rb.gravityScale = 5;*/
             rb.AddForce(Vector2.up * jumpPower);
+            onPlayerJumpEvent.Invoke();
             
         }
 
@@ -40,11 +31,16 @@ namespace Components.Player_Control_Components
             if (other.collider.CompareTag("Floor"))
             {
                 _hasJumped = false;
-                /*rb.gravityScale = 1;
-                rb.velocity = new Vector2(rb.velocity.x, 0);
-                rb.bodyType = RigidbodyType2D.Kinematic;*/
-                
-                
+            }
+        }
+
+        protected override void OnExitCollision(Collision2D other)
+        {
+            base.OnExitCollision(other);
+            
+            if (other.collider.CompareTag("Floor"))
+            {
+                _hasJumped = true;
             }
         }
     }

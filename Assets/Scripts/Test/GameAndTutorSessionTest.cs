@@ -1,9 +1,7 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using Level;
 using Tutorial;
 using UnityEngine;
-using UnityEngine.Events;
 
 namespace Test
 {

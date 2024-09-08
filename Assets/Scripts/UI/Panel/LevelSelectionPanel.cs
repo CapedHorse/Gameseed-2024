@@ -1,5 +1,4 @@
-﻿using System;
-using Core;
+﻿using Core;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;

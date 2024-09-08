@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using Components.Objects;
+﻿using Components.Objects;
 using UnityEngine;
 
 namespace Components.ExtraComponents

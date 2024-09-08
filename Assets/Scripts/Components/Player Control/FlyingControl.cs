@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-namespace Components.Player_Control_Components
+namespace Components.Player_Control
 {
     public class FlyingControl : PlayerControl
     {

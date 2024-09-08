@@ -1,8 +1,5 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.Rendering;
-using UnityEngine.Serialization;
 
 namespace Components.Objects.SpecificObjects.BoxSpillingSeeds
 {

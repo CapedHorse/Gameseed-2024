@@ -170,10 +170,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5195733494576432641, guid: 292d34b202a832e4d865647731b6c34a, type: 3}
-      propertyPath: onGameFailed.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_BoolArgument
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 7247420374118383974, guid: 292d34b202a832e4d865647731b6c34a, type: 3}
       propertyPath: m_Name
       value: Water Plant!

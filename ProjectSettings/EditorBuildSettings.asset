@@ -32,5 +32,11 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Minigame Scenes/Level 1/Water Plant!.unity
     guid: 7df517890aa48954a8ae2529eabc4525
+  - enabled: 1
+    path: Assets/Scenes/Minigame Scenes/Level 2/Tutorial_2.unity
+    guid: 9c720e227b4907a4ba57f7bd69025577
+  - enabled: 1
+    path: Assets/Scenes/Minigame Scenes/Level 2/Match Temperature!.unity
+    guid: d925b7b2da9d5c8409a93852d01fd712
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 25b3c39620c0329449edb9b96b8f50df, type: 2}

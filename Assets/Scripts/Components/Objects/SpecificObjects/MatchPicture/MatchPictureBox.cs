@@ -1,4 +1,4 @@
-﻿using Components.Player_Control_Components;
+﻿using Components.Player_Control;
 using UnityEngine;
 using UnityEngine.Events;
 

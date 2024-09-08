@@ -1,8 +1,6 @@
 using Components.ExtraComponents;
-using Components.Player_Control_Components;
 using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.SceneManagement;
 
 namespace Components.Objects
 {
