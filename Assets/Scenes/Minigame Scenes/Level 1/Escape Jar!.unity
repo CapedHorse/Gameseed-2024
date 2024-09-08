@@ -130,6 +130,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 68333728455508830, guid: 5aec6880f7a44c943813c0f5e0b26153, type: 3}
+      propertyPath: northBorderPoint
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 68333728455508830, guid: 5aec6880f7a44c943813c0f5e0b26153, type: 3}
+      propertyPath: southBorderPoint
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 4625174582479356050, guid: 5aec6880f7a44c943813c0f5e0b26153, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
