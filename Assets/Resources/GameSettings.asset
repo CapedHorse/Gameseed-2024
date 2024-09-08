@@ -15,7 +15,7 @@ MonoBehaviour:
   playerHealthEachLevel: 3
   timeEachPlay: 12
   countDownTime: 3
-  delayBeforeRealPlay: 1.5
+  delayBeforeRealPlay: 0.75
   delayWhenShowingState: 2
   levelList:
   - levelName: Corn
