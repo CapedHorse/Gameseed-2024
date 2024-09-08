@@ -1,4 +1,5 @@
 ﻿using System;
+using Audio;
 using Core;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -34,6 +35,7 @@ namespace UI.Cutscene
 
         private void StartCutscene(Transform cutscenePanel)
         {
+            AudioBGMManager.instance.StopAnyBGM();
             cutscenePanel.gameObject.SetActive(true);
             nextControlGuide.SetActive(true);
             for (int i = 0; i < introCutscenePanel.childCount; i++)

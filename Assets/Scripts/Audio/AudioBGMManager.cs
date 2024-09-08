@@ -55,5 +55,10 @@ namespace Audio
             bgmSource.clip = bgmClip;
             bgmSource.Play();
         }
+
+        public void StopAnyBGM()
+        {
+            bgmSource.Stop();
+        }
     }
 }
