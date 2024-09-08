@@ -172,7 +172,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7247420374118383974, guid: 5aec6880f7a44c943813c0f5e0b26153, type: 3}
       propertyPath: m_Name
-      value: GameSession_EscapeJar
+      value: Escape Jar!
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

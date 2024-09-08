@@ -21,7 +21,7 @@ namespace Test
             yield return new WaitForSeconds(testingDelayTime);
             if (testedGameSession)
             {
-                testedGameSession.StartGame();
+                FindObjectOfType<GameSessionManager>().InitializeTesting(testedGameSession.name);
                 yield return null;
             }
 

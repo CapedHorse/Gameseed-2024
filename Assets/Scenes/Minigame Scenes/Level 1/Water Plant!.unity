@@ -176,7 +176,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7247420374118383974, guid: 292d34b202a832e4d865647731b6c34a, type: 3}
       propertyPath: m_Name
-      value: GameSession_WaterThePlant
+      value: Water Plant!
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
