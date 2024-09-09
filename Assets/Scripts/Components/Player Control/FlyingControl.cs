@@ -21,16 +21,26 @@ namespace Components.Player_Control
         {
             Fly();
         }
-        
+
+        protected override void MovingInputStarted(InputAction.CallbackContext obj)
+        {
+           
+        }
+
         protected override void MovingInputPerformed(InputAction.CallbackContext obj)
         {
-            _flyDirection = obj.ReadValue<Vector2>();
-            _flyDirection.Normalize();  
-            
             Vector2 dir = Vector2.zero;
-            dir.x = _flyDirection.x;
-            dir.y = _flyDirection.y;
+            _flyDirection = obj.ReadValue<Vector2>();
+            _flyDirection.Normalize();
+
+            //Test lagi kalau controller kedetect yak
+            if (_flyDirection == Vector2.zero)
+                return;
             
+            Vector2 dirInput = _flyDirection;
+            dir.x = dirInput.x;
+            dir.y = dirInput.y;
+                
             float angle = Mathf.Atan2(-dir.x, dir.y) * Mathf.Rad2Deg;
             transform.rotation = Quaternion.Euler(0f, 0f, angle);
         }
@@ -43,7 +53,7 @@ namespace Components.Player_Control
         private void Fly()
         {
             rb.velocity = _flyDirection * flySpeed;
-            
+
             _playerMovedEventIntervalCounter += Time.fixedDeltaTime;
             if (_playerMovedEventIntervalCounter >= playerFlyingEventInterval)
             {

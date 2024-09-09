@@ -130,73 +130,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1248950512345250948, guid: c5f74beec2ead574a972d1b7e81aaefe, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 6.5
+    - target: {fileID: 4563621422565594122, guid: c5f74beec2ead574a972d1b7e81aaefe, type: 3}
+      propertyPath: isForPistachio
+      value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 1248950512345250948, guid: c5f74beec2ead574a972d1b7e81aaefe, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0.25
-      objectReference: {fileID: 0}
-    - target: {fileID: 2530141974131247172, guid: c5f74beec2ead574a972d1b7e81aaefe, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 1.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 2816035055894039325, guid: c5f74beec2ead574a972d1b7e81aaefe, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 1.25
-      objectReference: {fileID: 0}
-    - target: {fileID: 2975082802569725509, guid: c5f74beec2ead574a972d1b7e81aaefe, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 1.25
-      objectReference: {fileID: 0}
-    - target: {fileID: 4180848759291887668, guid: c5f74beec2ead574a972d1b7e81aaefe, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -3.75
-      objectReference: {fileID: 0}
-    - target: {fileID: 4288035876653835603, guid: c5f74beec2ead574a972d1b7e81aaefe, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -1.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 5913219758924288114, guid: c5f74beec2ead574a972d1b7e81aaefe, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 1.25
-      objectReference: {fileID: 0}
-    - target: {fileID: 6289788914456725310, guid: c5f74beec2ead574a972d1b7e81aaefe, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 6.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 6289788914456725310, guid: c5f74beec2ead574a972d1b7e81aaefe, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 1.25
-      objectReference: {fileID: 0}
-    - target: {fileID: 7169777296599756616, guid: c5f74beec2ead574a972d1b7e81aaefe, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7169777296599756616, guid: c5f74beec2ead574a972d1b7e81aaefe, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -1.25
-      objectReference: {fileID: 0}
-    - target: {fileID: 7569472318416633129, guid: c5f74beec2ead574a972d1b7e81aaefe, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 1.25
+    - target: {fileID: 7653023404088636213, guid: c5f74beec2ead574a972d1b7e81aaefe, type: 3}
+      propertyPath: isForPistachio
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7889076538522068197, guid: c5f74beec2ead574a972d1b7e81aaefe, type: 3}
       propertyPath: m_Name
       value: TutorialSession_Pistachio
       objectReference: {fileID: 0}
-    - target: {fileID: 8242004714758650095, guid: c5f74beec2ead574a972d1b7e81aaefe, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8242004714758650095, guid: c5f74beec2ead574a972d1b7e81aaefe, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 4.25
-      objectReference: {fileID: 0}
-    - target: {fileID: 8537798294412053717, guid: c5f74beec2ead574a972d1b7e81aaefe, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 1.25
+    - target: {fileID: 8262969986197691938, guid: c5f74beec2ead574a972d1b7e81aaefe, type: 3}
+      propertyPath: isForPistachio
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8814887367633403152, guid: c5f74beec2ead574a972d1b7e81aaefe, type: 3}
       propertyPath: m_LocalPosition.x
