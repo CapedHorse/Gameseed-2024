@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.InputSystem;
 
 namespace Components.Player_Control
@@ -10,8 +11,12 @@ namespace Components.Player_Control
         [SerializeField]
         protected float flySpeed = 10;
 
-        private Vector2 _flyDirection;
+        [SerializeField] protected float playerFlyingEventInterval = 0.5f;
+        public UnityEvent onPlayerFlyingEvent;
         
+        private Vector2 _flyDirection;
+        private float _playerMovedEventIntervalCounter;
+
         private void FixedUpdate()
         {
             Fly();
@@ -38,6 +43,13 @@ namespace Components.Player_Control
         private void Fly()
         {
             rb.velocity = _flyDirection * flySpeed;
+            
+            _playerMovedEventIntervalCounter += Time.fixedDeltaTime;
+            if (_playerMovedEventIntervalCounter >= playerFlyingEventInterval)
+            {
+                _playerMovedEventIntervalCounter = 0f;
+                onPlayerFlyingEvent.Invoke();
+            }
         }
 
         private void StopFly()

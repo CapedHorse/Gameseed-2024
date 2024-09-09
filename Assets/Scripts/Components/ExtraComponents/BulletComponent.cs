@@ -14,6 +14,7 @@ namespace Components.ExtraComponents
         public void Launch(Vector2 direction)
         {
             rb.velocity = direction * bulletSpeed;
+            // transform.rotation = Quaternion.LookRotation(new Vector3(rb.velocity.y, 0, rb.velocity.x));
         }
 
 

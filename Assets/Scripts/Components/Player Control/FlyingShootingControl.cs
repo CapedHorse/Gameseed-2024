@@ -1,6 +1,7 @@
 ﻿using Components.ExtraComponents;
 using Lean.Pool;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.InputSystem;
 using UnityEngine.Serialization;
 
@@ -12,7 +13,8 @@ namespace Components.Player_Control
         [SerializeField] private Transform bulletHose;
 
         [SerializeField] private float bulletCooldown = 1;
-        
+
+        public UnityEvent onShootingEvent;
         private float _currentBulletCooldown;
         private bool _hasShotBullet;
 
@@ -36,8 +38,10 @@ namespace Components.Player_Control
                 return;
 
             BulletComponent spawnedBulletComponent = LeanPool.Spawn(bulletComponentPrefab, bulletHose.position, Quaternion.identity);
+            spawnedBulletComponent.transform.rotation = bulletHose.rotation;
             spawnedBulletComponent.Launch(bulletHose.up);
             _hasShotBullet = true;
+            onShootingEvent.Invoke();
         }
     }
 }
