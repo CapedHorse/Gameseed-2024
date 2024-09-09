@@ -61,7 +61,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1256869173096001161, guid: c3a20852e1a20764fa2f2946b4634d63, type: 3}
       propertyPath: m_Layer
-      value: 8
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2853127136495028383, guid: c3a20852e1a20764fa2f2946b4634d63, type: 3}
       propertyPath: m_DefaultActionMap
@@ -234,9 +234,16 @@ MonoBehaviour:
   mainActionInputRef: {fileID: -3071281848014471728, guid: 7e30df38041ab064fb414373347f3cec, type: 3}
   rb: {fileID: 8758498041995828804}
   flySpeed: 7.5
+  playerFlyingEventInterval: 0.5
+  onPlayerFlyingEvent:
+    m_PersistentCalls:
+      m_Calls: []
   bulletComponentPrefab: {fileID: 1949660860220030603, guid: 067779707a968d14d961870a74034c0e, type: 3}
   bulletHose: {fileID: 1917653528756449582}
   bulletCooldown: 0.1
+  onShootingEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &2368000367716551404
 MonoBehaviour:
   m_ObjectHideFlags: 0
