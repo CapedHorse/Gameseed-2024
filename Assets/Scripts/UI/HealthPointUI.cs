@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using DG.Tweening;
+using UnityEngine;
 using UnityEngine.UI;
 
 namespace UI
@@ -8,13 +9,19 @@ namespace UI
         [SerializeField] private Image healthFillUI;
 
         private bool _hasDecreased;
+
         public void DecreaseHealth()
         {
             if (_hasDecreased)
                 return;
 
             _hasDecreased = true;
-            healthFillUI.gameObject.SetActive(false);
+            
+            transform.DOShakeRotation(0.5f, Vector3.one * 10, 150).SetUpdate(true);
+            healthFillUI.DOFade(0, 0.75f).SetUpdate(true).onComplete = () =>
+            {
+                healthFillUI.gameObject.SetActive(false);
+            };
         }
     }
 }

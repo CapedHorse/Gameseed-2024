@@ -30,7 +30,7 @@ namespace Level
             GameSessionManager.instance.EndedGameSession(GameStateType.Success);
         }
 
-        virtual public void GameSessionFailed()
+        virtual public void GameSessionRetry()
         {
             onGameFailed.Invoke();
             GameSessionManager.instance.EndedGameSession(GameStateType.Retry);

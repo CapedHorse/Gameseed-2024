@@ -33,6 +33,7 @@ namespace Level
         
         private float _currentPlayTime;
         private float _targetPlayTime;
+        private float _kedutTimerTime;
 
         #region Unity Life Cycle
         private void Awake()
@@ -61,6 +62,15 @@ namespace Level
             if (_currentPlayTime <= 0)
             {
                 _currentGameSession.TimerRunsOut();
+            } 
+            else if (_currentPlayTime is > 0 and <= 5f)
+            {
+                _kedutTimerTime += Time.deltaTime;
+                if (_kedutTimerTime >= 1f)
+                {
+                    _kedutTimerTime = 0;
+                    gameUIManager.KedutTimer();
+                }
             }
         }
         #endregion
@@ -119,7 +129,6 @@ namespace Level
 
         private IEnumerator PrepareStartGame()
         {
-            gameUIManager.ShowGameName(_currentGameSessionName);
             int countdownTime = GameManager.instance.gameSettings.countDownTime;
             for (int i = countdownTime; i > 0; i--)
             {
@@ -132,7 +141,8 @@ namespace Level
 
         private void StartingGame()
         {
-            DOVirtual.DelayedCall(GameManager.instance.gameSettings.delayBeforeRealPlay, () =>
+            gameUIManager.ShowGameName(_currentGameSessionName);
+            DOVirtual.DelayedCall(GameManager.instance.gameSettings.delayBeforeRealPlay+ 0.25f, () =>
             {
                 gameUIManager.HideGameName();
                 _currentGameSession.StartGame();
@@ -140,6 +150,7 @@ namespace Level
                 _startGame = true;
                 GameManager.instance.UnfreezeTime();
             });
+            
         }
 
         #endregion

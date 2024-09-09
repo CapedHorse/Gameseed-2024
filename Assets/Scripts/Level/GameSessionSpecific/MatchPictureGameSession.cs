@@ -34,7 +34,7 @@ namespace Level.GameSessionSpecific
                 }
             }
             
-            GameSessionFailed();
+            GameSessionRetry();
         }
 
         public override void StartGame()

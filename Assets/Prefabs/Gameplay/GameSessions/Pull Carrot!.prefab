@@ -756,7 +756,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 5195733494576432641}
         m_TargetAssemblyTypeName: Level.GameSession, Assembly-CSharp
-        m_MethodName: GameSessionFailed
+        m_MethodName: GameSessionRetry
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
