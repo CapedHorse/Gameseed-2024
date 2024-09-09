@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &3794971100650099081
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4478458698117220008}
+  m_Layer: 3
+  m_Name: GroundCheck
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4478458698117220008
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3794971100650099081}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.5, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4911847204428401101}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &557052527902700042
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -83,7 +114,10 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 6157370230816011312, guid: c3a20852e1a20764fa2f2946b4634d63, type: 3}
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 4868795064709348295, guid: c3a20852e1a20764fa2f2946b4634d63, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4478458698117220008}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 1256869173096001161, guid: c3a20852e1a20764fa2f2946b4634d63, type: 3}
       insertIndex: 2
@@ -179,7 +213,19 @@ MonoBehaviour:
   mainActionInputRef: {fileID: -7493825663748469437, guid: 7e30df38041ab064fb414373347f3cec, type: 3}
   rb: {fileID: 7808223513394013921}
   moveSpeed: 10
+  playerMovingEventInterval: 0.5
+  onPlayerMovingEvent:
+    m_PersistentCalls:
+      m_Calls: []
   jumpPower: 850
+  groundCheck: {fileID: 4478458698117220008}
+  groundCheckRadius: 0.1
+  groundLayerMask:
+    serializedVersion: 2
+    m_Bits: 128
+  onPlayerJumpEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &1475926948593863524
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -229,6 +275,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!4 &4911847204428401101 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4868795064709348295, guid: c3a20852e1a20764fa2f2946b4634d63, type: 3}
+  m_PrefabInstance: {fileID: 557052527902700042}
+  m_PrefabAsset: {fileID: 0}
 --- !u!50 &7808223513394013921 stripped
 Rigidbody2D:
   m_CorrespondingSourceObject: {fileID: 7775303922820601067, guid: c3a20852e1a20764fa2f2946b4634d63, type: 3}

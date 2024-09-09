@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8332592547983954323}
   - component: {fileID: 6391793082441839492}
   - component: {fileID: 6626622046597325856}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: PlatformFloor
   m_TagString: Floor
   m_Icon: {fileID: 0}
@@ -221,7 +221,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c3c37daaabe40779b0c9f3521647c89, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  floorPlatform: {fileID: 8735900054691292096}
   floorCol: {fileID: 6391793082441839492}
   playerAboveLayer:
     serializedVersion: 2

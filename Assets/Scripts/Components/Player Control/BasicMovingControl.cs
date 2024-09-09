@@ -20,6 +20,11 @@ namespace Components.Player_Control
 
         private void FixedUpdate()
         {
+            FixedUpdateVirtual();
+        }
+
+        protected virtual void FixedUpdateVirtual()
+        {
             Move();
         }
 
