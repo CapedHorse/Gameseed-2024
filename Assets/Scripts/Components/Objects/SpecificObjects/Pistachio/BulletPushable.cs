@@ -17,8 +17,15 @@ namespace Components.Objects.SpecificObjects.Pistachio
         {
             if (other.gameObject.GetComponent<BulletComponent>())
             {
-                if(currentPushTween != null)
-                    currentPushTween.Kill();
+                
+                StopPush();
+                
+                //Buat bullet pushable should sediakan floor and wall khusus ya, atau collider with special tag aja deh dan exclude the player and bullet
+                if (other.collider.CompareTag("Floor") || other.collider.CompareTag("Ceil") ||
+                    other.collider.CompareTag("Wall"))
+                {
+                    return;
+                }
                 
                 Vector2 dir = other.GetContact(0).normal;
                 Vector2 pos = transform.position;
@@ -30,7 +37,23 @@ namespace Components.Objects.SpecificObjects.Pistachio
                 Debug.Log("Destination "+pos);
                 currentPushTween = rb.DOMove(pos , 0.25f);
                 onPushedEvent.Invoke();
+                
+                
             }
+        }
+
+        public void StopPush()
+        {
+            if (currentPushTween != null)
+            {
+                currentPushTween.Kill();
+                currentPushTween = null;
+            }
+        }
+        
+        private void OnDestroy()
+        {
+            StopPush();
         }
     }
 }

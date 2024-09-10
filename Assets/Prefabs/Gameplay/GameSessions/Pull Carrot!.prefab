@@ -1512,6 +1512,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1613053093607008706, guid: 8dff56da39bdcb240837f6d8299bf30a, type: 3}
+      propertyPath: m_BodyType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1613053093607008706, guid: 8dff56da39bdcb240837f6d8299bf30a, type: 3}
       propertyPath: m_ExcludeLayers.m_Bits
       value: 192
       objectReference: {fileID: 0}
@@ -1574,6 +1578,10 @@ PrefabInstance:
     - target: {fileID: 4148722857039299618, guid: 8dff56da39bdcb240837f6d8299bf30a, type: 3}
       propertyPath: m_ConstrainProportionsScale
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4683175479566001634, guid: 8dff56da39bdcb240837f6d8299bf30a, type: 3}
+      propertyPath: pushedPower
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 6382287433142222902, guid: 8dff56da39bdcb240837f6d8299bf30a, type: 3}
       propertyPath: m_Name

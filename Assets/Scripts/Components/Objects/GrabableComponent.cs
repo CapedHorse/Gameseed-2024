@@ -8,16 +8,44 @@ namespace Components.Objects
     {
         protected bool _grabbed;
 
-        public UnityEvent onGrabbedEvent;
-        protected override void EnteredTrigger(Collider2D other)
+        public UnityEvent onGrabbedEvent, onReleasedEvent;
+        private ClawComponent _grabber;
+        private bool _canBeGrabbed = true;
+        public bool CanBeGrabbed => _canBeGrabbed;
+
+        public void Grab(ClawComponent grabber)
         {
-            ClawComponent claw = other.GetComponent<ClawComponent>();
-            if (claw != null)
+            if (grabber != null)
             {
                 _grabbed = true;
-                transform.SetParent(claw.transform);
+                _grabber = grabber;
+                transform.SetParent(grabber.transform);
                 onGrabbedEvent.Invoke();
             }
+        }
+
+        public void Released(ClawComponent releaser)
+        {
+            if (releaser != null)
+            {
+                _grabbed = false;
+                _grabber = null;
+                transform.SetParent(null);
+                onReleasedEvent.Invoke();
+            }
+        }
+
+        public void BreakFree()
+        {
+            if (_grabber != null)
+            {
+                _grabber.ForceRetract();
+            }
+        }
+
+        public void SetCanGrabbed(bool can)
+        {
+            _canBeGrabbed = can;
         }
     }
 }

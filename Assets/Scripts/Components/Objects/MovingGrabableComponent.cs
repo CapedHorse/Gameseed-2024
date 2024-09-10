@@ -8,36 +8,45 @@ namespace Components.Objects
         private float initialXPos;
         private float targetXPos;
 
+        private bool _fromRight;
+        private bool _moveToLeft;
+
         private void OnEnable()
         {
             initialXPos = transform.localPosition.x;
             targetXPos = initialXPos * -1;
-            
+
+            if (initialXPos > 0)
+            {
+                _moveToLeft = true;
+            }
         }
 
         private void FixedUpdate()
         {
             if (_grabbed)
                 return;
-
-            transform.localPosition =
-                new Vector2(transform.localPosition.x + Time.fixedDeltaTime * moveSpeed * Mathf.Sign(targetXPos), transform.localPosition.y);
-
-            if (targetXPos < 0)
+            
+            if (_moveToLeft)
             {
+                transform.localPosition =
+                    new Vector2(transform.localPosition.x - Time.fixedDeltaTime * moveSpeed , transform.localPosition.y);
                 if (transform.localPosition.x <= targetXPos)
                 {
-                    transform.localPosition = new Vector2(initialXPos, transform.localPosition.y);        
+                    _moveToLeft = false;
+                    transform.localScale = new Vector2(-1, 1);
                 }
             }
             else
             {
-                if (transform.localPosition.x >= targetXPos)
+                transform.localPosition =
+                    new Vector2(transform.localPosition.x + Time.fixedDeltaTime * moveSpeed , transform.localPosition.y);
+                if (transform.localPosition.x >= initialXPos)
                 {
-                    transform.localPosition = new Vector2(initialXPos, transform.localPosition.y);        
+                    _moveToLeft = true;
+                    transform.localScale = new Vector2(1, 1);
                 }
             }
-            
 
         }
     }

@@ -716,6 +716,10 @@ PrefabInstance:
       propertyPath: m_Points.m_Paths.Array.data[0].Array.data[19].y
       value: 1.2708774
       objectReference: {fileID: 0}
+    - target: {fileID: 809931116304119006, guid: dc2a155ef75f6d24c8a23faf1d324539, type: 3}
+      propertyPath: moveSpeed
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 1590447415937533650, guid: dc2a155ef75f6d24c8a23faf1d324539, type: 3}
       propertyPath: launchPower.x
       value: 60
@@ -785,6 +789,10 @@ PrefabInstance:
       propertyPath: seedPlantedEvent.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.AudioClip, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 1853490840662357243, guid: dc2a155ef75f6d24c8a23faf1d324539, type: 3}
+      propertyPath: boxSpriteTweened
+      value: 
+      objectReference: {fileID: 2146087388}
     - target: {fileID: 1853490840662357243, guid: dc2a155ef75f6d24c8a23faf1d324539, type: 3}
       propertyPath: onSeedSpilledEvent.m_PersistentCalls.m_Calls.Array.size
       value: 1
@@ -1576,6 +1584,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c73818e16124a8a88d5e553e99c6995, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!4 &2146087388 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5121819238674486065, guid: dc2a155ef75f6d24c8a23faf1d324539, type: 3}
+  m_PrefabInstance: {fileID: 1772025492}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1135737632574721855 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1853490840662357243, guid: dc2a155ef75f6d24c8a23faf1d324539, type: 3}

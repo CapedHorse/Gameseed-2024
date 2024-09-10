@@ -17,6 +17,7 @@ namespace Components.Objects.SpecificObjects.BoxSpillingSeeds
         {
             if (_launched)
                 return;
+            transform.SetParent(null);
             _launched = true;
             rb.gravityScale = 1;
             rb.bodyType = RigidbodyType2D.Dynamic;

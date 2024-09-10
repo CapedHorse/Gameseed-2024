@@ -1,4 +1,6 @@
+using System;
 using Components.ExtraComponents;
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -7,74 +9,53 @@ namespace Components.Objects
     public class PushableComponent : ComponentBase
     {
         [SerializeField] private Rigidbody2D rb;
-        public UnityEvent onPushedEvent, onCollidedEvent;
-        public bool isForPistachio;
+        public UnityEvent onPushedEvent;
         private bool _pushedEventInvoked;
         
-        //Physics can be improved, by checking contact point position, check the distance, which axis is the closest to collider center 
+        [SerializeField] private float pushedPower = 0.1f;
+        public UnityEvent<float> onPushedValueEvent;
+
+        private Tweener currentPushTween;
         
         protected override void EnteredCollision(Collision2D other)
         {
-            PushingComponent pusher = other.gameObject.GetComponent<PushingComponent>();
-
-            if (pusher)
+            if (other.gameObject.GetComponent<PushingComponent>())
             {
-                if (_pushedEventInvoked)
-                    return;
+                StopPush();
                 
-                if(isForPistachio)
-                    rb.bodyType = RigidbodyType2D.Dynamic;
-                onPushedEvent.Invoke();
-                _pushedEventInvoked = true;
-                
-                Debug.Log("Pushed Event Invoked");
-            }
-            else
-            {
-                if (isForPistachio)
+                //Watch over this ya, masih ga work, masih bisa tembus wall
+                if (other.collider.CompareTag("Floor") || other.collider.CompareTag("Ceil") ||
+                    other.collider.CompareTag("Wall"))
                 {
-                    rb.bodyType = RigidbodyType2D.Static;
-                    rb.velocity = Vector2.zero;    
+                    Debug.Log("Hit border");
+                    return;
                 }
                 
-            }
-
-            if (other.collider.CompareTag("Floor"))
-            {
-                onCollidedEvent.Invoke();
-            }
-
-        }
-
-        protected override void StayedCollision(Collision2D other)
-        {
-            if (isForPistachio)
-            {
-                if (!other.gameObject.GetComponent<PushingComponent>())
-                {
-                    rb.bodyType = RigidbodyType2D.Static;
-                    // rb.velocity = Vector2.zero;
-                }    
-            }
-            
-        }
-        
-
-        protected override void ExitCollision(Collision2D other)
-        {
-            PushingComponent pusher = other.gameObject.GetComponent<PushingComponent>();
-
-            if (pusher)
-            {
-                if(isForPistachio)
-                    rb.bodyType = RigidbodyType2D.Static;
+                Vector2 dir = other.GetContact(0).normal;
+                Vector2 pos = transform.position;
                 
-                rb.velocity = Vector2.zero;
-                _pushedEventInvoked = false;
-                Debug.Log("Pushed Event can be Invoked Again");
+                pos.x += rb.constraints == RigidbodyConstraints2D.FreezePositionX ? 0 : dir.x * pushedPower;
+                pos.y += rb.constraints == RigidbodyConstraints2D.FreezePositionY ? 0: dir.y * pushedPower;
+
+                onPushedValueEvent.Invoke(dir.y*pushedPower);
+                
+                currentPushTween = rb.DOMove(pos , 0.25f);
+                onPushedEvent.Invoke();
             }
-            
-            
+        }
+
+        public void StopPush()
+        {
+            if (currentPushTween != null)
+            {
+                currentPushTween.Kill();
+                currentPushTween = null;
+            }
+        }
+
+        private void OnDestroy()
+        {
+            StopPush();
         }
     }
 }

@@ -11,7 +11,12 @@ namespace Components.Player_Control
 
         protected override void MainActionInputStarted(InputAction.CallbackContext obj)
         {
-            clawComponent.LaunchClaw();
+            clawComponent.MoveClaw();
+        }
+
+        protected override void MainActionInputCanceled(InputAction.CallbackContext obj)
+        {
+            clawComponent.StopClaw();
         }
     }
 }

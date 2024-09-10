@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: GameSettings
   m_EditorClassIdentifier: 
   playerHealthEachLevel: 3
-  timeEachPlay: 12
+  timeEachPlay: 10
   countDownTime: 3
   delayBeforeRealPlay: 0.75
   delayWhenShowingState: 2
@@ -30,7 +30,10 @@ MonoBehaviour:
     tutorialSceneName: Tutorial_2
     gameSessionNames:
     - Match Temperature!
-    - Match Temperature!
-    - Match Temperature!
-    - Match Temperature!
-    - Match Temperature!
+    - Move Cloud!
+    - Shoot Bugs!
+  - levelName: Bean Sprout
+    tutorialSceneName: Tutorial_3
+    gameSessionNames:
+    - Align Bamboo!
+    - Bring To Flower!

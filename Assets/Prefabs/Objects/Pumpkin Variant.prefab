@@ -262,6 +262,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spilledSeeds: []
+  boxSpriteTweened: {fileID: 8838616975892520124}
   onSeedSpilledEvent:
     m_PersistentCalls:
       m_Calls: []
+  onSpilledDoneEvent:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!4 &8838616975892520124 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2749227611752876744, guid: b820992165049b545b45ac132651b6c2, type: 3}
+  m_PrefabInstance: {fileID: 6669308496191051380}
+  m_PrefabAsset: {fileID: 0}

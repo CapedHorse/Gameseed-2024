@@ -108,9 +108,9 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2253786096170032599}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.48, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 2.3548388, z: 0}
+  m_LocalScale: {x: 3.2258067, y: 3.2258067, z: 3.2258067}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4948076544325424628}
@@ -121,7 +121,7 @@ Transform:
   - {fileID: 1916758517615525393}
   - {fileID: 9129769406108487045}
   - {fileID: 4330246703506272212}
-  m_Father: {fileID: 3396222812725700236}
+  m_Father: {fileID: 5121819238674486065}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3575953337910689673
 GameObject:
@@ -396,7 +396,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 2189856755200160168}
   - {fileID: 8056289502690518167}
   m_Father: {fileID: 4625174582479356050}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1064,7 +1063,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 8838616975892520124, guid: 4471ad5d92b9b12499d2849f20fdc7c0, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2189856755200160168}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4471ad5d92b9b12499d2849f20fdc7c0, type: 3}
 --- !u!114 &1853490840662357243 stripped
@@ -1081,6 +1083,11 @@ MonoBehaviour:
 --- !u!1 &2744119992722822949 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1992942485574342824, guid: 4471ad5d92b9b12499d2849f20fdc7c0, type: 3}
+  m_PrefabInstance: {fileID: 4448791418797543309}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &5121819238674486065 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8838616975892520124, guid: 4471ad5d92b9b12499d2849f20fdc7c0, type: 3}
   m_PrefabInstance: {fileID: 4448791418797543309}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &8056289502690518167 stripped

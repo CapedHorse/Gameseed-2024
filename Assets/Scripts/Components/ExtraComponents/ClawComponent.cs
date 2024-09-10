@@ -1,78 +1,134 @@
-﻿using Components.Objects;
+﻿using System;
+using Components.Objects;
+using Level;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Components.ExtraComponents
 {
     public class ClawComponent : ComponentBase
     {
         [SerializeField] private Transform clawVine;
+        [SerializeField] private Transform clawEdge;
         [SerializeField] private float clawSpeed = 10;
-        private float originClawY;
+        private float _vineOriginalScaleY;
+        private float _maxClawY;
         private bool _clawLaunched;
         private bool _clawRetracted;
+        private bool _stopped;
+        private GrabableComponent _grabbed;
+
+        public UnityEvent onClawLaunchedEvent, onClawRetractedEvent;
+
+        private void Start()
+        {
+            _maxClawY = BorderManager.instance.northBorderPoint.position.y;
+            _vineOriginalScaleY = clawVine.localScale.y;
+            _clawRetracted = false;
+            _clawLaunched = true;
+            _stopped = true;
+        }
 
         private void FixedUpdate()
         {
-            if (_clawLaunched)
+            if (!_stopped)
             {
+                float scalingResult = Time.deltaTime * clawSpeed;
                 if (_clawRetracted)
                 {
-                    transform.position = new Vector2(transform.position.x,
-                        transform.position.y - Time.fixedDeltaTime * clawSpeed);
-                    
-                    clawVine.position = new Vector2(clawVine.position.x,
-                        clawVine.position.y - (Time.fixedDeltaTime * clawSpeed) / 2);
-
+                    clawEdge.localScale = new Vector2(clawEdge.localScale.x,  1/clawVine.localScale.y);
                     clawVine.localScale = new Vector2(clawVine.localScale.x,
-                        clawVine.localScale.y - Time.deltaTime * clawSpeed);
-                    if (transform.position.y <= originClawY)
+                        Mathf.Clamp(clawVine.localScale.y - scalingResult, 1, 10f));
+                    
+                    if (clawVine.localScale .y <= _vineOriginalScaleY)
                     {
-                        _clawRetracted = false;
-                        _clawLaunched = false;
+                        Launch();
+                        onClawLaunchedEvent.Invoke();
                     }
                 }
-                else
+                else if(_clawLaunched)
                 {
-                    transform.position = new Vector2(transform.position.x,
-                        transform.position.y + Time.fixedDeltaTime * clawSpeed);
-                    
-                    clawVine.position = new Vector2(clawVine.position.x,
-                        clawVine.position.y + (Time.fixedDeltaTime * clawSpeed) / 2);
-                    
+                    clawEdge.localScale = new Vector2(clawEdge.localScale.x,  1/clawVine.localScale.y);
                     clawVine.localScale = new Vector2(clawVine.localScale.x,
-                        clawVine.localScale.y + Time.deltaTime * clawSpeed);
+                        Mathf.Clamp(clawVine.localScale.y + scalingResult, 1, 10f));
+
+                    if (clawEdge.position.y >= _maxClawY)
+                    {
+                        Retract();
+                        onClawRetractedEvent.Invoke();
+                    }
                 }
             }
-
-            
         }
 
-        public void LaunchClaw()
+        public void MoveClaw()
         {
+            _stopped = false;
+
             if (_clawLaunched)
-                return;
+            {
+                onClawLaunchedEvent.Invoke();
+            }
 
-            originClawY = transform.position.y;
-            _clawLaunched = true;
-            Debug.Log("Launching Claw");
-            
+            if (_clawRetracted)
+            {
+                onClawRetractedEvent.Invoke();
+            }
         }
 
-        protected override void EnteredCollision(Collision2D other)
+        public void StopClaw()
         {
-            if (other.collider.CompareTag("Ceil"))
+            _stopped = true;
+            ReleaseGrabbed();
+            Launch();
+        }
+
+        public void ReleaseGrabbed()
+        {
+            if (_grabbed != null)
             {
-                _clawRetracted = true;
+                _grabbed.Released(this);
+                _grabbed = null;
             }
         }
 
         protected override void EnteredTrigger(Collider2D other)
         {
-            GrabableComponent grabableComponent = other.GetComponent<GrabableComponent>();
-            if (grabableComponent != null)
+            if (other.GetComponent<ClawBlocker>())
             {
-                _clawRetracted = true;
+                ForceRetract();
+                return;
             }
+            GrabableComponent grabableComponent = other.GetComponent<GrabableComponent>();
+            if (grabableComponent != null && _grabbed == null)
+            {
+                if (grabableComponent.CanBeGrabbed)
+                {
+                    grabableComponent.Grab(this);
+                    _grabbed = grabableComponent;
+                }
+                Retract();
+            }
+        }
+
+        void Launch()
+        {
+            _clawRetracted = false;
+            _clawLaunched = true;
+        }
+        private void Retract()
+        {
+            _clawRetracted = true;
+            _clawLaunched = false;
+        }
+
+        public void ForceRetract()
+        {
+            if (_grabbed != null)
+            {
+                ReleaseGrabbed();
+            }
+            Retract();
         }
     }
 }

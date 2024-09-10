@@ -6,7 +6,6 @@ namespace Level
 {
     public class GameSession : MonoBehaviour
     {
-        [SerializeField] private PlayerControl playerControl;
         public UnityEvent onTimerRunsOut, onGameStarted, onGameSuccess, onGameFailed;
 
         virtual public void StartGame()
