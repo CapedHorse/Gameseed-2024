@@ -19,7 +19,7 @@ namespace UI.Panel
             //Will have transition animation in the child
         }
 
-        protected virtual void FinishShowPanel()
+        public virtual void FinishShowPanel()
         {
             OnPanelFinishShow.Invoke();
         }

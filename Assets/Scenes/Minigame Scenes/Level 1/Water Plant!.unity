@@ -130,6 +130,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3530649321979964337, guid: 292d34b202a832e4d865647731b6c34a, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3763087080089421160, guid: 292d34b202a832e4d865647731b6c34a, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4625174582479356050, guid: 292d34b202a832e4d865647731b6c34a, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -174,8 +182,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: Water Plant!
       objectReference: {fileID: 0}
+    - target: {fileID: 7818696445697214769, guid: 292d34b202a832e4d865647731b6c34a, type: 3}
+      propertyPath: canBeEnteredMultipleTimes
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8736682796710352891, guid: 292d34b202a832e4d865647731b6c34a, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 3872927250569994213, guid: 292d34b202a832e4d865647731b6c34a, type: 3}
+    - {fileID: 8970865602035884975, guid: 292d34b202a832e4d865647731b6c34a, type: 3}
+    - {fileID: 8698882607680572790, guid: 292d34b202a832e4d865647731b6c34a, type: 3}
+    - {fileID: 3770127630836469759, guid: 292d34b202a832e4d865647731b6c34a, type: 3}
+    - {fileID: 5211006662412071603, guid: 292d34b202a832e4d865647731b6c34a, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 292d34b202a832e4d865647731b6c34a, type: 3}

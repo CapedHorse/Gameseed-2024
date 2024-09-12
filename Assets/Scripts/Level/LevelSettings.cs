@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using Tutorial;
+using UnityEngine;
 
 namespace Level
 {
@@ -7,7 +8,17 @@ namespace Level
     public class LevelSettings
     {
         public string levelName;
+        public bool haveTutorial;
         public string tutorialSceneName = "Tutorial_1";
-        public List<string> gameSessionNames;
+        public bool haveHeart = true;
+        public List<GameSessionSettings> gameSessions;
+    }
+
+    [System.Serializable]
+    public class GameSessionSettings
+    {
+        public string gameSessionName;
+        public bool haveTime = true;
+        public float playTimer = 10f;
     }
 }

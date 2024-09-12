@@ -130,6 +130,34 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 88381700641156395, guid: 628137370b9b79d489ca18df23855760, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -7.81
+      objectReference: {fileID: 0}
+    - target: {fileID: 815091831257394720, guid: 628137370b9b79d489ca18df23855760, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 6.6400003
+      objectReference: {fileID: 0}
+    - target: {fileID: 3842318520043357018, guid: 628137370b9b79d489ca18df23855760, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4016979916660246702, guid: 628137370b9b79d489ca18df23855760, type: 3}
+      propertyPath: m_Size.x
+      value: 2.0370312
+      objectReference: {fileID: 0}
+    - target: {fileID: 4016979916660246702, guid: 628137370b9b79d489ca18df23855760, type: 3}
+      propertyPath: m_Offset.x
+      value: 0.7236309
+      objectReference: {fileID: 0}
+    - target: {fileID: 6835845615927764485, guid: 628137370b9b79d489ca18df23855760, type: 3}
+      propertyPath: m_Size.x
+      value: 1.1756954
+      objectReference: {fileID: 0}
+    - target: {fileID: 6835845615927764485, guid: 628137370b9b79d489ca18df23855760, type: 3}
+      propertyPath: m_Offset.x
+      value: -0.28676796
+      objectReference: {fileID: 0}
     - target: {fileID: 7889076538522068197, guid: 628137370b9b79d489ca18df23855760, type: 3}
       propertyPath: m_Name
       value: TutorialSession_Toge

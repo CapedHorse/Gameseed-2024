@@ -348,7 +348,8 @@ PrefabInstance:
       value: Pull Carrot!
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 3770127630836469759, guid: e48462e46e4b7724ca4f44905e4fff7f, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e48462e46e4b7724ca4f44905e4fff7f, type: 3}

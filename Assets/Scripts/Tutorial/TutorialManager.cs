@@ -53,7 +53,7 @@ namespace Tutorial
         {
             SceneManager.sceneLoaded -= TutorialSceneLoaded;
             _tutorialSession = FindObjectOfType<TutorialSession>();
-            FadingManager.instance.FadeOut(CanStartTutor, 0.5f);
+            FadingManager.instance.FadeOut(false, CanStartTutor, 0.5f);
         }
         
         private void ReloadSession()
@@ -81,6 +81,7 @@ namespace Tutorial
 
         private void EndTutorial(InputAction.CallbackContext obj)
         {
+            endTutorialReference.action.started -= EndTutorial;
             GameManager.instance.TutorialEnded(_thisLevelId);
         }
 

@@ -1,6 +1,7 @@
 ﻿using Core;
 using UI.Panel;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 
 namespace UI
@@ -11,145 +12,90 @@ namespace UI
         
         [Header("Main Menu")]
         [SerializeField] private InputActionReference navigateMenuActionRef; 
-        [SerializeField] private InputActionReference pressMenuActionRef, quitGameActionRef;
-        
-        [Header("Game Mode Selection")]
-        [SerializeField] private InputActionReference navigateGameModeActionRef; 
-        [SerializeField] private InputActionReference pressGameModeActionRef, backToMenuActionRef;
-        
-        
-        //cache
-        private MainMenuPanel mainMenuPanel;
+        [SerializeField] private InputActionReference quitGameActionRef;
 
-        protected override void Start()
+        //cache
+        private MainMenuPanel _mainMenuPanel;
+        public MainMenuPanel MainMenuPanel => _mainMenuPanel;
+        
+
+        public void ToggleInput(bool on)
         {
-            base.Start();
-            mainMenuPanel = (MainMenuPanel) panelMap["MainMenu"];
-            InitiateMenuPanel();
+            if(on)
+                mainMenuUIInput.ActivateInput();
+            else
+                mainMenuUIInput.DeactivateInput();
+                
         }
 
         #region Main Menu Navigation
 
-        private void InitiateMenuPanel()
+        public override void InitiatePanel()
         {
-            mainMenuPanel.OnPanelBeginShow.AddListener(MenuPanelStartShown);
-            mainMenuPanel.OnPanelFinishShow.AddListener(MenuPanelFinishShown);
-            mainMenuPanel.ShowPanel();
+            base.InitiatePanel();
+            
+            _mainMenuPanel = (MainMenuPanel) panelMap["MainMenu"];
+            _mainMenuPanel.OnPanelBeginShow.AddListener(MenuPanelStartShown);
+            _mainMenuPanel.OnPanelFinishShow.AddListener(MenuPanelFinishShown);
+            _mainMenuPanel.ShowPanel();
+
+            mainMenuUIInput.onControlsChanged += ControlsChanged;
+        }
+        
+        public void ControlsChanged(PlayerInput obj)
+        {
+            Debug.Log("Current control is "+ obj.currentControlScheme);
         }
 
         private void MenuPanelStartShown()
         {
-            mainMenuPanel.OnPanelBeginShow.RemoveListener(MenuPanelStartShown);
-            mainMenuUIInput.DeactivateInput();
+            _mainMenuPanel.OnPanelBeginShow.RemoveListener(MenuPanelStartShown);
+            ToggleInput(false);
         }
 
         private void MenuPanelFinishShown()
         {
-            mainMenuPanel.OnPanelFinishShow.RemoveListener(MenuPanelFinishShown);
-            
+            _mainMenuPanel.OnPanelFinishShow.RemoveListener(MenuPanelFinishShown);
             BindInputMainMenu();
-            BindInputGameModeSelection();
             mainMenuUIInput.SwitchCurrentActionMap("MainMenu");
-            mainMenuUIInput.ActivateInput();
+            ToggleInput(true);
+            _mainMenuPanel.thisButtonParent.NavigateButton(false);
         }
 
         private void BindInputMainMenu()
         {
-            navigateMenuActionRef.action.performed += OnMenuNavigated;
-            pressMenuActionRef.action.started += OnMenuPressed;
+            navigateMenuActionRef.action.started += OnMenuNavigated;
             quitGameActionRef.action.started += OnQuitPressed;
         }
         
-        
-        private void BindInputGameModeSelection()
-        {
-            navigateGameModeActionRef.action.performed += OnMenuNavigated;
-            pressGameModeActionRef.action.started += OnMenuPressed;
-            backToMenuActionRef.action.started += OnCloseGameMode;
-        }
-
         private void OnMenuNavigated(InputAction.CallbackContext obj)
         {
-            MainMenuPanel mainMenuPanel = (MainMenuPanel) panelMap["MainMenu"];
             float value = obj.ReadValue<float>();
 
             if (value > 0)
             {
-                // mainMenuPanel.GetCurrentButtonParent().NavigateButton(true);
+                _mainMenuPanel.thisButtonParent.NavigateButton(true);
             }
             else
             {
-                // mainMenuPanel.GetCurrentButtonParent().NavigateButton(false);
+                _mainMenuPanel.thisButtonParent.NavigateButton(false);
             }
-        }
-
-        private void OnMenuPressed(InputAction.CallbackContext obj)
-        {
-            // mainMenuPanel.GetCurrentButtonParent().ProceedMenu();
         }
 
         private void OnQuitPressed(InputAction.CallbackContext obj)
         {
-            // mainMenuPanel.GetCurrentButtonParent().ProceedMenu();
-            
-        }
-
-        private void OnCloseGameMode(InputAction.CallbackContext obj)
-        {
-            CloseGameModeSelection();
+            QuitPopUp();
         }
 
         #endregion
-
-        #region Game Mode Selection
-
-        
-        private void OnGameModeSelectionShown()
-        {
-            mainMenuUIInput.SwitchCurrentActionMap("GameModeMenu");
-            mainMenuUIInput.ActivateInput();
-        }
-
-        private void OnGameModeSelectionClosed()
-        {
-            mainMenuUIInput.SwitchCurrentActionMap("MainMenu");
-            mainMenuUIInput.ActivateInput();
-        }
-
-
-        #endregion
-        
 
         #region Public Inspector Functions
         
         public void PlayGame()
         {
-            mainMenuUIInput.DeactivateInput();
+            ToggleInput(false);
+            FindObjectOfType<EventSystem>().SetSelectedGameObject(null);
             GameManager.instance.PlayGame();
-        }
-
-        public void CloseGameModeSelection()
-        {
-            mainMenuUIInput.DeactivateInput();
-            // mainMenuPanel.ShowPrevButtonParent();
-            OnGameModeSelectionClosed();
-        }
-
-        public void ProceedStoryMode()
-        {
-            //Have delay transition, clear UI, then call game manager to start story mode
-        }
-
-        public void ShowLevelSelection()
-        {
-            //Show level selectionpanel
-        }
-
-        public void ProceedFreeMode(int levelId)
-        {
-            //Check if level id unlocked, call game manager to start level that
-            
-            //If not, give feedback to level selection if locked yea
         }
         
         public void QuitPopUp()

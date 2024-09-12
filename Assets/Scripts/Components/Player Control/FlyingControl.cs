@@ -15,6 +15,8 @@ namespace Components.Player_Control
         public UnityEvent onPlayerFlyingEvent;
         
         private Vector2 _flyDirection;
+        private float _lastXDir;
+        private float _lastYDir;
         private float _playerMovedEventIntervalCounter;
 
         private void FixedUpdate()
@@ -40,7 +42,7 @@ namespace Components.Player_Control
             Vector2 dirInput = _flyDirection;
             dir.x = dirInput.x;
             dir.y = dirInput.y;
-                
+
             float angle = Mathf.Atan2(-dir.x, dir.y) * Mathf.Rad2Deg;
             transform.rotation = Quaternion.Euler(0f, 0f, angle);
         }

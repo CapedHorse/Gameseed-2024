@@ -15,7 +15,6 @@ namespace Level
         [SerializeField]
         private GameUIManager gameUIManager;
         private GameSession _currentGameSession;
-        private string _currentGameSessionLevelId;
         private string _currentGameSessionName;
         
         public int CurrentLevelId => _currentGameLevelId;
@@ -29,10 +28,12 @@ namespace Level
 
         public int PlayerHeath => _playerHealth;
         private int _playerHealth;
-        
-        
+
+        public bool HaveTime => _haveTime;
+        private bool _haveTime;
+        public float CurrentPlayTime => _currentPlayTime;
         private float _currentPlayTime;
-        private float _targetPlayTime;
+        
         private float _kedutTimerTime;
 
         #region Unity Life Cycle
@@ -55,6 +56,9 @@ namespace Level
         private void Update()
         {
             if (!_startGame)
+                return;
+
+            if (!_haveTime)
                 return;
 
             _currentPlayTime -= Time.deltaTime;
@@ -83,7 +87,7 @@ namespace Level
             _currentGameSession = FindObjectOfType<GameSession>();
             gameUIManager.TransitionIn(GameStateType.Begin, () =>
             {
-                FadingManager.instance.FadeOut(() =>
+                FadingManager.instance.FadeOut(false, () =>
                 {
                     StartCoroutine(PrepareStartGame());
                 }, 0.5f);
@@ -101,8 +105,8 @@ namespace Level
             GameSettings gameSettings = GameManager.instance.gameSettings;
             LevelSettings gameSettingsLevel = gameSettings.levelList[_currentGameLevelId];
             
-            _playerHealth = gameSettings.playerHealthEachLevel;
-            _currentGameSessionName = gameSettingsLevel.gameSessionNames[_completedGameSessionCount];
+            _playerHealth = gameSettingsLevel.haveHeart ? gameSettings.playerHealthEachLevel : 1;
+            _currentGameSessionName = gameSettingsLevel.gameSessions[_completedGameSessionCount].gameSessionName;
             
             GameManager.instance.FreezeTime();
 
@@ -112,15 +116,19 @@ namespace Level
         
         private void OnNewGameSceneLoaded(Scene arg0, LoadSceneMode arg1)
         {
-            SceneManager.sceneLoaded -= OnNewGameSceneLoaded;
-            _currentGameSession = FindObjectOfType<GameSession>();
-            gameUIManager.TransitionIn(GameStateType.Begin, () =>
+            if (arg0.name == _currentGameSessionName)
             {
-                FadingManager.instance.FadeOut(() =>
+                SceneManager.sceneLoaded -= OnNewGameSceneLoaded;
+                _currentGameSession = FindObjectOfType<GameSession>();
+                gameUIManager.TransitionIn(GameStateType.Begin, () =>
                 {
-                    StartCoroutine(PrepareStartGame());
-                }, 0.5f);
-            });
+                    FadingManager.instance.FadeOut(false, () =>
+                    {
+                        StartCoroutine(PrepareStartGame());
+                    }, 0.5f);
+                });
+            }
+            
         }
 
         #endregion
@@ -142,11 +150,18 @@ namespace Level
         private void StartingGame()
         {
             gameUIManager.ShowGameName(_currentGameSessionName);
+            GameSessionSettings sessionSettings = GameManager.instance.gameSettings
+                .levelList[_currentGameLevelId].gameSessions[_completedGameSessionCount];
+
+            _haveTime = sessionSettings.haveTime;
+            _currentPlayTime = _haveTime ? sessionSettings.playTimer: 0;
+            gameUIManager.SetupTimer(_currentPlayTime);
             DOVirtual.DelayedCall(GameManager.instance.gameSettings.delayBeforeRealPlay+ 0.25f, () =>
             {
                 gameUIManager.HideGameName();
                 _currentGameSession.StartGame();
-                _currentPlayTime = GameManager.instance.gameSettings.timeEachPlay;
+               
+                
                 _startGame = true;
                 GameManager.instance.UnfreezeTime();
             });
@@ -155,7 +170,7 @@ namespace Level
 
         #endregion
 
-        #region Game Success
+        #region Next Game Loading
 
         void LoadNextGame()
         {
@@ -169,7 +184,7 @@ namespace Level
             
             GameSettings gameSettings = GameManager.instance.gameSettings;
             LevelSettings gameSettingsLevel = gameSettings.levelList[_currentGameLevelId];
-            _currentGameSessionName = gameSettingsLevel.gameSessionNames[_completedGameSessionCount];
+            _currentGameSessionName = gameSettingsLevel.gameSessions[_completedGameSessionCount].gameSessionName;
             
             SceneManager.sceneLoaded += OnNextGameLoaded;
             SceneManager.LoadScene(_currentGameSessionName, LoadSceneMode.Additive);
@@ -185,7 +200,7 @@ namespace Level
 
         #endregion
 
-        #region Game Failed
+        #region Game Retried
 
         private void ReloadCurrentGame()
         {
@@ -208,6 +223,7 @@ namespace Level
         }
 
         #endregion
+
         public void EndedGameSession(GameStateType type)
         {
             GameSettings gameSettings = GameManager.instance.gameSettings;
@@ -224,9 +240,13 @@ namespace Level
                     case GameStateType.Success:
                     {
                         _completedGameSessionCount++;
-                        if (_completedGameSessionCount >= gameSettingsLevel.gameSessionNames.Count)
+                        if (_completedGameSessionCount >= gameSettingsLevel.gameSessions.Count)
                         {
-                            //Do tell that you finished the level
+                            gameUIManager.TransitionIn(GameStateType.Completed, ()=>
+                            {
+                                DOVirtual.DelayedCall(gameSettings.countDownTime, GameManager.instance.CompletedLevel);
+                                ;
+                            });
                         }
                         else
                         {
@@ -241,7 +261,11 @@ namespace Level
                         _playerHealth--;
                         if (_playerHealth <= 0)
                         {
-                        
+                            gameUIManager.TransitionIn(GameStateType.Failed, () =>
+                            {
+                                DOVirtual.DelayedCall(gameSettings.countDownTime, GameManager.instance.FailedGameLevel);
+                                
+                            });
                         }
                         else
                         {
@@ -256,7 +280,6 @@ namespace Level
             
            
         }
-        
     }
 
     public enum GameStateType

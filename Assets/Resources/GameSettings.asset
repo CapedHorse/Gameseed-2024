@@ -13,27 +13,63 @@ MonoBehaviour:
   m_Name: GameSettings
   m_EditorClassIdentifier: 
   playerHealthEachLevel: 3
-  timeEachPlay: 10
   countDownTime: 3
   delayBeforeRealPlay: 0.75
-  delayWhenShowingState: 2
+  delayWhenShowingState: 1.5
   levelList:
   - levelName: Corn
+    haveTutorial: 1
     tutorialSceneName: Tutorial_1
-    gameSessionNames:
-    - Pull Carrot!
-    - Hit Pumpkin!
-    - Match Picture!
-    - Escape Jar!
-    - Water Plant!
+    haveHeart: 1
+    gameSessions:
+    - gameSessionName: Hit Pumpkin!
+      haveTime: 1
+      playTimer: 10
+    - gameSessionName: Pull Carrot!
+      haveTime: 1
+      playTimer: 10
+    - gameSessionName: Water Plant!
+      haveTime: 1
+      playTimer: 10
   - levelName: Pistachio
+    haveTutorial: 1
     tutorialSceneName: Tutorial_2
-    gameSessionNames:
-    - Match Temperature!
-    - Move Cloud!
-    - Shoot Bugs!
+    haveHeart: 1
+    gameSessions:
+    - gameSessionName: Move Cloud!
+      haveTime: 1
+      playTimer: 10
+    - gameSessionName: Match Temperature!
+      haveTime: 1
+      playTimer: 10
+    - gameSessionName: Fight Bugs!
+      haveTime: 1
+      playTimer: 10
   - levelName: Bean Sprout
+    haveTutorial: 1
     tutorialSceneName: Tutorial_3
-    gameSessionNames:
-    - Align Bamboo!
-    - Bring To Flower!
+    haveHeart: 1
+    gameSessions:
+    - gameSessionName: Open Curtain!
+      haveTime: 1
+      playTimer: 10
+    - gameSessionName: Align Bamboo!
+      haveTime: 1
+      playTimer: 10
+    - gameSessionName: Bring To Flower!
+      haveTime: 1
+      playTimer: 10
+  - levelName: Boss
+    haveTutorial: 0
+    tutorialSceneName: 
+    haveHeart: 0
+    gameSessions:
+    - gameSessionName: Hit Boss!
+      haveTime: 0
+      playTimer: 0
+    - gameSessionName: Survive n Shoot!
+      haveTime: 0
+      playTimer: 0
+    - gameSessionName: Build Fortress!
+      haveTime: 0
+      playTimer: 0

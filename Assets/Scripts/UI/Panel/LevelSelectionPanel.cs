@@ -7,15 +7,16 @@ namespace UI.Panel
 {
     public class LevelSelectionPanel : UIPanel
     {
-        [SerializeField] private PlayerInput levelSelectInput;
+        // [SerializeField] private PlayerInput levelSelectInput;
         [SerializeField] private LevelSelectButton[] levelSelectButtons;
         [SerializeField] private Button[] levelButtons;
 
         private void Start()
         {
-            ToggleLevelInput(false);
+            // ToggleLevelInput(false);
         }
 
+        /*
         public void ToggleLevelInput(bool inputOn)
         {
             if(inputOn)
@@ -23,6 +24,7 @@ namespace UI.Panel
             else
                 levelSelectInput.DeactivateInput();
         }
+        */
 
         public override void ShowPanel()
         {
@@ -50,11 +52,6 @@ namespace UI.Panel
             FinishShowPanel();
         }
 
-        protected override void FinishShowPanel()
-        {
-            base.FinishShowPanel();
-        }
-
         public override void HidePanel()
         {
             base.HidePanel();
@@ -62,9 +59,5 @@ namespace UI.Panel
             FinishHidePanel();
         }
 
-        protected override void FinishHidePanel()
-        {
-            base.FinishHidePanel();
-        }
     }
 }

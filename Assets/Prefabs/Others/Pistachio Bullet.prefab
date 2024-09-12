@@ -182,6 +182,7 @@ GameObject:
   - component: {fileID: 6474152865339752788}
   - component: {fileID: 1949660860220030603}
   - component: {fileID: 6557202221484546793}
+  - component: {fileID: 7044780488226988210}
   m_Layer: 0
   m_Name: Pistachio Bullet
   m_TagString: Untagged
@@ -294,3 +295,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pushingForce: 50
+--- !u!114 &7044780488226988210
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6973459278387682124}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1495a9e64c2e406098bbef1165406715, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

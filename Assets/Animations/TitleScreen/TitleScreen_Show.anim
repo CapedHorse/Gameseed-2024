@@ -1323,7 +1323,7 @@ AnimationClip:
   - time: 1.75
     functionName: PlayClip
     data: 
-    objectReferenceParameter: {fileID: 8300000, guid: 58852c48d257e4f9ea0b8ccc12a63c1a, type: 3}
+    objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
@@ -1331,6 +1331,13 @@ AnimationClip:
     functionName: PlayBGM
     data: 
     objectReferenceParameter: {fileID: 8300000, guid: 897f62c7e0e1f45d981155236f8e91c4, type: 3}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 2.4166667
+    functionName: InvokeEvent
+    data: 
+    objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0

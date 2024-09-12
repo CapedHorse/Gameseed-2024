@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Components.Player_Control;
 using DG.Tweening;
 using UnityEngine;
@@ -55,6 +56,15 @@ namespace Components.Objects.SpecificObjects.BoxSpillingSeeds
                  onSpilledDoneEvent.Invoke();
                  StopTweenBox();
                  _boxSpriteTweener = boxSpriteTweened.DOJump(transform.position, 0.5f, 1, 0.25f);
+            }
+        }
+
+        private void OnDestroy()
+        {
+            if (_boxSpriteTweener != null)
+            {
+                _boxSpriteTweener.Kill();
+                _boxSpriteTweener = null;
             }
         }
     }

@@ -52,17 +52,37 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2749227611752876744, guid: b820992165049b545b45ac132651b6c2, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.35
+      objectReference: {fileID: 0}
+    - target: {fileID: 2749227611752876744, guid: b820992165049b545b45ac132651b6c2, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.35
+      objectReference: {fileID: 0}
+    - target: {fileID: 2749227611752876744, guid: b820992165049b545b45ac132651b6c2, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.35
+      objectReference: {fileID: 0}
+    - target: {fileID: 2749227611752876744, guid: b820992165049b545b45ac132651b6c2, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3366796404978582362, guid: b820992165049b545b45ac132651b6c2, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 28a6c648b6f344645a7faf413c58e9fb, type: 3}
     - target: {fileID: 3366796404978582362, guid: b820992165049b545b45ac132651b6c2, type: 3}
       propertyPath: m_Color.b
-      value: 0.5471698
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3366796404978582362, guid: b820992165049b545b45ac132651b6c2, type: 3}
       propertyPath: m_Color.g
-      value: 0.5471698
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3366796404978582362, guid: b820992165049b545b45ac132651b6c2, type: 3}
       propertyPath: m_Color.r
-      value: 0.5471698
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5126923885782437596, guid: b820992165049b545b45ac132651b6c2, type: 3}
       propertyPath: m_Name
@@ -105,3 +125,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5cd2d0c0a8d0a748ad0134d8adfe6a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  onDestroyedEvent:
+    m_PersistentCalls:
+      m_Calls: []

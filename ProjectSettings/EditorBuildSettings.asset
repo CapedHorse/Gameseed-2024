@@ -18,17 +18,11 @@ EditorBuildSettings:
     path: Assets/Scenes/Minigame Scenes/Level 1/Tutorial_1.unity
     guid: aab1cfc7dccec664fb79cd4839c87d12
   - enabled: 1
-    path: Assets/Scenes/Minigame Scenes/Level 1/Pull Carrot!.unity
-    guid: fff362d3222a3bf4fb76c637c7d21a03
-  - enabled: 1
-    path: Assets/Scenes/Minigame Scenes/Level 1/Match Picture!.unity
-    guid: a3ddd91ecb091094aac35dee448ee0af
-  - enabled: 1
-    path: Assets/Scenes/Minigame Scenes/Level 1/Escape Jar!.unity
-    guid: c9ce37b58cb2d8a4fb905141bb758c38
-  - enabled: 1
     path: Assets/Scenes/Minigame Scenes/Level 1/Hit Pumpkin!.unity
     guid: 47431da29bd821542aea877d490d8bb5
+  - enabled: 1
+    path: Assets/Scenes/Minigame Scenes/Level 1/Pull Carrot!.unity
+    guid: fff362d3222a3bf4fb76c637c7d21a03
   - enabled: 1
     path: Assets/Scenes/Minigame Scenes/Level 1/Water Plant!.unity
     guid: 7df517890aa48954a8ae2529eabc4525
@@ -36,14 +30,20 @@ EditorBuildSettings:
     path: Assets/Scenes/Minigame Scenes/Level 2/Tutorial_2.unity
     guid: 9c720e227b4907a4ba57f7bd69025577
   - enabled: 1
-    path: Assets/Scenes/Minigame Scenes/Level 2/Match Temperature!.unity
-    guid: d925b7b2da9d5c8409a93852d01fd712
-  - enabled: 1
     path: Assets/Scenes/Minigame Scenes/Level 2/Move Cloud!.unity
     guid: b58088355e1e97b4d9f6cd755cd1b9c8
   - enabled: 1
+    path: Assets/Scenes/Minigame Scenes/Level 2/Match Temperature!.unity
+    guid: d925b7b2da9d5c8409a93852d01fd712
+  - enabled: 1
+    path: Assets/Scenes/Minigame Scenes/Level 2/Fight Bugs!.unity
+    guid: f8d6cbb3fddf20a48ac62849bcba3432
+  - enabled: 1
     path: Assets/Scenes/Minigame Scenes/Level 3/Tutorial_3.unity
     guid: 31c06cdafd7e9144d88751b9f75c895c
+  - enabled: 1
+    path: Assets/Scenes/Minigame Scenes/Level 3/Open Curtain!.unity
+    guid: 0fdfff6d5a134d548b163a54a30bbef2
   - enabled: 1
     path: Assets/Scenes/Minigame Scenes/Level 3/Align Bamboo!.unity
     guid: 381a414034b3b6443af88eea56f5138a

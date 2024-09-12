@@ -480,7 +480,14 @@ MonoBehaviour:
   onReleasedEvent:
     m_PersistentCalls:
       m_Calls: []
+  onDraggedDownEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  onDraggedUpEvent:
+    m_PersistentCalls:
+      m_Calls: []
   moveSpeed: 3
+  targetPos: -0.32
 --- !u!1001 &648070188674114837
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -611,6 +618,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c87693dfbabf4d1e955ba50c08c77027, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canMove: 0
+  moveSpeed: 10
+  targetPos: 0
 --- !u!1001 &1244601330428453917
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -942,8 +952,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3958313693479064423, guid: 9a870e2a86325e44cb88b40c1c37062d, type: 3}
       propertyPath: m_Name
-      value: Target Object as Gate
+      value: Gate
       objectReference: {fileID: 0}
+    - target: {fileID: 5893165552811903590, guid: 9a870e2a86325e44cb88b40c1c37062d, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: a721c7f17842e4c2dafd26ea9913d00d, type: 3}
     - target: {fileID: 6336433538125830003, guid: 9a870e2a86325e44cb88b40c1c37062d, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.3
@@ -1253,6 +1267,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c87693dfbabf4d1e955ba50c08c77027, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canMove: 0
+  moveSpeed: 10
+  targetPos: 0
 --- !u!4 &7330524744837612161 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1080542965889121646, guid: b820992165049b545b45ac132651b6c2, type: 3}
@@ -1383,6 +1400,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c87693dfbabf4d1e955ba50c08c77027, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canMove: 0
+  moveSpeed: 10
+  targetPos: 0
 --- !u!4 &7108892575363310982 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1080542965889121646, guid: b820992165049b545b45ac132651b6c2, type: 3}

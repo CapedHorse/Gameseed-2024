@@ -11,7 +11,8 @@ GameObject:
   - component: {fileID: 927838704790221785}
   - component: {fileID: 6565927791222401935}
   - component: {fileID: 8842966338472642417}
-  - component: {fileID: 5759776297411856252}
+  - component: {fileID: 6180605527012575565}
+  - component: {fileID: 440279032370914653}
   m_Layer: 5
   m_Name: Cutscene Panel (1)
   m_TagString: Untagged
@@ -76,19 +77,37 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!111 &5759776297411856252
-Animation:
+--- !u!95 &6180605527012575565
+Animator:
+  serializedVersion: 5
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 474530886001009032}
   m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 7400000, guid: 54344616ca139b74f8a8808c6cb712b0, type: 2}
-  m_Animations:
-  - {fileID: 7400000, guid: 54344616ca139b74f8a8808c6cb712b0, type: 2}
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 7b22e92adaf1f1b47a55ec70aec12a31, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 2
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &440279032370914653
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 474530886001009032}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9e46d0c87011774bbb648c3e581f93d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 6180605527012575565}

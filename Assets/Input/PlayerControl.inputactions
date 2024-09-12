@@ -187,7 +187,7 @@
             "actions": [
                 {
                     "name": "Move",
-                    "type": "Value",
+                    "type": "PassThrough",
                     "id": "8849e400-3c40-4697-8220-df1467f1929a",
                     "expectedControlType": "Vector2",
                     "processors": "",
@@ -210,7 +210,7 @@
                     "id": "97c372ae-400f-4b66-8881-b504cb6da902",
                     "path": "<Gamepad>/leftStick",
                     "interactions": "",
-                    "processors": "StickDeadzone",
+                    "processors": "NormalizeVector2,StickDeadzone",
                     "groups": "Gamepad",
                     "action": "Move",
                     "isComposite": false,
@@ -276,7 +276,7 @@
                     "id": "f5ea3f4c-dca1-4278-a95b-ff1db819ca6a",
                     "path": "<XInputController>/leftStick",
                     "interactions": "",
-                    "processors": "StickDeadzone",
+                    "processors": "NormalizeVector2,StickDeadzone",
                     "groups": "Gamepad",
                     "action": "Move",
                     "isComposite": false,

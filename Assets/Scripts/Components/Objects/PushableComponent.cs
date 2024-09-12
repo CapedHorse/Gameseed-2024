@@ -16,11 +16,16 @@ namespace Components.Objects
         public UnityEvent<float> onPushedValueEvent;
 
         private Tweener currentPushTween;
+
+        private bool _canBePushed = true;
         
         protected override void EnteredCollision(Collision2D other)
         {
             if (other.gameObject.GetComponent<PushingComponent>())
             {
+                if (!_canBePushed)
+                    return;
+                
                 StopPush();
                 
                 //Watch over this ya, masih ga work, masih bisa tembus wall
@@ -28,6 +33,8 @@ namespace Components.Objects
                     other.collider.CompareTag("Wall"))
                 {
                     Debug.Log("Hit border");
+                    _canBePushed = false;
+                    StopPush();
                     return;
                 }
                 

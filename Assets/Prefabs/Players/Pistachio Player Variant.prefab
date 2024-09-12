@@ -55,6 +55,10 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1165661995794232163, guid: c3a20852e1a20764fa2f2946b4634d63, type: 3}
+      propertyPath: m_SortingOrder
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 1256869173096001161, guid: c3a20852e1a20764fa2f2946b4634d63, type: 3}
       propertyPath: m_Name
       value: Pistachio Player Variant

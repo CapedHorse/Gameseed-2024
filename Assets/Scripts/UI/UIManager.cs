@@ -25,6 +25,11 @@ namespace UI
 
         protected virtual void Start()
         {
+            
+        }
+
+        public virtual void InitiatePanel()
+        {
             panelMap = new Dictionary<string, UIPanel>();
             
             foreach (var panel in panels)

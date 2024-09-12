@@ -69,20 +69,5 @@ namespace UI
             onSelectedButton.Invoke(GetCurrentSelectedButton());
         }
 
-        public void ProceedMenu()
-        {
-            mainMenuButtons[currentButtonId].onClick.Invoke();
-        }
-
-        public void HideButtonParent()
-        {
-            gameObject.SetActive(false);
-        }
-
-        public void ShowButtonParent()
-        {
-            gameObject.SetActive(true);
-            SelectButton();
-        }
     }
 }

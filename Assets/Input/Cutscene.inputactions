@@ -11,11 +11,22 @@
                     "id": "8830e2cf-ebca-464d-b376-c6644fd8b967",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": "",
+                    "interactions": "Press",
                     "initialStateCheck": false
                 }
             ],
             "bindings": [
+                {
+                    "name": "",
+                    "id": "91ce8c4c-75e5-45a3-bc5a-03d51b12aafa",
+                    "path": "<Gamepad>/buttonNorth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "Next",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
                 {
                     "name": "",
                     "id": "3cc0bbae-dd95-4845-81c4-902881aa05ef",
@@ -31,17 +42,6 @@
                     "name": "",
                     "id": "2eebd7d7-8c39-4dfb-8171-c72b60d63e39",
                     "path": "<XInputController>/buttonNorth",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Gamepad",
-                    "action": "Next",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "91ce8c4c-75e5-45a3-bc5a-03d51b12aafa",
-                    "path": "<Gamepad>/buttonNorth",
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",

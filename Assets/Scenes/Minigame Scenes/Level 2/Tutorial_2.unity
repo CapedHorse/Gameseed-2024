@@ -130,21 +130,33 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 4563621422565594122, guid: c5f74beec2ead574a972d1b7e81aaefe, type: 3}
-      propertyPath: isForPistachio
+    - target: {fileID: 3842318520043357018, guid: c5f74beec2ead574a972d1b7e81aaefe, type: 3}
+      propertyPath: m_IsTrigger
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 7653023404088636213, guid: c5f74beec2ead574a972d1b7e81aaefe, type: 3}
-      propertyPath: isForPistachio
-      value: 1
+    - target: {fileID: 4016979916660246702, guid: c5f74beec2ead574a972d1b7e81aaefe, type: 3}
+      propertyPath: m_Size.x
+      value: 2.0192327
+      objectReference: {fileID: 0}
+    - target: {fileID: 4016979916660246702, guid: c5f74beec2ead574a972d1b7e81aaefe, type: 3}
+      propertyPath: m_Offset.x
+      value: 0.7325301
+      objectReference: {fileID: 0}
+    - target: {fileID: 6835845615927764485, guid: c5f74beec2ead574a972d1b7e81aaefe, type: 3}
+      propertyPath: m_Size.x
+      value: 1.1866655
+      objectReference: {fileID: 0}
+    - target: {fileID: 6835845615927764485, guid: c5f74beec2ead574a972d1b7e81aaefe, type: 3}
+      propertyPath: m_Offset.x
+      value: -0.2812829
+      objectReference: {fileID: 0}
+    - target: {fileID: 7569472318416633129, guid: c5f74beec2ead574a972d1b7e81aaefe, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -7.5
       objectReference: {fileID: 0}
     - target: {fileID: 7889076538522068197, guid: c5f74beec2ead574a972d1b7e81aaefe, type: 3}
       propertyPath: m_Name
       value: TutorialSession_Pistachio
-      objectReference: {fileID: 0}
-    - target: {fileID: 8262969986197691938, guid: c5f74beec2ead574a972d1b7e81aaefe, type: 3}
-      propertyPath: isForPistachio
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8814887367633403152, guid: c5f74beec2ead574a972d1b7e81aaefe, type: 3}
       propertyPath: m_LocalPosition.x

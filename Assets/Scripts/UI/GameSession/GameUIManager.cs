@@ -30,8 +30,9 @@ namespace UI.GameSession
         
         [SerializeField] private Image transitionBGImage;
         [SerializeField] private Sprite successBG, failedBG;
+        [SerializeField] private Transform healthTransform;
         [SerializeField] private HealthPointUI[] hpUI;
-        [Tooltip("0 is begin, 1 is success, 2 is retrying, 3 is completed, 4 is failed")] [SerializeField] private GameObject[] gameStateTextImage;
+        [Tooltip("0 is begin, 1 is success, 2 is retrying, 3 is failed, 4 is completed")] [SerializeField] private GameObject[] gameStateTextImage;
         [SerializeField] private TextMeshProUGUI gameCountdownText;
         
         [SerializeField] private string startingStr = "Starting In..";
@@ -69,20 +70,40 @@ namespace UI.GameSession
             SetupGameStateUI(gameStateType);
             SetupGameProgress();
             SetupCountdown(gameStateType);
-            SetupTimer();
             
-            inGameTransitionTransform.DOLocalMoveY(1080, 0).SetUpdate(true);
+            
+            inGameTransitionTransform.DOScale(0, 0).SetUpdate(true);
             inGameTransitionTransform.gameObject.SetActive(true);
-            inGameTransitionTransform.DOLocalMoveY(0, transitionDuration).SetUpdate(true).onComplete = () =>
+            inGameTransitionTransform.DOScale(1, transitionDuration).SetUpdate(true).onComplete = () =>
             {
                 SetupPlayerHealth();
+                
+                if (gameStateType == GameStateType.Completed)
+                {
+                    ShowCompletedPanelAndInput();
+                } else if (gameStateType == GameStateType.Failed)
+                {
+                    ShowFailedPanelAndInput();
+                }
+                
                 transitionAction?.Invoke();
             };
         }
 
+        private void ShowCompletedPanelAndInput()
+        {
+            healthTransform.gameObject.SetActive(false);
+            //get current level's completed cutscene, get the sprite, show them here
+        }
+
+        private void ShowFailedPanelAndInput()
+        {
+            //show option to continue or back
+        }
+
         public void TransitionOut(UnityAction transitionAction = null)
         {
-            inGameTransitionTransform.DOLocalMoveY(1080, transitionDuration).SetUpdate(true).onComplete = () =>
+            inGameTransitionTransform.DOScale(0, transitionDuration).SetUpdate(true).onComplete = () =>
             {
                 inGameTransitionTransform.gameObject.SetActive(false);
                 transitionAction?.Invoke();
@@ -117,6 +138,7 @@ namespace UI.GameSession
         {
             //gamestate
             ResetGameStateUI();
+            Debug.Log("The game state type should be "+ gameStateType.ToString());
             gameStateTextImage[(int)gameStateType].SetActive(true);
         }
         
@@ -125,7 +147,7 @@ namespace UI.GameSession
             GameSessionManager gameSessionManager = GameSessionManager.instance;
             currentCompletedGameText.text = (gameSessionManager.CompletedGameSessionCount + 1).ToString();
             maxCompletedGameText.text = GameManager.instance.gameSettings
-                .levelList[gameSessionManager.CurrentLevelId].gameSessionNames.Count.ToString();
+                .levelList[gameSessionManager.CurrentLevelId].gameSessions.Count.ToString();
 
         }
 
@@ -133,6 +155,15 @@ namespace UI.GameSession
         {
             //health
             int currentPlayerHealth = GameSessionManager.instance.PlayerHeath;
+            foreach (var hp in hpUI)
+            {
+                hp.gameObject.SetActive(false);
+            }
+            for (int i = 0; i < currentPlayerHealth; i++)
+            {
+                hpUI[i].gameObject.SetActive(true);
+            }
+            
             if (currentPlayerHealth < hpUI.Length)
             {
                 hpUI[currentPlayerHealth].DecreaseHealth();
@@ -171,12 +202,20 @@ namespace UI.GameSession
             gameCountdownValueText.text = GameManager.instance.gameSettings.countDownTime.ToString();
         }
 
-        private void SetupTimer()
+        public void SetupTimer(float time)
         {
-            timerSlider.maxValue = GameManager.instance.gameSettings.timeEachPlay;
-            timerSlider.value = timerSlider.maxValue;
-            timerIcon.localScale = Vector2.one;
-            timerFill.color = Color.white;
+            if (time == 0)
+            {
+                timerSlider.gameObject.SetActive(false);
+            }
+            else
+            {
+                timerSlider.gameObject.SetActive(true);
+                timerSlider.maxValue = time;
+                timerSlider.value = timerSlider.maxValue;
+                timerIcon.localScale = Vector2.one;
+                timerFill.color = Color.white;
+            }
         }
 
         public void CountdownUI(int countdownValue)
@@ -212,8 +251,8 @@ namespace UI.GameSession
 
         public void KedutTimer()
         {
-            timerBG.DOColor(Color.red, 0.25f).onComplete = () => timerBG.DOColor(Color.white, 0.25f);
-            timerSlider.transform.DOPunchScale(Vector2.one * 0.01f, 0.5f, 1);
+            timerBG.DOColor(Color.red, 0.25f).SetUpdate(true).onComplete = () => timerBG.DOColor(Color.white, 0.25f);
+            timerSlider.transform.DOPunchScale(Vector2.one * 0.01f, 0.5f, 1).SetUpdate(true);
         }
     }
 }

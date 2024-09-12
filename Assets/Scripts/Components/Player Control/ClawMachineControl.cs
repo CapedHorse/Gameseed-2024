@@ -9,6 +9,7 @@ namespace Components.Player_Control
         [SerializeField]
         private ClawComponent clawComponent;
 
+        private bool _stoppedMovement;
         protected override void MainActionInputStarted(InputAction.CallbackContext obj)
         {
             clawComponent.MoveClaw();
@@ -17,6 +18,17 @@ namespace Components.Player_Control
         protected override void MainActionInputCanceled(InputAction.CallbackContext obj)
         {
             clawComponent.StopClaw();
+        }
+
+        protected override void FixedUpdateVirtual()
+        {
+            if(!_stoppedMovement)
+                base.FixedUpdateVirtual();
+        }
+
+        public void SetStopMovement(bool stop)
+        {
+            _stoppedMovement = stop;
         }
     }
 }
