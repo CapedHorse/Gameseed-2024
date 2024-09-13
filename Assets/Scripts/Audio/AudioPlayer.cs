@@ -9,12 +9,14 @@ namespace Audio
         
         public void PlayClip(AudioClip clip)
         {
-            oneShotSource.PlayOneShot(clip);
+            if(clip != null)
+                oneShotSource.PlayOneShot(clip);
         }
 
         public void PlayBGM(AudioClip clip)
         {
-            AudioBGMManager.instance.PlayBGM(clip);
+            if(clip != null)
+                AudioBGMManager.instance.PlayBGM(clip);
         }
     }
 }

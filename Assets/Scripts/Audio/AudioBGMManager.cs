@@ -22,11 +22,15 @@ namespace Audio
 
         public void PlayOneShotBGM(AudioClip clip)
         {
+            if (clip == null)
+                return;
             bgmSource.PlayOneShot(clip);
         }
 
         public void PlayBGM(AudioClip bgmClip)
         {
+            if (bgmClip == null)
+                return;
             bgmSource.clip = bgmClip;
             bgmSource.Play();
         }
