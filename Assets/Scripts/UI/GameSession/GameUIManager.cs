@@ -1,4 +1,5 @@
 ﻿using System;
+using Audio;
 using Core;
 using DG.Tweening;
 using Level;
@@ -41,7 +42,18 @@ namespace UI.GameSession
         [SerializeField] private string failedStr = "Back to Chapters In..";
 
         [SerializeField] private TextMeshProUGUI gameCountdownValueText;
-        
+
+        [Header("Audio")] 
+        [SerializeField] private AudioPlayer sfxPlayerGameUI;
+        [SerializeField] public AudioClip transitionInClip,
+            transitionOutClip,
+            transitionBGM,
+            goodGameClip,
+            badGameClip,
+            healthDecreasedClip,
+            gameNameShownClip,
+            countdownClip;
+
         private void Awake()
         {
             if (instance == null)
@@ -70,10 +82,11 @@ namespace UI.GameSession
             SetupGameStateUI(gameStateType);
             SetupGameProgress();
             SetupCountdown(gameStateType);
-            
+            SetupPlayerHaveHeart(GameSessionManager.instance.haveHeart);
             
             inGameTransitionTransform.DOScale(0, 0).SetUpdate(true);
             inGameTransitionTransform.gameObject.SetActive(true);
+            sfxPlayerGameUI.PlayClip(transitionInClip);
             inGameTransitionTransform.DOScale(1, transitionDuration).SetUpdate(true).onComplete = () =>
             {
                 SetupPlayerHealth();
@@ -86,7 +99,8 @@ namespace UI.GameSession
                     ShowFailedPanelAndInput();
                 }
                 
-                transitionAction?.Invoke();
+                transitionAction?.Invoke(); 
+                sfxPlayerGameUI.PlayBGM(transitionBGM);
             };
         }
 
@@ -103,6 +117,7 @@ namespace UI.GameSession
 
         public void TransitionOut(UnityAction transitionAction = null)
         {
+            sfxPlayerGameUI.PlayClip(transitionOutClip);
             inGameTransitionTransform.DOScale(0, transitionDuration).SetUpdate(true).onComplete = () =>
             {
                 inGameTransitionTransform.gameObject.SetActive(false);
@@ -138,8 +153,17 @@ namespace UI.GameSession
         {
             //gamestate
             ResetGameStateUI();
-            Debug.Log("The game state type should be "+ gameStateType.ToString());
+            
             gameStateTextImage[(int)gameStateType].SetActive(true);
+
+            if (gameStateType == GameStateType.Completed || gameStateType == GameStateType.Success)
+            {
+                sfxPlayerGameUI.PlayClip(goodGameClip);
+            }
+            else if(gameStateType == GameStateType.Failed || gameStateType == GameStateType.Retry )
+            {
+                sfxPlayerGameUI.PlayClip(badGameClip);
+            }
         }
         
         private void SetupGameProgress()
@@ -151,21 +175,32 @@ namespace UI.GameSession
 
         }
 
+        public void SetupPlayerHaveHeart(bool have)
+        {
+            if (have)
+            {
+                foreach (var hp in hpUI)
+                {
+                    hp.gameObject.SetActive(true);
+                }
+            }
+            else
+            {
+                foreach (var hp in hpUI)
+                {
+                    hp.gameObject.SetActive(false);
+                } 
+                hpUI[0].gameObject.SetActive(true);
+            }
+        }
         private void SetupPlayerHealth()
         {
             //health
             int currentPlayerHealth = GameSessionManager.instance.PlayerHeath;
-            foreach (var hp in hpUI)
-            {
-                hp.gameObject.SetActive(false);
-            }
-            for (int i = 0; i < currentPlayerHealth; i++)
-            {
-                hpUI[i].gameObject.SetActive(true);
-            }
             
             if (currentPlayerHealth < hpUI.Length)
             {
+                sfxPlayerGameUI.PlayClip(healthDecreasedClip);
                 hpUI[currentPlayerHealth].DecreaseHealth();
             }
         }
@@ -220,6 +255,7 @@ namespace UI.GameSession
 
         public void CountdownUI(int countdownValue)
         {
+            sfxPlayerGameUI.PlayClip(countdownClip);
             gameCountdownValueText.text = countdownValue.ToString();
             gameCountdownValueText.transform.DOPunchScale(Vector2.one * 0.25f, 0.25f, 1).SetUpdate(true);
             
@@ -238,6 +274,7 @@ namespace UI.GameSession
             gameNameText.text = gameName;
             gameNameText.transform.DOScale(0, 0);
             gameNameText.gameObject.SetActive(true);
+            sfxPlayerGameUI.PlayClip(gameNameShownClip);
             gameNameText.transform.DOScale(1.1f, 0.1f).SetUpdate(true).onComplete = () =>
             {
                 gameNameText.transform.DOScale(1, 0.05f).SetUpdate(true);
@@ -253,6 +290,24 @@ namespace UI.GameSession
         {
             timerBG.DOColor(Color.red, 0.25f).SetUpdate(true).onComplete = () => timerBG.DOColor(Color.white, 0.25f);
             timerSlider.transform.DOPunchScale(Vector2.one * 0.01f, 0.5f, 1).SetUpdate(true);
+        }
+
+        public void ResetKedutTimer()
+        {
+            DOTween.Kill(timerBG);
+            DOTween.Kill(timerSlider.transform);
+            
+            timerBG.color = Color.white;
+            timerSlider.transform.localScale = Vector2.one;
+        }
+
+        private void OnDestroy()
+        {
+            DOTween.Kill(gameCountdownValueText.transform);
+            DOTween.Kill(inGameTransitionTransform);
+            DOTween.Kill(gameNameText.transform);
+            DOTween.Kill(timerBG);
+            DOTween.Kill(timerSlider.transform);
         }
     }
 }

@@ -20,33 +20,9 @@ namespace Audio
         [SerializeField]
         private AudioSource bgmSource;
 
-        [SerializeField] private AudioClip mainMenuClip, levelSelectionClip;
-
-        public void PlayMainMenuMusic()
+        public void PlayOneShotBGM(AudioClip clip)
         {
-            bgmSource.clip = mainMenuClip;
-            bgmSource.Play();
-        }
-
-        public void PlayLevelSelectClip()
-        {
-            bgmSource.clip = levelSelectionClip;
-            bgmSource.Play();
-        }
-        
-        public void PlayTutorialClip(int lvlId)
-        {
-            
-        }
-
-        public void PlayTransitionClip(int lvlId)
-        {
-            
-        }
-
-        public void PlayGameMusicClip(int lvlId, int gameSessionId)
-        {
-            
+            bgmSource.PlayOneShot(clip);
         }
 
         public void PlayBGM(AudioClip bgmClip)

@@ -1,4 +1,6 @@
-﻿using Components.ExtraComponents;
+﻿using System;
+using System.Collections.Generic;
+using Components.ExtraComponents;
 using Lean.Pool;
 using UnityEngine;
 using UnityEngine.Events;
@@ -11,12 +13,12 @@ namespace Components.Player_Control
     {
         [FormerlySerializedAs("bulletPrefab")] [SerializeField] private BulletComponent bulletComponentPrefab;
         [SerializeField] private Transform bulletHose;
-
         [SerializeField] private float bulletCooldown = 1;
 
         public UnityEvent onShootingEvent;
         private float _currentBulletCooldown;
         private bool _hasShotBullet;
+        private List<BulletComponent> bullets;
 
         private void Update()
         {
@@ -38,10 +40,25 @@ namespace Components.Player_Control
                 return;
 
             BulletComponent spawnedBulletComponent = LeanPool.Spawn(bulletComponentPrefab, bulletHose.position, Quaternion.identity);
+            bullets.Add(spawnedBulletComponent);
             spawnedBulletComponent.transform.rotation = bulletHose.rotation;
+            spawnedBulletComponent.SetOwner(this);
             spawnedBulletComponent.Launch(bulletHose.up);
             _hasShotBullet = true;
             onShootingEvent.Invoke();
+        }
+
+        private void OnDestroy()
+        {
+            foreach (var bullet in bullets)
+            {
+                Destroy(bullet.gameObject);
+            }
+        }
+
+        public void UnregisterBullet(BulletComponent bullet)
+        {
+            bullets.Remove(bullet);
         }
     }
 }

@@ -1,4 +1,5 @@
 using System.Collections;
+using Audio;
 using Core;
 using DG.Tweening;
 using UI.GameSession;
@@ -14,6 +15,8 @@ namespace Level
 
         [SerializeField]
         private GameUIManager gameUIManager;
+
+        [SerializeField] private AudioPlayer gameSessionAudioPlayer;
         private GameSession _currentGameSession;
         private string _currentGameSessionName;
         
@@ -28,6 +31,7 @@ namespace Level
 
         public int PlayerHeath => _playerHealth;
         private int _playerHealth;
+        public bool haveHeart;
 
         public bool HaveTime => _haveTime;
         private bool _haveTime;
@@ -35,6 +39,7 @@ namespace Level
         private float _currentPlayTime;
         
         private float _kedutTimerTime;
+        
 
         #region Unity Life Cycle
         private void Awake()
@@ -65,6 +70,7 @@ namespace Level
             gameUIManager.SetTimerValue(_currentPlayTime);
             if (_currentPlayTime <= 0)
             {
+                gameUIManager.ResetKedutTimer();
                 _currentGameSession.TimerRunsOut();
             } 
             else if (_currentPlayTime is > 0 and <= 5f)
@@ -104,8 +110,9 @@ namespace Level
             
             GameSettings gameSettings = GameManager.instance.gameSettings;
             LevelSettings gameSettingsLevel = gameSettings.levelList[_currentGameLevelId];
-            
-            _playerHealth = gameSettingsLevel.haveHeart ? gameSettings.playerHealthEachLevel : 1;
+
+            haveHeart = gameSettingsLevel.haveHeart;
+            _playerHealth = haveHeart ? gameSettings.playerHealthEachLevel : 1;
             _currentGameSessionName = gameSettingsLevel.gameSessions[_completedGameSessionCount].gameSessionName;
             
             GameManager.instance.FreezeTime();
@@ -149,10 +156,10 @@ namespace Level
 
         private void StartingGame()
         {
-            gameUIManager.ShowGameName(_currentGameSessionName);
             GameSessionSettings sessionSettings = GameManager.instance.gameSettings
                 .levelList[_currentGameLevelId].gameSessions[_completedGameSessionCount];
-
+            gameSessionAudioPlayer.PlayBGM(sessionSettings.gameBGM);
+            gameUIManager.ShowGameName(_currentGameSessionName);
             _haveTime = sessionSettings.haveTime;
             _currentPlayTime = _haveTime ? sessionSettings.playTimer: 0;
             gameUIManager.SetupTimer(_currentPlayTime);
@@ -160,8 +167,6 @@ namespace Level
             {
                 gameUIManager.HideGameName();
                 _currentGameSession.StartGame();
-               
-                
                 _startGame = true;
                 GameManager.instance.UnfreezeTime();
             });

@@ -1,3 +1,4 @@
+using Audio;
 using Core;
 using UI;
 using UI.Overlay;
@@ -15,6 +16,8 @@ namespace Tutorial
         [SerializeField] private GameObject endLevelGuideUI;
         [SerializeField] private PlayerInput tutorialPlayerInput;
         [SerializeField] private InputActionReference endTutorialReference;
+        [SerializeField] private AudioPlayer audioPlayer;
+        [SerializeField] private AudioClip tutorialReloadedClip, endTutorialClip;
         [FormerlySerializedAs("inGameFading")] [SerializeField] private InGameFadingTransition inGameFadingTransition;
 
         private TutorialSession _tutorialSession;
@@ -45,6 +48,7 @@ namespace Tutorial
             _tutorialSessionName = GameManager.instance.gameSettings.levelList[_thisLevelId].tutorialSceneName;
             GameManager.instance.FreezeTime();
             SceneManager.sceneLoaded += TutorialSceneLoaded;
+            AudioBGMManager.instance.PlayBGM(GameManager.instance.gameSettings.levelList[_thisLevelId].tutorialBGM);
             SceneManager.LoadScene(_tutorialSessionName, LoadSceneMode.Additive);
 
         }
@@ -82,6 +86,7 @@ namespace Tutorial
         private void EndTutorial(InputAction.CallbackContext obj)
         {
             endTutorialReference.action.started -= EndTutorial;
+            audioPlayer.PlayClip(endTutorialClip);
             GameManager.instance.TutorialEnded(_thisLevelId);
         }
 
@@ -94,6 +99,7 @@ namespace Tutorial
         public void CanEndTutor()
         {
             GameManager.instance.FreezeTime();
+            audioPlayer.PlayClip(tutorialReloadedClip);
             inGameFadingTransition.Fading(() =>
             {
                 endLevelGuideUI.SetActive(true);

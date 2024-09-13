@@ -64,10 +64,10 @@ MonoBehaviour:
     tutorialSceneName: 
     haveHeart: 0
     gameSessions:
-    - gameSessionName: Hit Boss!
+    - gameSessionName: Survive & Hit!
       haveTime: 0
       playTimer: 0
-    - gameSessionName: Survive n Shoot!
+    - gameSessionName: Avoid & Shoot!
       haveTime: 0
       playTimer: 0
     - gameSessionName: Build Fortress!

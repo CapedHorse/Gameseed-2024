@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using Tutorial;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Level
 {
@@ -11,6 +12,7 @@ namespace Level
         public bool haveTutorial;
         public string tutorialSceneName = "Tutorial_1";
         public bool haveHeart = true;
+        public AudioClip tutorialBGM;
         public List<GameSessionSettings> gameSessions;
     }
 
@@ -20,5 +22,6 @@ namespace Level
         public string gameSessionName;
         public bool haveTime = true;
         public float playTimer = 10f;
+        [FormerlySerializedAs("gameClip")] public AudioClip gameBGM;
     }
 }

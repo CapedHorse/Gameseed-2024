@@ -66,5 +66,15 @@ namespace Components.Objects.SpecificObjects.WaterPlant
                 onWateredDownComplete.Invoke();
             }
         }
+
+        private void OnDestroy()
+        {
+            DOTween.Kill(transform);
+
+            foreach (var water in waters)
+            {
+                DOTween.Kill(water.transform);
+            }
+        }
     }
 }
