@@ -48,6 +48,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameUIManager: {fileID: 8071764622443519104}
   gameSessionAudioPlayer: {fileID: 2980058318686801729}
+  goodGameStateClip: {fileID: 8300000, guid: 1983e6dfd936a40838a091c95f47d436, type: 3}
+  badGameStateClip: {fileID: 8300000, guid: c1a5c55b6dadb4cc2b36697012c4a336, type: 3}
   haveHeart: 0
 --- !u!1001 &11978549418088700
 PrefabInstance:
@@ -201,14 +203,6 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3201937201225403472, guid: b5f967f519d9d564d92bf28fc0212be4, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 51.57007
-      objectReference: {fileID: 0}
-    - target: {fileID: 3201937201225403472, guid: b5f967f519d9d564d92bf28fc0212be4, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 5.3169994
-      objectReference: {fileID: 0}
     - target: {fileID: 3347749095263006350, guid: b5f967f519d9d564d92bf28fc0212be4, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -321,13 +315,8 @@ PrefabInstance:
       propertyPath: sfxPlayerGameUI
       value: 
       objectReference: {fileID: 2980058318686801729}
-    - target: {fileID: 8769392032659589458, guid: b5f967f519d9d564d92bf28fc0212be4, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects:
-    - {fileID: 4279301704586732427, guid: b5f967f519d9d564d92bf28fc0212be4, type: 3}
+    m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b5f967f519d9d564d92bf28fc0212be4, type: 3}

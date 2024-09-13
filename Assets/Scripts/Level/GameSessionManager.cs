@@ -17,6 +17,7 @@ namespace Level
         private GameUIManager gameUIManager;
 
         [SerializeField] private AudioPlayer gameSessionAudioPlayer;
+        [SerializeField] private AudioClip goodGameStateClip, badGameStateClip;
         private GameSession _currentGameSession;
         private string _currentGameSessionName;
         
@@ -30,8 +31,8 @@ namespace Level
         private bool _startGame;
 
         public int PlayerHeath => _playerHealth;
-        private int _playerHealth;
-        public bool haveHeart;
+        private int _playerHealth = 3;
+        public bool haveHeart = true;
 
         public bool HaveTime => _haveTime;
         private bool _haveTime;
@@ -234,6 +235,7 @@ namespace Level
             GameSettings gameSettings = GameManager.instance.gameSettings;
             LevelSettings gameSettingsLevel = gameSettings.levelList[_currentGameLevelId];
             GameManager.instance.FreezeTime();
+            gameSessionAudioPlayer.PlayClip(type == GameStateType.Success ? goodGameStateClip : badGameStateClip);
             _startGame = false;
             
             DOVirtual.DelayedCall(GameManager.instance.gameSettings.delayWhenShowingState, () =>

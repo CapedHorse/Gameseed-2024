@@ -22,6 +22,7 @@ namespace UI.GameSession
         [SerializeField] private TextMeshProUGUI currentCompletedGameText;
         [SerializeField] private TextMeshProUGUI maxCompletedGameText;
         [SerializeField] private Slider timerSlider;
+        [SerializeField] Color kedutColor;
         [SerializeField] private Image timerBG;
         [SerializeField] private Image timerFill;
         [SerializeField] private Transform timerIcon;
@@ -35,6 +36,8 @@ namespace UI.GameSession
         [SerializeField] private HealthPointUI[] hpUI;
         [Tooltip("0 is begin, 1 is success, 2 is retrying, 3 is failed, 4 is completed")] [SerializeField] private GameObject[] gameStateTextImage;
         [SerializeField] private TextMeshProUGUI gameCountdownText;
+
+        [SerializeField] GameObject[] charactersMarks;
         
         [SerializeField] private string startingStr = "Starting In..";
         [SerializeField] private string nextGameStr = "Next Start In..";
@@ -83,6 +86,7 @@ namespace UI.GameSession
             SetupGameProgress();
             SetupCountdown(gameStateType);
             SetupPlayerHaveHeart(GameSessionManager.instance.haveHeart);
+            SetupCharacterMark();
             
             inGameTransitionTransform.DOScale(0, 0).SetUpdate(true);
             inGameTransitionTransform.gameObject.SetActive(true);
@@ -205,6 +209,17 @@ namespace UI.GameSession
             }
         }
 
+        private void SetupCharacterMark()
+        {
+            foreach(var charMark in charactersMarks){
+                charMark.SetActive(false);
+            }
+
+            charactersMarks[GameSessionManager.instance.CurrentLevelId].
+            SetActive(true);
+            
+        }
+
         private void SetupCountdown(GameStateType gameStateType)
         {
             gameCountdownText.gameObject.SetActive(true);
@@ -288,7 +303,7 @@ namespace UI.GameSession
 
         public void KedutTimer()
         {
-            timerBG.DOColor(Color.red, 0.25f).SetUpdate(true).onComplete = () => timerBG.DOColor(Color.white, 0.25f);
+            timerBG.DOColor(kedutColor, 0.25f).SetUpdate(true).onComplete = () => timerBG.DOColor(Color.white, 0.25f);
             timerSlider.transform.DOPunchScale(Vector2.one * 0.01f, 0.5f, 1).SetUpdate(true);
         }
 

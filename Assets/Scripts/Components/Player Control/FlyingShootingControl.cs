@@ -18,7 +18,7 @@ namespace Components.Player_Control
         public UnityEvent onShootingEvent;
         private float _currentBulletCooldown;
         private bool _hasShotBullet;
-        private List<BulletComponent> bullets;
+        private List<BulletComponent> bullets = new List<BulletComponent>();
 
         private void Update()
         {

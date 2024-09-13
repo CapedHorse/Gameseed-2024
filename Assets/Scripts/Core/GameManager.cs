@@ -18,6 +18,7 @@ namespace Core
         private FadingManager fadingManager;
         private CutsceneUIManager cutsceneManager;
         [SerializeField] private PlayerInput gameManagerInput;
+        [SerializeField] bool isTest;
         // [SerializeField] private LevelSelectionPanel levelSelectionPanel;
         
         public GameSettings gameSettings;
@@ -51,7 +52,8 @@ namespace Core
                 playerData.levelDatas.Add(newLevel);
             }
             
-            UIManager.instance.InitiatePanel();
+            if(!isTest)
+                UIManager.instance.InitiatePanel();
 
             gameManagerInput.controlsChangedEvent.AddListener(ControlsChanged);
             gameManagerInput.onControlsChanged += ControlsChanged;

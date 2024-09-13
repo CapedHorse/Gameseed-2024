@@ -7,7 +7,7 @@ namespace Level
     public class GameSession : MonoBehaviour
     {
         public UnityEvent onTimerRunsOut, onGameStarted, onGameSuccess, onGameFailed;
-
+        
         virtual public void StartGame()
         {
             onGameStarted.Invoke();

@@ -252,6 +252,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6376296258786612626, guid: 3f4353127f9a5d949a0bb61b28a57dca, type: 3}
+      propertyPath: isTest
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6376296258786612626, guid: 3f4353127f9a5d949a0bb61b28a57dca, type: 3}
+      propertyPath: playerData.levelDatas.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6376296258786612626, guid: 3f4353127f9a5d949a0bb61b28a57dca, type: 3}
+      propertyPath: playerData.levelDatas.Array.data[0].unlocked
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6376296258786612626, guid: 3f4353127f9a5d949a0bb61b28a57dca, type: 3}
+      propertyPath: playerData.levelDatas.Array.data[1].unlocked
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6376296258786612626, guid: 3f4353127f9a5d949a0bb61b28a57dca, type: 3}
+      propertyPath: playerData.levelDatas.Array.data[2].unlocked
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -592,10 +612,6 @@ PrefabInstance:
     - target: {fileID: 7553647442292844967, guid: aaff8b877f404894d9b113181f5ac12a, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8762225840154841518, guid: aaff8b877f404894d9b113181f5ac12a, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 1080
       objectReference: {fileID: 0}
     - target: {fileID: 9035725337043660409, guid: aaff8b877f404894d9b113181f5ac12a, type: 3}
       propertyPath: m_IsActive
