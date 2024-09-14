@@ -190,6 +190,70 @@ PrefabInstance:
       propertyPath: movingSpeed
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 5701454222722669613, guid: 8c5f17c4cc96f9c43893ba204d95c9af, type: 3}
+      propertyPath: onGameFailed.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5701454222722669613, guid: 8c5f17c4cc96f9c43893ba204d95c9af, type: 3}
+      propertyPath: onGameSuccess.m_PersistentCalls.m_Calls.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5701454222722669613, guid: 8c5f17c4cc96f9c43893ba204d95c9af, type: 3}
+      propertyPath: onGameFailed.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5701454222722669613, guid: 8c5f17c4cc96f9c43893ba204d95c9af, type: 3}
+      propertyPath: onGameSuccess.m_PersistentCalls.m_Calls.Array.data[2].m_Mode
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5701454222722669613, guid: 8c5f17c4cc96f9c43893ba204d95c9af, type: 3}
+      propertyPath: onGameFailed.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 260897199}
+    - target: {fileID: 5701454222722669613, guid: 8c5f17c4cc96f9c43893ba204d95c9af, type: 3}
+      propertyPath: onGameSuccess.m_PersistentCalls.m_Calls.Array.data[2].m_Target
+      value: 
+      objectReference: {fileID: 260897198}
+    - target: {fileID: 5701454222722669613, guid: 8c5f17c4cc96f9c43893ba204d95c9af, type: 3}
+      propertyPath: onGameFailed.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5701454222722669613, guid: 8c5f17c4cc96f9c43893ba204d95c9af, type: 3}
+      propertyPath: onGameFailed.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: set_sprite
+      objectReference: {fileID: 0}
+    - target: {fileID: 5701454222722669613, guid: 8c5f17c4cc96f9c43893ba204d95c9af, type: 3}
+      propertyPath: onGameSuccess.m_PersistentCalls.m_Calls.Array.data[2].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5701454222722669613, guid: 8c5f17c4cc96f9c43893ba204d95c9af, type: 3}
+      propertyPath: onGameSuccess.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
+      value: SetActive
+      objectReference: {fileID: 0}
+    - target: {fileID: 5701454222722669613, guid: 8c5f17c4cc96f9c43893ba204d95c9af, type: 3}
+      propertyPath: onGameFailed.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: UnityEngine.SpriteRenderer, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 5701454222722669613, guid: 8c5f17c4cc96f9c43893ba204d95c9af, type: 3}
+      propertyPath: onGameSuccess.m_PersistentCalls.m_Calls.Array.data[2].m_TargetAssemblyTypeName
+      value: UnityEngine.GameObject, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 5701454222722669613, guid: 8c5f17c4cc96f9c43893ba204d95c9af, type: 3}
+      propertyPath: onGameSuccess.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_BoolArgument
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5701454222722669613, guid: 8c5f17c4cc96f9c43893ba204d95c9af, type: 3}
+      propertyPath: onGameFailed.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 21300000, guid: 0c5f41d0f6143d44db964be7c2e2addb, type: 3}
+    - target: {fileID: 5701454222722669613, guid: 8c5f17c4cc96f9c43893ba204d95c9af, type: 3}
+      propertyPath: onGameFailed.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Sprite, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 5701454222722669613, guid: 8c5f17c4cc96f9c43893ba204d95c9af, type: 3}
+      propertyPath: onGameSuccess.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 6018730129132285447, guid: 8c5f17c4cc96f9c43893ba204d95c9af, type: 3}
       propertyPath: m_LocalPosition.x
       value: 7.49
@@ -231,6 +295,16 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8c5f17c4cc96f9c43893ba204d95c9af, type: 3}
+--- !u!1 &260897198 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6571514134859689503, guid: 8c5f17c4cc96f9c43893ba204d95c9af, type: 3}
+  m_PrefabInstance: {fileID: 260897197}
+  m_PrefabAsset: {fileID: 0}
+--- !u!212 &260897199 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 7579676473198228623, guid: 8c5f17c4cc96f9c43893ba204d95c9af, type: 3}
+  m_PrefabInstance: {fileID: 260897197}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

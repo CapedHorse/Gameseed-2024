@@ -11,6 +11,7 @@ namespace Components.Objects
 
         private bool _fromRight;
         private bool _moveToLeft;
+        private bool _moving;
 
         private void Start()
         {
@@ -26,6 +27,9 @@ namespace Components.Objects
         private void FixedUpdate()
         {
             if (_grabbed)
+                return;
+
+            if (!_moving)
                 return;
 
             
@@ -50,6 +54,11 @@ namespace Components.Objects
                     transform.localScale = new Vector2(1, 1);
                 }
             }
+        }
+
+        public void SetCanMoving(bool can)
+        {
+            _moving = can;
         }
     }
 }

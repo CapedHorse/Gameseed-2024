@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using Tutorial;
+using UI;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -12,6 +13,8 @@ namespace Level
         public bool haveTutorial;
         public string tutorialSceneName = "Tutorial_1";
         public bool haveHeart = true;
+        public Sprite levelTutorDescSprite;
+        public Sprite levelTutorControlSprite;
         public AudioClip tutorialBGM;
         public List<GameSessionSettings> gameSessions;
     }

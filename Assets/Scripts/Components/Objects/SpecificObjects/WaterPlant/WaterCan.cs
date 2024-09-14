@@ -9,7 +9,6 @@ namespace Components.Objects.SpecificObjects.WaterPlant
 {
     public class WaterCan : ComponentBase
     {
-        [SerializeField] private Rigidbody2D rb;
         [SerializeField] private float rotateValue = 25f;
         [SerializeField] private GameObject[] waters;
         [SerializeField] private float waterDownInterval = 0.25f;
@@ -24,15 +23,15 @@ namespace Components.Objects.SpecificObjects.WaterPlant
             PlatformingControl platformer = other.gameObject.GetComponent<PlatformingControl>();
             if (platformer)
             {
-                if (platformer.HasJumped)
-                {
+                // if (platformer.HasJumped)
+                // {
                     if (_wateredAlready)
                         return;
                     
                     Vector3 currentEuler = transform.eulerAngles;
                     currentEuler.z -= rotateValue;
                     transform.DORotate(currentEuler, 0.25f);
-                }
+                // }
             }
         }
 

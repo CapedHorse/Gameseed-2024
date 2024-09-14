@@ -90,8 +90,12 @@ namespace UI.GameSession
             
             inGameTransitionTransform.DOScale(0, 0).SetUpdate(true);
             inGameTransitionTransform.gameObject.SetActive(true);
-            sfxPlayerGameUI.PlayClip(transitionInClip);
-            inGameTransitionTransform.DOScale(1, transitionDuration).SetUpdate(true).onComplete = () =>
+            
+            if(gameStateType != GameStateType.Begin)
+                sfxPlayerGameUI.PlayClip(transitionInClip);
+            
+            inGameTransitionTransform.DOScale(1, gameStateType == GameStateType.Begin? 0 :  transitionDuration)
+                .SetUpdate(true).onComplete = () =>
             {
                 SetupPlayerHealth();
                 
@@ -103,7 +107,7 @@ namespace UI.GameSession
                     ShowFailedPanelAndInput();
                 }
                 
-                transitionAction?.Invoke(); 
+                transitionAction?.Invoke();
                 sfxPlayerGameUI.PlayBGM(transitionBGM);
             };
         }
@@ -239,6 +243,7 @@ namespace UI.GameSession
                 case GameStateType.Failed:
                     gameCountdownText.gameObject.SetActive(false);
                     gameCountdownValueText.gameObject.SetActive(false);
+                    // failedOptionButtons.SetActive(true);
                     break;
                 case GameStateType.Completed:
                     gameCountdownText.gameObject.SetActive(false);

@@ -1,11 +1,13 @@
 using Audio;
 using Core;
+using Level;
 using UI;
 using UI.Overlay;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 using UnityEngine.Serialization;
+using UnityEngine.UI;
 
 namespace Tutorial
 {
@@ -18,7 +20,9 @@ namespace Tutorial
         [SerializeField] private InputActionReference endTutorialReference;
         [SerializeField] private AudioPlayer audioPlayer;
         [SerializeField] private AudioClip tutorialReloadedClip, endTutorialClip;
-        [FormerlySerializedAs("inGameFading")] [SerializeField] private InGameFadingTransition inGameFadingTransition;
+        [SerializeField] private InGameFadingTransition inGameFadingTransition;
+        [SerializeField] private Image[] controlGuideImages;
+        [SerializeField] private Image descGuideImage;
 
         private TutorialSession _tutorialSession;
         private string _tutorialSessionName;
@@ -45,10 +49,18 @@ namespace Tutorial
         public void LoadTutorialSession(int levelId)
         {
             _thisLevelId = levelId;
-            _tutorialSessionName = GameManager.instance.gameSettings.levelList[_thisLevelId].tutorialSceneName;
+            LevelSettings gameSettingsLevel = GameManager.instance.gameSettings.levelList[_thisLevelId];
+            _tutorialSessionName = gameSettingsLevel.tutorialSceneName;
+            foreach (var controlGuide in controlGuideImages)
+            {
+                controlGuide.gameObject.SetActive(false);
+            }
+            controlGuideImages[_thisLevelId].gameObject.SetActive(true);
+            // controlGuideImage.sprite = gameSettingsLevel.levelTutorControlSprite;
+            descGuideImage.sprite = gameSettingsLevel.levelTutorDescSprite;
             GameManager.instance.FreezeTime();
             SceneManager.sceneLoaded += TutorialSceneLoaded;
-            AudioBGMManager.instance.PlayBGM(GameManager.instance.gameSettings.levelList[_thisLevelId].tutorialBGM);
+            AudioBGMManager.instance.PlayBGM(gameSettingsLevel.tutorialBGM);
             SceneManager.LoadScene(_tutorialSessionName, LoadSceneMode.Additive);
 
         }

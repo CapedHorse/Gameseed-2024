@@ -134,6 +134,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: -0.95
       objectReference: {fileID: 0}
+    - target: {fileID: 3382474052863750386, guid: 3340b08440989454693d318cb3000fa4, type: 3}
+      propertyPath: isIndependent
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4625174582479356050, guid: 3340b08440989454693d318cb3000fa4, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -174,9 +178,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6337257753671037619, guid: 3340b08440989454693d318cb3000fa4, type: 3}
+      propertyPath: isIndependent
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7247420374118383974, guid: 3340b08440989454693d318cb3000fa4, type: 3}
       propertyPath: m_Name
       value: Align Bamboo!
+      objectReference: {fileID: 0}
+    - target: {fileID: 7568741766795047423, guid: 3340b08440989454693d318cb3000fa4, type: 3}
+      propertyPath: isIndependent
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

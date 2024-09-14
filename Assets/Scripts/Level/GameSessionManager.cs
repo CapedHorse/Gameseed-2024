@@ -235,7 +235,14 @@ namespace Level
             GameSettings gameSettings = GameManager.instance.gameSettings;
             LevelSettings gameSettingsLevel = gameSettings.levelList[_currentGameLevelId];
             GameManager.instance.FreezeTime();
-            gameSessionAudioPlayer.PlayClip(type == GameStateType.Success ? goodGameStateClip : badGameStateClip);
+            if (type == GameStateType.Success || type == GameStateType.Completed)
+            {
+                gameSessionAudioPlayer.PlayClip(goodGameStateClip);
+            } else if (type == GameStateType.Failed || type == GameStateType.Retry)
+            {
+                gameSessionAudioPlayer.PlayClip(badGameStateClip);
+                
+            }
             _startGame = false;
             
             DOVirtual.DelayedCall(GameManager.instance.gameSettings.delayWhenShowingState, () =>
@@ -249,11 +256,13 @@ namespace Level
                         _completedGameSessionCount++;
                         if (_completedGameSessionCount >= gameSettingsLevel.gameSessions.Count)
                         {
-                            gameUIManager.TransitionIn(GameStateType.Completed, ()=>
+                            DOVirtual.DelayedCall(gameSettings.countDownTime/2, GameManager.instance.CompletedLevel);
+                            
+                            /*gameUIManager.TransitionIn(GameStateType.Completed, ()=>
                             {
                                 DOVirtual.DelayedCall(gameSettings.countDownTime, GameManager.instance.CompletedLevel);
                                 ;
-                            });
+                            });*/
                         }
                         else
                         {
@@ -271,7 +280,6 @@ namespace Level
                             gameUIManager.TransitionIn(GameStateType.Failed, () =>
                             {
                                 DOVirtual.DelayedCall(gameSettings.countDownTime, GameManager.instance.FailedGameLevel);
-                                
                             });
                         }
                         else

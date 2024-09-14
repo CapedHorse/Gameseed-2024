@@ -10,6 +10,7 @@ namespace Components.ExtraComponents
     {
         [SerializeField] private Transform clawVine;
         [SerializeField] private Transform clawEdge;
+        [SerializeField] private Transform grabbedTransform;
         [SerializeField] private float clawSpeed = 10;
         private float _vineOriginalScaleY;
         private float _maxClawY;
@@ -104,7 +105,7 @@ namespace Components.ExtraComponents
             {
                 if (grabableComponent.CanBeGrabbed)
                 {
-                    grabableComponent.Grab(this);
+                    grabableComponent.Grab(this, grabbedTransform);
                     _grabbed = grabableComponent;
                 }
                 Retract();

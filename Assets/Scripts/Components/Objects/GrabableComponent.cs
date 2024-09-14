@@ -8,7 +8,7 @@ namespace Components.Objects
     public class GrabableComponent : ComponentBase
     {
         protected bool _grabbed;
-
+        [SerializeField] private bool isIndependent = false;
         public UnityEvent onGrabbedEvent, onReleasedEvent, onDraggedDownEvent, onDraggedUpEvent;
         private ClawComponent _grabber;
         private bool _canBeGrabbed = true;
@@ -39,13 +39,16 @@ namespace Components.Objects
             }
         }
 
-        public void Grab(ClawComponent grabber)
+        public void Grab(ClawComponent grabber, Transform grabbedTransform)
         {
             if (grabber != null)
             {
                 _grabbed = true;
                 _grabber = grabber;
                 transform.SetParent(grabber.transform);
+                if(!isIndependent)
+                    transform.position = grabbedTransform.position;
+                
                 onGrabbedEvent.Invoke();
             }
         }

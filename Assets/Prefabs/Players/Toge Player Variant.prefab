@@ -125,6 +125,37 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   claw: {fileID: 3273369480185491323}
+--- !u!1 &3742707912122653007
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8441529442110354633}
+  m_Layer: 0
+  m_Name: GrabbedTransform
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8441529442110354633
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3742707912122653007}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.664, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2869836647390752533}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4591416972381388793
 GameObject:
   m_ObjectHideFlags: 0
@@ -413,6 +444,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1218538091536469459}
+  - {fileID: 8441529442110354633}
   m_Father: {fileID: 6219755131879277827}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &3273369480185491323
@@ -429,6 +461,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   clawVine: {fileID: 6219755131879277827}
   clawEdge: {fileID: 2869836647390752533}
+  grabbedTransform: {fileID: 8441529442110354633}
   clawSpeed: 5
   onClawLaunchedEvent:
     m_PersistentCalls:

@@ -21,6 +21,7 @@ namespace Components.Objects
                 if (targeter.TargeterID == targetID)
                 {
                     onTargetEnteredEvent.Invoke();
+                    targeter.EnteredTarget();
                     _hasEntered = true;
                 }
             }

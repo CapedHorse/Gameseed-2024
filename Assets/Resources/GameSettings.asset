@@ -21,6 +21,8 @@ MonoBehaviour:
     haveTutorial: 1
     tutorialSceneName: Tutorial_1
     haveHeart: 1
+    levelTutorDescSprite: {fileID: 21300000, guid: dad8ab530d778884d8046556d498e911, type: 3}
+    levelTutorControlSprite: {fileID: 21300000, guid: 303848159bcb266418861e1cf52ba29d, type: 3}
     tutorialBGM: {fileID: 8300000, guid: bb80254bbc1b14b61bfafa2443583aa6, type: 3}
     gameSessions:
     - gameSessionName: Hit Pumpkin!
@@ -39,6 +41,8 @@ MonoBehaviour:
     haveTutorial: 1
     tutorialSceneName: Tutorial_2
     haveHeart: 1
+    levelTutorDescSprite: {fileID: 21300000, guid: 2bd8bdf8ad0431347bcc7478c6d959af, type: 3}
+    levelTutorControlSprite: {fileID: 21300000, guid: 1bcb918d981a4aa478e473996f88633a, type: 3}
     tutorialBGM: {fileID: 8300000, guid: bb80254bbc1b14b61bfafa2443583aa6, type: 3}
     gameSessions:
     - gameSessionName: Move Cloud!
@@ -57,6 +61,8 @@ MonoBehaviour:
     haveTutorial: 1
     tutorialSceneName: Tutorial_3
     haveHeart: 1
+    levelTutorDescSprite: {fileID: 21300000, guid: 59a1ae53f13ea064096c50aaac8a4b99, type: 3}
+    levelTutorControlSprite: {fileID: 21300000, guid: 143d076789345514eb73e0b63e4c62f8, type: 3}
     tutorialBGM: {fileID: 8300000, guid: bb80254bbc1b14b61bfafa2443583aa6, type: 3}
     gameSessions:
     - gameSessionName: Open Curtain!
@@ -75,6 +81,8 @@ MonoBehaviour:
     haveTutorial: 0
     tutorialSceneName: 
     haveHeart: 0
+    levelTutorDescSprite: {fileID: 0}
+    levelTutorControlSprite: {fileID: 0}
     tutorialBGM: {fileID: 0}
     gameSessions:
     - gameSessionName: Survive & Hit!

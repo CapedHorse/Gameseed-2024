@@ -57,7 +57,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Minigame Scenes/Level Boss/Build Fortress!.unity
     guid: 38a1f5069ebae9f4f8cc1d105ff103f8
   - enabled: 1
-    path: Assets/Scenes/Minigame Scenes/Level Boss/Survive n Hit!.unity
+    path: Assets/Scenes/Minigame Scenes/Level Boss/Survive & Hit!.unity
     guid: c0459372320ba6b45bd9ac012564e275
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 25b3c39620c0329449edb9b96b8f50df, type: 2}
