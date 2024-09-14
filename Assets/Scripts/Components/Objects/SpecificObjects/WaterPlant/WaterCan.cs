@@ -32,8 +32,7 @@ namespace Components.Objects.SpecificObjects.WaterPlant
                     transform.DORotate(currentEuler, 0.25f);
 
                     onWaterCanHit.Invoke();
-                }
-
+                
             }
         }
 
