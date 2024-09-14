@@ -1,17 +1,22 @@
 ﻿using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.Serialization;
 
 namespace Components.Objects.SpecificObjects.Boss
 {
     public class BossCommander : MonoBehaviour
     {
-        [SerializeField] private BossAttack atacker;
-        [SerializeField] private BossMeteorDropper meteorDropper;
-        public UnityEvent onStartCommandingEvent;
+        public UnityEvent onStartMainCommandEvent, onStartSecondaryCommandEvent;
 
-        public void StartCommanding()
+        public void StartMainCommand()
         {
-            onStartCommandingEvent.Invoke();
+            onStartMainCommandEvent.Invoke();
         }
+
+        public void StartSecondaryCommand()
+        {
+            onStartSecondaryCommandEvent.Invoke();
+        }
+        
     }
 }

@@ -80,6 +80,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2753775559729354930, guid: f23eb5377fa0195468aeacacd69b7b4a, type: 3}
+      propertyPath: m_GravityScale
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4916235199006336372, guid: f23eb5377fa0195468aeacacd69b7b4a, type: 3}
       propertyPath: m_Points.m_Paths.Array.data[0].Array.size
       value: 8
@@ -157,5 +161,31 @@ PrefabInstance:
     - {fileID: 4901849264420324092, guid: f23eb5377fa0195468aeacacd69b7b4a, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7550187936901869894, guid: f23eb5377fa0195468aeacacd69b7b4a, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2504894144817247474}
   m_SourcePrefab: {fileID: 100100000, guid: f23eb5377fa0195468aeacacd69b7b4a, type: 3}
+--- !u!1 &2968387026036153961 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7550187936901869894, guid: f23eb5377fa0195468aeacacd69b7b4a, type: 3}
+  m_PrefabInstance: {fileID: 4753113626099511087}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2504894144817247474
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2968387026036153961}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5fd1b55f203464681f8025b0358dd46, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  meteorDroppingEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  meteorCollideEvent:
+    m_PersistentCalls:
+      m_Calls: []

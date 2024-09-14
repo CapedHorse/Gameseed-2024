@@ -25,6 +25,7 @@ namespace Level
         public string gameSessionName;
         public bool haveTime = true;
         public float playTimer = 10f;
+        public float delayWhenShowingState = 2f;
         [FormerlySerializedAs("gameClip")] public AudioClip gameBGM;
     }
 }

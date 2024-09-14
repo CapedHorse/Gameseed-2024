@@ -8,7 +8,7 @@ namespace UI
 {
     public class MainMenuUIManager : UIManager
     {
-        [SerializeField] private PlayerInput mainMenuUIInput;
+        // [SerializeField] private PlayerInput mainMenuUIInput;
         
         [Header("Main Menu")]
         [SerializeField] private InputActionReference navigateMenuActionRef; 
@@ -19,14 +19,14 @@ namespace UI
         public MainMenuPanel MainMenuPanel => _mainMenuPanel;
         
 
-        public void ToggleInput(bool on)
+        /*public void ToggleInput(bool on)
         {
             if(on)
                 mainMenuUIInput.ActivateInput();
             else
                 mainMenuUIInput.DeactivateInput();
                 
-        }
+        }*/
 
         #region Main Menu Navigation
 
@@ -39,7 +39,7 @@ namespace UI
             _mainMenuPanel.OnPanelFinishShow.AddListener(MenuPanelFinishShown);
             _mainMenuPanel.ShowPanel();
 
-            mainMenuUIInput.onControlsChanged += ControlsChanged;
+            // mainMenuUIInput.onControlsChanged += ControlsChanged;
         }
         
         public void ControlsChanged(PlayerInput obj)
@@ -50,16 +50,16 @@ namespace UI
         private void MenuPanelStartShown()
         {
             _mainMenuPanel.OnPanelBeginShow.RemoveListener(MenuPanelStartShown);
-            ToggleInput(false);
+            // ToggleInput(false);
         }
 
         private void MenuPanelFinishShown()
         {
             _mainMenuPanel.OnPanelFinishShow.RemoveListener(MenuPanelFinishShown);
-            BindInputMainMenu();
-            mainMenuUIInput.SwitchCurrentActionMap("MainMenu");
-            ToggleInput(true);
-            _mainMenuPanel.thisButtonParent.NavigateButton(false);
+            // BindInputMainMenu();
+            // mainMenuUIInput.SwitchCurrentActionMap("MainMenu");
+            // ToggleInput(true);
+            // _mainMenuPanel.thisButtonParent.NavigateButton(false);
         }
 
         private void BindInputMainMenu()
@@ -93,7 +93,7 @@ namespace UI
         
         public void PlayGame()
         {
-            ToggleInput(false);
+            // ToggleInput(false);
             FindObjectOfType<EventSystem>().SetSelectedGameObject(null);
             GameManager.instance.PlayGame();
         }

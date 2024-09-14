@@ -1,5 +1,7 @@
 ﻿using System;
+using Lean.Pool;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.Serialization;
 
 namespace Components.Objects.SpecificObjects.Boss
@@ -7,12 +9,14 @@ namespace Components.Objects.SpecificObjects.Boss
     public class BossMeteorDropper : MonoBehaviour
     {
         [SerializeField] private Transform meteorDropTarget;
-        [SerializeField] private GameObject meteorPrefab;
-        [SerializeField] private GameObject warningSign;
+        [SerializeField] private BossMeteor meteorPrefab;
+        [SerializeField] private Transform meteorsParent;
+        [FormerlySerializedAs("warningSign")] [SerializeField] private AttackWarningSign attackWarningSign;
         [SerializeField] private int meteorDroppingTimes = 3;
         [SerializeField] private float droppingInterval = 2f;
         [SerializeField] private float warningToDropTime = 1f;
 
+        public UnityEvent runOutOfMeteorsEvent;
         private bool _droppingMeteor;
         private float _currentDroppingWaitTime;
         private bool _isDroppingMeteor;
@@ -26,7 +30,6 @@ namespace Components.Objects.SpecificObjects.Boss
             if (can)
             {
                 _droppingMeteor = true;
-                _currentDroppedMeteorCount = 0;
             }
             else
             {
@@ -49,13 +52,31 @@ namespace Components.Objects.SpecificObjects.Boss
 
         private void DropMeteor()
         {
-            _currentDroppingWaitTime = 0;
+            StartDropping(false);
+            
+            BossMeteor newMeteor = Instantiate(meteorPrefab, meteorsParent);
+            newMeteor.transform.position = new Vector2(meteorDropTarget.position.x, meteorsParent.position.y);
+            attackWarningSign.Warn(meteorDropTarget, warningToDropTime, () =>
+            {
+                newMeteor.DropMeteor(this);
+            });
             
         }
 
         public void DestroyedMeteor(BossMeteor bossMeteor)
         {
-            
+            _currentDroppedMeteorCount++;
+            if (_currentDroppedMeteorCount >= meteorDroppingTimes)
+            {
+                _currentDroppedMeteorCount = 0;
+                StartDropping(false);
+                runOutOfMeteorsEvent.Invoke();
+            }
+            else
+            {
+                _currentDroppingWaitTime = 0;
+                StartDropping(true);
+            }
         }
     }
 }

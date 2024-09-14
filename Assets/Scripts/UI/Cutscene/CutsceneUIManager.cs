@@ -48,7 +48,6 @@ namespace UI.Cutscene
             cutscenePanel.GetChild(0).gameObject.GetComponent<CutscenePanel>().Show();
             
             _currentCutscenePanel = cutscenePanel;
-            nextPanelInputRef.action.started += NextPanelInput;
         }
 
         private void NextPanelInput(InputAction.CallbackContext obj)
@@ -56,10 +55,18 @@ namespace UI.Cutscene
             NextPanel(_currentCutscenePanel);
         }
 
+        public void ProceedNextPanel()
+        {
+            NextPanel(_currentCutscenePanel);
+        }
+
         public void SetCutsceneInputEnabled(bool enabled)
         {
-            if(enabled)
+            if (enabled)
+            {
                 cutscenePlayerInput.ActivateInput();
+                nextPanelInputRef.action.started += NextPanelInput;
+            }
             else
                 cutscenePlayerInput.DeactivateInput();
         }

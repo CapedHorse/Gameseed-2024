@@ -9,24 +9,32 @@ namespace Components.Objects.SpecificObjects.Boss
     {
         public UnityEvent meteorDroppingEvent, meteorCollideEvent;
         
-        
         private BossMeteorDropper _dropperOwner;
 
         public void DropMeteor(BossMeteorDropper meteorDropper)
         {
             _dropperOwner = meteorDropper;
+            gameObject.SetActive(true);
             meteorDroppingEvent.Invoke();
         }
      
         
         protected override void EnteredTrigger(Collider2D other)
         {
-            if (other.CompareTag("Floor") || other.gameObject.GetComponent<HurtComponent>())
+            if (other.CompareTag("Floor"))
             {
-                meteorCollideEvent.Invoke();
-                _dropperOwner.DestroyedMeteor(this);
-                Destroy(gameObject);
+                if (other.gameObject.name == "PlatformFloor")
+                {
+                    return;
+                }
+            } else if(!other.gameObject.GetComponent<HurtComponent>())
+            {
+                return;
             }
+
+            meteorCollideEvent.Invoke();
+            _dropperOwner.DestroyedMeteor(this);
+            Destroy(gameObject);
         }
     }
 }

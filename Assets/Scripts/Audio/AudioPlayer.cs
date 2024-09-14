@@ -18,5 +18,10 @@ namespace Audio
             if(clip != null)
                 AudioBGMManager.instance.PlayBGM(clip);
         }
+
+        public void StopBGM()
+        {
+            AudioBGMManager.instance.StopAnyBGM();
+        }
     }
 }

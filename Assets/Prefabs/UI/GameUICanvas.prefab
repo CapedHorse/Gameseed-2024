@@ -1175,8 +1175,9 @@ MonoBehaviour:
   timerIcon: {fileID: 220564530295988877}
   gameNameText: {fileID: 934933982396095428}
   transitionBGImage: {fileID: 7026855187451117217}
-  successBG: {fileID: 21300000, guid: 3ae06c7f0f5d6af469c3e6affa555c23, type: 3}
-  failedBG: {fileID: 21300000, guid: 634898297e678fd48ab172f36a3ebec3, type: 3}
+  beginBG: {fileID: 21300000, guid: 3ae06c7f0f5d6af469c3e6affa555c23, type: 3}
+  successBG: {fileID: 21300000, guid: 634898297e678fd48ab172f36a3ebec3, type: 3}
+  failedBG: {fileID: 21300000, guid: 4ac835e8d4fed4f13b03fc59926e3600, type: 3}
   healthTransform: {fileID: 2223805248787213916}
   hpUI:
   - {fileID: 5194365981323525477}

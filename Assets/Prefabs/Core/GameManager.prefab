@@ -439,7 +439,7 @@ MonoBehaviour:
       m_Calls: []
   m_ActionEvents: []
   m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: 
+  m_DefaultControlScheme: Keyboard
   m_DefaultActionMap: CutsceneControl
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
@@ -464,50 +464,6 @@ MonoBehaviour:
   outroCutscenePanel: {fileID: 3184624430962691456}
   nextControlGuide: {fileID: 3919145740815835756}
   nextPanelInputRef: {fileID: -7493825663748469437, guid: 25246689cdf5d064cbd39a379a25ae41, type: 3}
---- !u!1 &1579094219063581682
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 3048625364573606945}
-  - component: {fileID: 7351760403123601637}
-  m_Layer: 0
-  m_Name: DeviceChanger
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &3048625364573606945
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1579094219063581682}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 5673186119278678683}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7351760403123601637
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1579094219063581682}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 351754b6be0334e48bed4d3a6f28e53a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &2164803783930443939
 GameObject:
   m_ObjectHideFlags: 0
@@ -835,7 +791,6 @@ Transform:
   - {fileID: 8103675261980129043}
   - {fileID: 7016532275704536687}
   - {fileID: 1921822007950551375}
-  - {fileID: 3048625364573606945}
   - {fileID: 5706028095274198970}
   - {fileID: 7320514323877736282}
   m_Father: {fileID: 0}
@@ -927,6 +882,7 @@ GameObject:
   - component: {fileID: 5375066851344504174}
   - component: {fileID: 344141910059561608}
   - component: {fileID: 7451262161757563987}
+  - component: {fileID: 7318012064836881841}
   m_Layer: 9
   m_Name: NextControlGuide
   m_TagString: Untagged
@@ -991,6 +947,62 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &7318012064836881841
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3919145740815835756}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 0
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 0
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 7451262161757563987}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 727836725488037227}
+        m_TargetAssemblyTypeName: UI.Cutscene.CutsceneUIManager, Assembly-CSharp
+        m_MethodName: ProceedNextPanel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &4239934307944580102
 GameObject:
   m_ObjectHideFlags: 0
@@ -1774,12 +1786,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a36da537f5f24ad09513076f642ecc9e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  useFading: 1
   fadingCG: {fileID: 125531060231930130}
   generalFadingPanel: {fileID: 8497531645128859058}
   fadingMaskTransform: {fileID: 6291785668062701298}
   fadingSpeed: 0.25
   cutoutSpeed: 0.5
+  sfxPlayer: {fileID: 7618525522371684084}
+  fadeInClip: {fileID: 0}
+  fadeOutClip: {fileID: 0}
+  whukInClip: {fileID: 0}
+  whukOutClip: {fileID: 0}
 --- !u!1 &8497531645128859058
 GameObject:
   m_ObjectHideFlags: 0
@@ -4036,6 +4052,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2643969733521440938, guid: 49ecc282b18ce0e409d24bdf9e7791d1, type: 3}
   m_PrefabInstance: {fileID: 7754818286127785744}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &7618525522371684084 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 154484398424556004, guid: 49ecc282b18ce0e409d24bdf9e7791d1, type: 3}
+  m_PrefabInstance: {fileID: 7754818286127785744}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 447ea1416ebd54940a03b0ebffbdd9b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &7837066945050334983
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -18,14 +18,16 @@ namespace Components.Objects.SpecificObjects.Boss
         [SerializeField] private Vector2 maxAttackPointPos;
         [SerializeField] private float speed = 1f;
         [SerializeField] private float vulnerableTime;
+        [SerializeField] private bool customizedVulnerability;
 
-        public UnityEvent attackingEvent, hitEvent, retractingEvent;
+        public UnityEvent attackingEvent, hitEvent, retreatingEvent, doneRetreatingEvent, doneFleeRetreatingEvent;
         
         private Vector2 _initialPos;
         private bool _attacking;
         private bool _retreat;
-        private bool _waitingToBeAttacked;
-        private float _currentWaitingTime;
+        private bool _vulnerable;
+        private float _currentlyVulnerableTime;
+        private bool _isFlee;
 
         private void Start()
         {
@@ -39,41 +41,36 @@ namespace Components.Objects.SpecificObjects.Boss
                 transform.position = Vector3.MoveTowards(transform.position, attackTarget.position, Time.deltaTime * speed);
             }
 
-            if (_waitingToBeAttacked)
+            if (_vulnerable)
             {
-                _currentWaitingTime += Time.deltaTime;
-                if (_currentWaitingTime >= vulnerableTime)
+                _currentlyVulnerableTime += Time.deltaTime;
+                if (_currentlyVulnerableTime >= vulnerableTime)
                 {
                     Retreat();
                 }
             }
-
         }
 
-        private void SetVulnerable(bool on)
+        public void SetVulnerable(bool on)
         {
             if (on)
             {
                 _attacking = false;
-                _waitingToBeAttacked = true;
+                _currentlyVulnerableTime = 0;
+                _vulnerable = true;
                 bossBeakImpact.SetActive(true);
-                attackPoint.transform.position = new Vector2(
+                attackPoint.transform.localPosition = new Vector2(
                     Random.Range(minAttackPointPos.x, maxAttackPointPos.x),
                     Random.Range(minAttackPointPos.y, maxAttackPointPos.y));
                 attackPoint.SetActive(true);
             }
             else
             {
-                _waitingToBeAttacked = false;
+                _vulnerable = false;
                 bossBeakImpact.SetActive(false);
                 attackPoint.SetActive(false);
-                   
             }
         }
-        
-        
-        //Sekali drop dan collide sama floor, auto stop, waiting to be attacked
-        //Dalam waktu tertentu, balik lagi ke atas
 
         public void Attack()
         {
@@ -81,18 +78,36 @@ namespace Components.Objects.SpecificObjects.Boss
             attackingEvent.Invoke();
         }
 
+        public void SetFlee()
+        {
+            _isFlee = true;
+        }
         
-        private void Retreat()
+        public void Retreat()
         {
             SetVulnerable(false);
-            transform.DOMove(_initialPos, 4);
+            retreatingEvent.Invoke();
+            transform.DOMove(_initialPos, 1).SetUpdate(true).onComplete = () =>
+            {
+                if(_isFlee)
+                    doneFleeRetreatingEvent.Invoke();
+                else
+                    doneRetreatingEvent.Invoke();
+            };
         }
 
-        protected override void EnteredCollision(Collision2D other)
+        protected override void EnteredTrigger(Collider2D other)
         {
-            if (other.collider.CompareTag("Floor") || other.gameObject.GetComponent<HurtComponent>())
+            if (other.CompareTag("Floor"))
             {
+                if (_vulnerable)
+                    return;
+                
                 hitEvent.Invoke();
+                
+                if(customizedVulnerability)
+                    return;
+                
                 SetVulnerable(true);
             }
         }

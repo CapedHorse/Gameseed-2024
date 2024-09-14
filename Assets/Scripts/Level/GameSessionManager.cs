@@ -161,9 +161,6 @@ namespace Level
                 .levelList[_currentGameLevelId].gameSessions[_completedGameSessionCount];
             gameSessionAudioPlayer.PlayBGM(sessionSettings.gameBGM);
             gameUIManager.ShowGameName(_currentGameSessionName);
-            _haveTime = sessionSettings.haveTime;
-            _currentPlayTime = _haveTime ? sessionSettings.playTimer: 0;
-            gameUIManager.SetupTimer(_currentPlayTime);
             DOVirtual.DelayedCall(GameManager.instance.gameSettings.delayBeforeRealPlay+ 0.25f, () =>
             {
                 gameUIManager.HideGameName();
@@ -245,7 +242,7 @@ namespace Level
             }
             _startGame = false;
             
-            DOVirtual.DelayedCall(GameManager.instance.gameSettings.delayWhenShowingState, () =>
+            DOVirtual.DelayedCall(gameSettingsLevel.gameSessions[_completedGameSessionCount].delayWhenShowingState, () =>
             {
                 switch (type)
                 {
@@ -256,7 +253,7 @@ namespace Level
                         _completedGameSessionCount++;
                         if (_completedGameSessionCount >= gameSettingsLevel.gameSessions.Count)
                         {
-                            DOVirtual.DelayedCall(gameSettings.countDownTime/2, GameManager.instance.CompletedLevel);
+                            DOVirtual.DelayedCall(gameSettings.countDownTime* 0.75f, GameManager.instance.CompletedLevel);
                             
                             /*gameUIManager.TransitionIn(GameStateType.Completed, ()=>
                             {
@@ -266,6 +263,7 @@ namespace Level
                         }
                         else
                         {
+                            SetupTime(gameSettingsLevel);
                             gameUIManager.TransitionIn(GameStateType.Success, LoadNextGame);
                         }
                         
@@ -277,6 +275,7 @@ namespace Level
                         _playerHealth--;
                         if (_playerHealth <= 0)
                         {
+                            //Should show buttons instead
                             gameUIManager.TransitionIn(GameStateType.Failed, () =>
                             {
                                 DOVirtual.DelayedCall(gameSettings.countDownTime, GameManager.instance.FailedGameLevel);
@@ -284,6 +283,7 @@ namespace Level
                         }
                         else
                         {
+                            SetupTime(gameSettingsLevel);
                             gameUIManager.TransitionIn(GameStateType.Retry, ReloadCurrentGame);
                         }
                     }
@@ -292,8 +292,12 @@ namespace Level
                         break;
                 }
             });
-            
-           
+        }
+
+        private void SetupTime(LevelSettings gameSettingsLevel)
+        {
+            _haveTime = gameSettingsLevel.gameSessions[_completedGameSessionCount].haveTime;
+            _currentPlayTime = _haveTime ? gameSettingsLevel.gameSessions[_completedGameSessionCount].playTimer : 0;
         }
     }
 

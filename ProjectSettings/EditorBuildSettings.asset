@@ -54,7 +54,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Minigame Scenes/Level Boss/Avoid & Shoot!.unity
     guid: 9626c09d239b07641a6b9611dd6c1410
   - enabled: 1
-    path: Assets/Scenes/Minigame Scenes/Level Boss/Build Fortress!.unity
+    path: Assets/Scenes/Minigame Scenes/Level Boss/Attack With Bees!.unity
     guid: 38a1f5069ebae9f4f8cc1d105ff103f8
   - enabled: 1
     path: Assets/Scenes/Minigame Scenes/Level Boss/Survive & Hit!.unity

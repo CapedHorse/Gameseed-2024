@@ -31,7 +31,7 @@ namespace UI.GameSession
         [Header("Transition")] 
         
         [SerializeField] private Image transitionBGImage;
-        [SerializeField] private Sprite successBG, failedBG;
+        [SerializeField] private Sprite beginBG, successBG, failedBG;
         [SerializeField] private Transform healthTransform;
         [SerializeField] private HealthPointUI[] hpUI;
         [Tooltip("0 is begin, 1 is success, 2 is retrying, 3 is failed, 4 is completed")] [SerializeField] private GameObject[] gameStateTextImage;
@@ -87,9 +87,18 @@ namespace UI.GameSession
             SetupCountdown(gameStateType);
             SetupPlayerHaveHeart(GameSessionManager.instance.haveHeart);
             SetupCharacterMark();
-            
+
             inGameTransitionTransform.DOScale(0, 0).SetUpdate(true);
             inGameTransitionTransform.gameObject.SetActive(true);
+            
+            if (gameStateType == GameStateType.Completed)
+            {
+                ShowCompletedPanelAndInput();
+            } 
+            else if (gameStateType == GameStateType.Failed)
+            {
+                ShowFailedPanelAndInput();
+            }
             
             if(gameStateType != GameStateType.Begin)
                 sfxPlayerGameUI.PlayClip(transitionInClip);
@@ -98,15 +107,7 @@ namespace UI.GameSession
                 .SetUpdate(true).onComplete = () =>
             {
                 SetupPlayerHealth();
-                
-                if (gameStateType == GameStateType.Completed)
-                {
-                    ShowCompletedPanelAndInput();
-                } else if (gameStateType == GameStateType.Failed)
-                {
-                    ShowFailedPanelAndInput();
-                }
-                
+                SetupTimer(GameSessionManager.instance.CurrentPlayTime);
                 transitionAction?.Invoke();
                 sfxPlayerGameUI.PlayBGM(transitionBGM);
             };
@@ -138,7 +139,7 @@ namespace UI.GameSession
             switch (gameStateType)
             {
                 case GameStateType.Begin:
-                    
+                    transitionBGImage.sprite = beginBG;
                     break;
                 case GameStateType.Success:
                     transitionBGImage.sprite = successBG;
@@ -200,6 +201,8 @@ namespace UI.GameSession
                 } 
                 hpUI[0].gameObject.SetActive(true);
             }
+            
+            LayoutRebuilder.ForceRebuildLayoutImmediate(healthTransform.GetComponent<RectTransform>());
         }
         private void SetupPlayerHealth()
         {
@@ -218,9 +221,16 @@ namespace UI.GameSession
             foreach(var charMark in charactersMarks){
                 charMark.SetActive(false);
             }
-
-            charactersMarks[GameSessionManager.instance.CurrentLevelId].
-            SetActive(true);
+            
+            if (GameSessionManager.instance.CurrentLevelId >= charactersMarks.Length)
+            {
+                
+                charactersMarks[GameSessionManager.instance.CompletedGameSessionCount].SetActive(true);
+            }
+            else
+            {
+                charactersMarks[GameSessionManager.instance.CurrentLevelId].SetActive(true);
+            }
             
         }
 
@@ -283,7 +293,7 @@ namespace UI.GameSession
         
         public void HideGameName()
         {
-            gameNameText.transform.DOScale(0, 0.25f).SetUpdate(true).onComplete = () =>
+            gameNameText.transform.DOScale(0, 0.15f).SetUpdate(true).onComplete = () =>
             {
                 gameNameText.gameObject.SetActive(false);
             };
@@ -292,7 +302,7 @@ namespace UI.GameSession
         public void ShowGameName(string gameName)
         {
             gameNameText.text = gameName;
-            gameNameText.transform.DOScale(0, 0);
+            gameNameText.transform.DOScale(0, 0).SetUpdate(true);
             gameNameText.gameObject.SetActive(true);
             sfxPlayerGameUI.PlayClip(gameNameShownClip);
             gameNameText.transform.DOScale(1.1f, 0.1f).SetUpdate(true).onComplete = () =>
@@ -308,7 +318,7 @@ namespace UI.GameSession
 
         public void KedutTimer()
         {
-            timerBG.DOColor(kedutColor, 0.25f).SetUpdate(true).onComplete = () => timerBG.DOColor(Color.white, 0.25f);
+            timerBG.DOColor(kedutColor, 0.25f).SetUpdate(true).onComplete = () => timerBG.DOColor(Color.white, 0.25f).SetUpdate(true);
             timerSlider.transform.DOPunchScale(Vector2.one * 0.01f, 0.5f, 1).SetUpdate(true);
         }
 

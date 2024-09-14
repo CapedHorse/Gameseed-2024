@@ -302,6 +302,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetID: TargetTest1
+  canBeEnteredMultipleTimes: 0
   onTargetEnteredEvent:
     m_PersistentCalls:
       m_Calls: []
