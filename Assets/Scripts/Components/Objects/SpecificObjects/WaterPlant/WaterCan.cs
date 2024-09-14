@@ -14,7 +14,7 @@ namespace Components.Objects.SpecificObjects.WaterPlant
         [SerializeField] private GameObject[] waters;
         [SerializeField] private float waterDownInterval = 0.25f;
         
-        public UnityEvent onWateredDownEvent, onWateredDownComplete;
+        public UnityEvent onWaterCanHit, onWateredDownEvent, onWateredDownComplete;
        
         private int _waterCount;
         private bool _wateredAlready;
@@ -32,6 +32,7 @@ namespace Components.Objects.SpecificObjects.WaterPlant
                     Vector3 currentEuler = transform.eulerAngles;
                     currentEuler.z -= rotateValue;
                     transform.DORotate(currentEuler, 0.25f);
+                    onWaterCanHit.Invoke();
                 }
             }
         }
