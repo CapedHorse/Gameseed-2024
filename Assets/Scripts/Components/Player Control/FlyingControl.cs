@@ -31,6 +31,9 @@ namespace Components.Player_Control
 
         protected override void MovingInputPerformed(InputAction.CallbackContext obj)
         {
+            if (!playerInput.inputIsActive)
+                return;
+            
             Vector2 dir = Vector2.zero;
             _flyDirection = obj.ReadValue<Vector2>();
             _flyDirection.Normalize();
@@ -67,7 +70,6 @@ namespace Components.Player_Control
         private void StopFly()
         {
             _flyDirection = Vector2.zero;
-            
         }
     }
 }

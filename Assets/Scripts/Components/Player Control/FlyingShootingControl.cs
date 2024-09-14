@@ -36,6 +36,9 @@ namespace Components.Player_Control
 
         protected override void MainActionInputStarted(InputAction.CallbackContext obj)
         {
+            if (!playerInput.inputIsActive)
+                return;
+            
             if (_hasShotBullet)
                 return;
 

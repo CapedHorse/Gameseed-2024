@@ -5,7 +5,7 @@ namespace Components.Player_Control
 {
     public class PlayerControl : MonoBehaviour
     {
-        [SerializeField] private PlayerInput playerInput;
+        [SerializeField] protected PlayerInput playerInput;
         [SerializeField] private InputActionReference movingInputRef;
         [SerializeField] private InputActionReference mainActionInputRef;
         

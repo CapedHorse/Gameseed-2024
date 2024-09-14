@@ -30,6 +30,9 @@ namespace Components.Player_Control
 
         protected override void MovingInputPerformed(InputAction.CallbackContext obj)
         {
+            if (!playerInput.inputIsActive)
+                return;
+            
             _moveDirection = obj.ReadValue<float>();
         }
 

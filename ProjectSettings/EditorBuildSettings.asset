@@ -51,13 +51,13 @@ EditorBuildSettings:
     path: Assets/Scenes/Minigame Scenes/Level 3/Bring To Flower!.unity
     guid: cd9ad40366fd0ee42a55fa327905cd78
   - enabled: 1
-    path: Assets/Scenes/Minigame Scenes/Level Boss/Avoid & Shoot!.unity
+    path: Assets/Scenes/Minigame Scenes/Level Boss/Avoid & Shoot Target!.unity
     guid: 9626c09d239b07641a6b9611dd6c1410
   - enabled: 1
-    path: Assets/Scenes/Minigame Scenes/Level Boss/Attack With Bees!.unity
+    path: Assets/Scenes/Minigame Scenes/Level Boss/Attack Using Bees!.unity
     guid: 38a1f5069ebae9f4f8cc1d105ff103f8
   - enabled: 1
-    path: Assets/Scenes/Minigame Scenes/Level Boss/Survive & Hit!.unity
+    path: Assets/Scenes/Minigame Scenes/Level Boss/Avoid & Hit Target!.unity
     guid: c0459372320ba6b45bd9ac012564e275
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 25b3c39620c0329449edb9b96b8f50df, type: 2}

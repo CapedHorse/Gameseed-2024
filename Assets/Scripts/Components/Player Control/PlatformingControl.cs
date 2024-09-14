@@ -19,13 +19,15 @@ namespace Components.Player_Control
         protected override void FixedUpdateVirtual()
         {
             base.FixedUpdateVirtual();
-
             
-                _hasJumped = !Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundLayerMask);
+            _hasJumped = !Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundLayerMask);
         }
 
         protected override void MainActionInputStarted(InputAction.CallbackContext obj)
         {
+            if (!playerInput.inputIsActive)
+                return;
+            
             if (_hasJumped)
                 return;
 

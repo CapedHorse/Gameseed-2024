@@ -552,16 +552,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 3880141084396095138}
-        m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
-        m_MethodName: SetTrigger
-        m_Mode: 5
+      - m_Target: {fileID: 8901420362944448931}
+        m_TargetAssemblyTypeName: Components.Objects.SpecificObjects.Boss.BossAttack,
+          Assembly-CSharp
+        m_MethodName: SetFlee
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: Flee
+          m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!1 &8366981601372159726
@@ -626,6 +627,10 @@ PrefabInstance:
       propertyPath: meteorDropTarget
       value: 
       objectReference: {fileID: 8299804916191989714}
+    - target: {fileID: 2457708221191618217, guid: b42c7b05b27bfbd48bdeb3e9d017be2f, type: 3}
+      propertyPath: attackWarningSign
+      value: 
+      objectReference: {fileID: 579260107214229507}
     - target: {fileID: 5200041365419531672, guid: b42c7b05b27bfbd48bdeb3e9d017be2f, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -787,6 +792,10 @@ PrefabInstance:
       value: BossAttacker
       objectReference: {fileID: 0}
     - target: {fileID: 2595599280916578128, guid: 7d78df25e94416e439eac2a0c01544cd, type: 3}
+      propertyPath: canBeEnteredMultipleTimes
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2595599280916578128, guid: 7d78df25e94416e439eac2a0c01544cd, type: 3}
       propertyPath: onTargetEnteredEvent.m_PersistentCalls.m_Calls.Array.size
       value: 3
       objectReference: {fileID: 0}
@@ -871,9 +880,41 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 4852322711276410447}
     - target: {fileID: 7622147427610132531, guid: 7d78df25e94416e439eac2a0c01544cd, type: 3}
+      propertyPath: doneFleeRetreatingEvent.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7622147427610132531, guid: 7d78df25e94416e439eac2a0c01544cd, type: 3}
       propertyPath: doneRetreatingEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 3880141084396095138}
+    - target: {fileID: 7622147427610132531, guid: 7d78df25e94416e439eac2a0c01544cd, type: 3}
+      propertyPath: doneFleeRetreatingEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7622147427610132531, guid: 7d78df25e94416e439eac2a0c01544cd, type: 3}
+      propertyPath: doneFleeRetreatingEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 3880141084396095138}
+    - target: {fileID: 7622147427610132531, guid: 7d78df25e94416e439eac2a0c01544cd, type: 3}
+      propertyPath: doneFleeRetreatingEvent.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7622147427610132531, guid: 7d78df25e94416e439eac2a0c01544cd, type: 3}
+      propertyPath: doneFleeRetreatingEvent.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SetTrigger
+      objectReference: {fileID: 0}
+    - target: {fileID: 7622147427610132531, guid: 7d78df25e94416e439eac2a0c01544cd, type: 3}
+      propertyPath: doneFleeRetreatingEvent.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: UnityEngine.Animator, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 7622147427610132531, guid: 7d78df25e94416e439eac2a0c01544cd, type: 3}
+      propertyPath: doneFleeRetreatingEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: Flee
+      objectReference: {fileID: 0}
+    - target: {fileID: 7622147427610132531, guid: 7d78df25e94416e439eac2a0c01544cd, type: 3}
+      propertyPath: doneFleeRetreatingEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1100,6 +1141,10 @@ PrefabInstance:
     - target: {fileID: 7476278712970311581, guid: d7322d973fc2db24dbd5fd35ce8942d6, type: 3}
       propertyPath: m_Constraints
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7476278712970311581, guid: d7322d973fc2db24dbd5fd35ce8942d6, type: 3}
+      propertyPath: m_GravityScale
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 418705526855141979, guid: d7322d973fc2db24dbd5fd35ce8942d6, type: 3}

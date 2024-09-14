@@ -1,5 +1,6 @@
 ﻿using System;
 using UnityEngine;
+using UnityEngine.Events;
 using Random = UnityEngine.Random;
 
 namespace Components.Objects.SpecificObjects.Boss
@@ -23,7 +24,7 @@ namespace Components.Objects.SpecificObjects.Boss
         }
         private void Update()
         {
-            if (_canFight)
+            if (!_canFight)
                 return;
 
             _currentAttackTime += Time.deltaTime;
@@ -35,22 +36,26 @@ namespace Components.Objects.SpecificObjects.Boss
 
         private void LaunchAttack()
         {
+            _currentAttackTime = 0;
+            
             CanStartFight(false);
             
+            _currentAttackCount++;
+            
+            bool isVulnerable = false;
             int randomAttackerId = Random.Range(0, bossAttackers.Length);
             
-            _currentAttackCount++;
             if (_currentAttackCount >= attackCountForVulnerable)
             {
-                
+                _currentAttackCount = 0;
+                isVulnerable = true;
             }
             
+            bossAttackers[randomAttackerId].SetTarget(attackedTarget.localPosition);
             bossAttackWarningSign[randomAttackerId].Warn(attackedTarget, delayBeforeAttack, () =>
             {
-                
+                bossAttackers[randomAttackerId].Attack(isVulnerable);
             });
-            
-            
         }
     }
 }

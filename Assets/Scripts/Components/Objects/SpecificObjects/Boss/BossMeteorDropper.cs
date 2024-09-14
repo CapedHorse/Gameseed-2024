@@ -53,7 +53,7 @@ namespace Components.Objects.SpecificObjects.Boss
         private void DropMeteor()
         {
             StartDropping(false);
-            
+            _currentDroppingWaitTime = 0;
             BossMeteor newMeteor = Instantiate(meteorPrefab, meteorsParent);
             newMeteor.transform.position = new Vector2(meteorDropTarget.position.x, meteorsParent.position.y);
             attackWarningSign.Warn(meteorDropTarget, warningToDropTime, () =>
@@ -65,6 +65,7 @@ namespace Components.Objects.SpecificObjects.Boss
 
         public void DestroyedMeteor(BossMeteor bossMeteor)
         {
+            
             _currentDroppedMeteorCount++;
             if (_currentDroppedMeteorCount >= meteorDroppingTimes)
             {
@@ -74,7 +75,6 @@ namespace Components.Objects.SpecificObjects.Boss
             }
             else
             {
-                _currentDroppingWaitTime = 0;
                 StartDropping(true);
             }
         }

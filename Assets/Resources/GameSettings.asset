@@ -93,18 +93,18 @@ MonoBehaviour:
     levelTutorControlSprite: {fileID: 0}
     tutorialBGM: {fileID: 0}
     gameSessions:
-    - gameSessionName: Survive & Hit!
+    - gameSessionName: Avoid & Hit Target!
       haveTime: 0
       playTimer: 0
       delayWhenShowingState: 4
       gameBGM: {fileID: 8300000, guid: 52d41c62b3407c04ca13ab12696b2ab0, type: 3}
-    - gameSessionName: Avoid & Shoot!
+    - gameSessionName: Avoid & Shoot Target!
       haveTime: 0
       playTimer: 0
-      delayWhenShowingState: 2
+      delayWhenShowingState: 4
       gameBGM: {fileID: 8300000, guid: 52d41c62b3407c04ca13ab12696b2ab0, type: 3}
-    - gameSessionName: Attack With Bees!
+    - gameSessionName: Attack Using Bees!
       haveTime: 0
       playTimer: 0
-      delayWhenShowingState: 2
+      delayWhenShowingState: 4
       gameBGM: {fileID: 8300000, guid: 52d41c62b3407c04ca13ab12696b2ab0, type: 3}
