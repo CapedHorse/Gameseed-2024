@@ -135,6 +135,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 24034753378530270, guid: 292d34b202a832e4d865647731b6c34a, type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 97117227598052891, guid: 292d34b202a832e4d865647731b6c34a, type: 3}
       propertyPath: onWaterCanHit.m_PersistentCalls.m_Calls.Array.size
       value: 1
@@ -199,12 +203,20 @@ PrefabInstance:
       propertyPath: onWateredDownEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.AudioClip, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 3377741454472187993, guid: 292d34b202a832e4d865647731b6c34a, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3530649321979964337, guid: 292d34b202a832e4d865647731b6c34a, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3763087080089421160, guid: 292d34b202a832e4d865647731b6c34a, type: 3}
       propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4053262837165189402, guid: 292d34b202a832e4d865647731b6c34a, type: 3}
+      propertyPath: m_SortingOrder
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4625174582479356050, guid: 292d34b202a832e4d865647731b6c34a, type: 3}
@@ -318,6 +330,10 @@ PrefabInstance:
     - target: {fileID: 5195733494576432641, guid: 292d34b202a832e4d865647731b6c34a, type: 3}
       propertyPath: onGameSuccess.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.AudioClip, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 6373283596853660728, guid: 292d34b202a832e4d865647731b6c34a, type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7247420374118383974, guid: 292d34b202a832e4d865647731b6c34a, type: 3}
       propertyPath: m_Name
