@@ -432,7 +432,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &117595317
 RectTransform:
   m_ObjectHideFlags: 0
@@ -865,9 +865,9 @@ AudioSource:
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 128
+  Priority: 0
   DopplerLevel: 1
-  MinDistance: 1
+  MinDistance: 21.999878
   MaxDistance: 500
   Pan2D: 0
   rolloffMode: 0
@@ -933,7 +933,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 1
+      value: 0
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -1191,7 +1191,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6588479582991391307, guid: 3f4353127f9a5d949a0bb61b28a57dca, type: 3}
       propertyPath: m_Volume
-      value: 0.2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6588479582991391307, guid: 3f4353127f9a5d949a0bb61b28a57dca, type: 3}
       propertyPath: m_Enabled

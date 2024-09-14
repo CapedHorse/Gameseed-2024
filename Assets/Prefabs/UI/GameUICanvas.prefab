@@ -1202,8 +1202,8 @@ MonoBehaviour:
   transitionInClip: {fileID: 8300000, guid: 8af130fb563a44e83a09781fc262bda9, type: 3}
   transitionOutClip: {fileID: 8300000, guid: 93916143b04ad47c1b27045be84790dc, type: 3}
   transitionBGM: {fileID: 8300000, guid: 413d737c63569432ab2c81554748a2c6, type: 3}
-  goodGameClip: {fileID: 8300000, guid: bf19beea464ce41a8991db9fa1392b5b, type: 3}
-  badGameClip: {fileID: 8300000, guid: da15abad63fa141009138ed8bc2009f6, type: 3}
+  goodGameClip: {fileID: 0}
+  badGameClip: {fileID: 0}
   healthDecreasedClip: {fileID: 8300000, guid: e34166a7c8b474664b0b7816d5c127fb, type: 3}
   gameNameShownClip: {fileID: 8300000, guid: 521c807c2a67147bf8997c06825881e0, type: 3}
   countdownClip: {fileID: 8300000, guid: 9401e880e53fb4895b0d1210bd8c3d30, type: 3}
