@@ -48,7 +48,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameUIManager: {fileID: 8071764622443519104}
   gameSessionAudioPlayer: {fileID: 2980058318686801729}
-  goodGameStateClip: {fileID: 8300000, guid: 1983e6dfd936a40838a091c95f47d436, type: 3}
+  goodGameStateClip: {fileID: 8300000, guid: 016b87d9940764c76b1ded4332cb7bda, type: 3}
   badGameStateClip: {fileID: 8300000, guid: c1a5c55b6dadb4cc2b36697012c4a336, type: 3}
   haveHeart: 0
 --- !u!1001 &11978549418088700

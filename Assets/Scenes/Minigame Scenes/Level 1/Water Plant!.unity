@@ -203,6 +203,30 @@ PrefabInstance:
       propertyPath: onWateredDownEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.AudioClip, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 1174934125489496104, guid: 292d34b202a832e4d865647731b6c34a, type: 3}
+      propertyPath: m_Color.b
+      value: 0.87058824
+      objectReference: {fileID: 0}
+    - target: {fileID: 1174934125489496104, guid: 292d34b202a832e4d865647731b6c34a, type: 3}
+      propertyPath: m_Color.g
+      value: 0.64705884
+      objectReference: {fileID: 0}
+    - target: {fileID: 1174934125489496104, guid: 292d34b202a832e4d865647731b6c34a, type: 3}
+      propertyPath: m_Color.r
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2828222276811157135, guid: 292d34b202a832e4d865647731b6c34a, type: 3}
+      propertyPath: m_Color.b
+      value: 0.87058824
+      objectReference: {fileID: 0}
+    - target: {fileID: 2828222276811157135, guid: 292d34b202a832e4d865647731b6c34a, type: 3}
+      propertyPath: m_Color.g
+      value: 0.64705884
+      objectReference: {fileID: 0}
+    - target: {fileID: 2828222276811157135, guid: 292d34b202a832e4d865647731b6c34a, type: 3}
+      propertyPath: m_Color.r
+      value: 0.4
+      objectReference: {fileID: 0}
     - target: {fileID: 3377741454472187993, guid: 292d34b202a832e4d865647731b6c34a, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -338,6 +362,18 @@ PrefabInstance:
     - target: {fileID: 7247420374118383974, guid: 292d34b202a832e4d865647731b6c34a, type: 3}
       propertyPath: m_Name
       value: Water Plant!
+      objectReference: {fileID: 0}
+    - target: {fileID: 7317837301319275463, guid: 292d34b202a832e4d865647731b6c34a, type: 3}
+      propertyPath: m_Color.b
+      value: 0.8679245
+      objectReference: {fileID: 0}
+    - target: {fileID: 7317837301319275463, guid: 292d34b202a832e4d865647731b6c34a, type: 3}
+      propertyPath: m_Color.g
+      value: 0.64584535
+      objectReference: {fileID: 0}
+    - target: {fileID: 7317837301319275463, guid: 292d34b202a832e4d865647731b6c34a, type: 3}
+      propertyPath: m_Color.r
+      value: 0.39711642
       objectReference: {fileID: 0}
     - target: {fileID: 7818696445697214769, guid: 292d34b202a832e4d865647731b6c34a, type: 3}
       propertyPath: canBeEnteredMultipleTimes

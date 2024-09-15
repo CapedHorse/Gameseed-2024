@@ -92,6 +92,9 @@ namespace Level
         {
             _currentGameSessionName = testedName;
             _currentGameSession = FindObjectOfType<GameSession>();
+            GameSettings gameSettings = GameManager.instance.gameSettings;
+            LevelSettings gameSettingsLevel = gameSettings.levelList[_currentGameLevelId];
+            SetupTime(gameSettingsLevel);
             gameUIManager.TransitionIn(GameStateType.Begin, () =>
             {
                 FadingManager.instance.FadeOut(false, () =>
