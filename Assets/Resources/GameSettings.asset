@@ -28,7 +28,7 @@ MonoBehaviour:
       haveTime: 1
       playTimer: 10
       delayWhenShowingState: 1
-      gameBGM: {fileID: 8300000, guid: 8364a2375b5fb4e6fa1ff3c912ed0e23, type: 3}
+      gameBGM: {fileID: 8300000, guid: df5a753ebc16346c8bea89f23ed9571a, type: 3}
     - gameSessionName: Pull Carrot!
       haveTime: 1
       playTimer: 10
