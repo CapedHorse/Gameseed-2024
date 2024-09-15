@@ -19,10 +19,7 @@ public class InputTest : MonoBehaviour
         grabIA.action.started += TestGrab;
     }
 
-    private void Update()
-    {
-        Debug.Log("Current control Scheme " + testControlPlayerInput.currentControlScheme);
-    }
+
 
     private void TestGrab(InputAction.CallbackContext obj)
     {

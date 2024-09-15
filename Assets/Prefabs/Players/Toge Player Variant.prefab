@@ -846,6 +846,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerInput: {fileID: 8391753890764847726}
+  playerPauseInputRef: {fileID: -1488475322914252253, guid: 7e30df38041ab064fb414373347f3cec, type: 3}
   movingInputRef: {fileID: 4297928160245493733, guid: 7e30df38041ab064fb414373347f3cec, type: 3}
   mainActionInputRef: {fileID: 3199168532419013817, guid: 7e30df38041ab064fb414373347f3cec, type: 3}
   rb: {fileID: 4038121417000511002}
@@ -874,7 +875,7 @@ Animator:
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 22100000, guid: cc73b3f7318171b4b8fa6fcf5bd2117e, type: 2}
   m_CullingMode: 0
-  m_UpdateMode: 0
+  m_UpdateMode: 2
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0

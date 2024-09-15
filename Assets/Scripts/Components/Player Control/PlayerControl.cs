@@ -1,3 +1,6 @@
+using System;
+using Core;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -6,6 +9,7 @@ namespace Components.Player_Control
     public class PlayerControl : MonoBehaviour
     {
         [SerializeField] protected PlayerInput playerInput;
+        [SerializeField] private InputActionReference playerPauseInputRef;
         [SerializeField] private InputActionReference movingInputRef;
         [SerializeField] private InputActionReference mainActionInputRef;
         
@@ -27,7 +31,28 @@ namespace Components.Player_Control
             mainActionInputRef.action.performed += MainActionInputPerformed;
             mainActionInputRef.action.canceled += MainActionInputCanceled;
 
+            playerPauseInputRef.action.started += OnPaused;
+
             ToggleInput(false);
+        }
+
+        private void OnDestroy()
+        {
+            
+            movingInputRef.action.started -= MovingInputStarted;
+            movingInputRef.action.performed -= MovingInputPerformed;
+            movingInputRef.action.canceled -= MovingInputCanceled;
+            
+            mainActionInputRef.action.started -= MainActionInputStarted;
+            mainActionInputRef.action.performed -= MainActionInputPerformed;
+            mainActionInputRef.action.canceled -= MainActionInputCanceled;
+
+            playerPauseInputRef.action.started -= OnPaused;
+        }
+
+        private void OnPaused(InputAction.CallbackContext obj)
+        {
+            GameManager.instance.TogglePause();
         }
 
         protected virtual void MovingInputStarted(InputAction.CallbackContext obj)

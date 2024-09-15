@@ -77,7 +77,7 @@ public class TestController : MonoBehaviour
 
     private void Fire(InputAction.CallbackContext obj)
     {
-        Debug.Log("Fired");
+        
     }
 
     private void OnDisable()

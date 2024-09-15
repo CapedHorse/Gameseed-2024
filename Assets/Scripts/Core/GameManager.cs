@@ -69,12 +69,12 @@ namespace Core
             if (on)
             {
                 gameManagerInput.ActivateInput();
-                gameplayPauseInputRef.action.started += OnGameplayPauseToggled;
+                // gameplayPauseInputRef.action.started += OnGameplayPauseToggled;
             }
             else
             {
                 gameManagerInput.DeactivateInput();
-                gameplayPauseInputRef.action.started -= OnGameplayPauseToggled;
+                // gameplayPauseInputRef.action.started -= OnGameplayPauseToggled;
             }
         }
 
@@ -134,8 +134,12 @@ namespace Core
 
         public void CompleteOutroCutscene()
         {
-            //Might Show Credits first
-            BackToMainMenu();
+            fadingManager.FadeIn(false, () =>
+            {
+                cutsceneManager.OutroCutscene(false);
+                SceneManager.sceneLoaded += MainMenuSceneLoaded;
+                SceneManager.LoadScene("MainMenuScene");    
+            });
         }
 
         public void BackToMainMenu()
@@ -152,6 +156,7 @@ namespace Core
             SceneManager.sceneLoaded -= MainMenuSceneLoaded;
             fadingManager.FadeOut(false, () =>
             {
+                _currentLevelId = 0;
                 AudioBGMManager.instance.StopAnyBGM();
                 UnfreezeTime();
                 UIManager.instance.InitiatePanel();
@@ -205,7 +210,6 @@ namespace Core
 
         void OpenGameSession(int levelId)
         {
-            Debug.Log("GameSession opening");
             SceneManager.sceneLoaded += GameSceneLoaded;
             _currentLevelId = levelId;
             SceneManager.LoadScene("GameSession");
@@ -215,21 +219,16 @@ namespace Core
         {
             if (arg0.name == "GameSession")
             {
-                Debug.Log("GameSession scene loaded");
                 SceneManager.sceneLoaded -= GameSceneLoaded;
                 GameSessionManager.instance.InitializeGameSession(_currentLevelId);    
             }
-            else
-            {
-                Debug.Log("Actually not GameSession");
-            }
+         
             
         }
 
         public void TutorialEnded(int thisLevelId)
         {
             playerData.levelDatas[thisLevelId].hasPlayed = true;
-            Debug.Log("starting level cuz tutor ended");
             StartLevel(thisLevelId);
         }
 

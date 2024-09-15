@@ -19,7 +19,7 @@ namespace Audio
         }
 
         [SerializeField]
-        private AudioSource bgmSource;
+        private AudioSource bgmSource, nearestSFXSource;
         
         [SerializeField] AudioMixerGroup bgmAudioMixer, sfxAudioMixer;
         public AudioMixerGroup BGMAudiMixer => bgmAudioMixer;
@@ -43,6 +43,7 @@ namespace Audio
         public void StopAnyBGM()
         {
             bgmSource.Stop();
+            nearestSFXSource.Stop();
         }
 
         public void SetSFXVolume(float value)

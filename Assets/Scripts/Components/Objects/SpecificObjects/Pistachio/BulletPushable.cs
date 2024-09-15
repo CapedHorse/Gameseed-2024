@@ -29,12 +29,10 @@ namespace Components.Objects.SpecificObjects.Pistachio
                 
                 Vector2 dir = other.GetContact(0).normal;
                 Vector2 pos = transform.position;
-                Debug.Log("Actual position "+pos);
                 pos.x += rb.constraints == RigidbodyConstraints2D.FreezePositionX ? 0 : dir.x * pushedPower;
                 pos.y += rb.constraints == RigidbodyConstraints2D.FreezePositionY ? 0: dir.y * pushedPower;
 
                 onPushedValueEvent.Invoke(dir.y*pushedPower);
-                Debug.Log("Destination "+pos);
                 currentPushTween = rb.DOMove(pos , 0.25f);
                 onPushedEvent.Invoke();
                 

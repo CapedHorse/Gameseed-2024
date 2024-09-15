@@ -32,7 +32,7 @@ namespace Components.Objects
                 if (other.collider.CompareTag("Floor") || other.collider.CompareTag("Ceil") ||
                     other.collider.CompareTag("Wall"))
                 {
-                    Debug.Log("Hit border");
+                    
                     _canBePushed = false;
                     StopPush();
                     return;

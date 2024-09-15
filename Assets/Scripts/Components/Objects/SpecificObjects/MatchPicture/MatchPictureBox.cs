@@ -26,7 +26,6 @@ namespace Components.Objects.SpecificObjects.MatchPicture
             {
                 _entered = false;
                 onDeselected.Invoke();
-                Debug.Log("Exited answer box!");
             }
         }
 

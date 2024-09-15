@@ -23,7 +23,6 @@ namespace Components.Objects
                     {
                         _hasActivated = true;
                         floorCol.excludeLayers = playerAboveLayer;
-                        Debug.Log("Activated "+ gameObject.name);
                     }
                 }
                 else
@@ -32,7 +31,6 @@ namespace Components.Objects
                     {
                         _hasActivated = false;
                         floorCol.excludeLayers = playerBelowLayer;
-                        Debug.Log("Deactivated "+ gameObject.name);
                     }
                 }
             }
