@@ -8,6 +8,8 @@ namespace Components.Player_Control
     {
         [SerializeField]
         protected Rigidbody2D rb;
+        [SerializeField] 
+        protected Animator flyingAnimator;
         [SerializeField]
         protected float flySpeed = 10;
 
@@ -26,7 +28,13 @@ namespace Components.Player_Control
 
         protected override void MovingInputStarted(InputAction.CallbackContext obj)
         {
-           
+            if (!playerInput.inputIsActive)
+                return;
+
+            if (Time.timeScale == 0)
+                return;
+            
+            flyingAnimator.SetBool("Moving", true);
         }
 
         protected override void MovingInputPerformed(InputAction.CallbackContext obj)
@@ -73,6 +81,7 @@ namespace Components.Player_Control
         private void StopFly()
         {
             _flyDirection = Vector2.zero;
+            flyingAnimator.SetBool("Moving", false);
         }
     }
 }

@@ -167,6 +167,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1256869173096001161, guid: c3a20852e1a20764fa2f2946b4634d63, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2368000367716551404}
+    - targetCorrespondingSourceObject: {fileID: 1256869173096001161, guid: c3a20852e1a20764fa2f2946b4634d63, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 9094088679244960525}
   m_SourcePrefab: {fileID: 100100000, guid: c3a20852e1a20764fa2f2946b4634d63, type: 3}
 --- !u!1 &223572439349027878 stripped
 GameObject:
@@ -240,6 +243,7 @@ MonoBehaviour:
   movingInputRef: {fileID: -5372915218249178069, guid: 7e30df38041ab064fb414373347f3cec, type: 3}
   mainActionInputRef: {fileID: -3071281848014471728, guid: 7e30df38041ab064fb414373347f3cec, type: 3}
   rb: {fileID: 8758498041995828804}
+  flyingAnimator: {fileID: 9094088679244960525}
   flySpeed: 7.5
   playerFlyingEventInterval: 0.5
   onPlayerFlyingEvent:
@@ -279,6 +283,27 @@ MonoBehaviour:
   onEnteredTarget:
     m_PersistentCalls:
       m_Calls: []
+--- !u!95 &9094088679244960525
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 223572439349027878}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 22100000, guid: ba87c0b464367dc4ab28a07c004320e2, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!114 &3887550047950307888 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2853127136495028383, guid: c3a20852e1a20764fa2f2946b4634d63, type: 3}

@@ -14,6 +14,7 @@ namespace Components.Player_Control
         [FormerlySerializedAs("bulletPrefab")] [SerializeField] private BulletComponent bulletComponentPrefab;
         [SerializeField] private Transform bulletHose;
         [SerializeField] private float bulletCooldown = 1;
+        
 
         public UnityEvent onShootingEvent;
         private float _currentBulletCooldown;
@@ -49,6 +50,7 @@ namespace Components.Player_Control
             spawnedBulletComponent.Launch(bulletHose.up);
             _hasShotBullet = true;
             onShootingEvent.Invoke();
+            flyingAnimator.SetTrigger("Action");
         }
 
         private void OnDestroy()
