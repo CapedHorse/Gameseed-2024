@@ -33,6 +33,9 @@ namespace Components.Player_Control
         {
             if (!playerInput.inputIsActive)
                 return;
+
+            if (Time.timeScale == 0)
+                return;
             
             Vector2 dir = Vector2.zero;
             _flyDirection = obj.ReadValue<Vector2>();

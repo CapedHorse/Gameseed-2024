@@ -42,7 +42,7 @@ AudioSource:
   m_GameObject: {fileID: 3251053267228256229}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: 7ffa2eafa4bb9624c99f520b6e612d52, type: 2}
   m_audioClip: {fileID: 8300000, guid: 897f62c7e0e1f45d981155236f8e91c4, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0.473
@@ -142,5 +142,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bgmSource: {fileID: 1815073617460622}
-  mainMenuClip: {fileID: 0}
-  levelSelectionClip: {fileID: 0}
+  bgmAudioMixer: {fileID: 24300002, guid: 7ffa2eafa4bb9624c99f520b6e612d52, type: 2}
+  sfxAudioMixer: {fileID: 24300002, guid: 3d1342e2b55034b449fbfd316937d405, type: 2}

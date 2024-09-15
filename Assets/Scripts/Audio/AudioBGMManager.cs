@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.Audio;
 
 namespace Audio
 {
@@ -19,6 +20,10 @@ namespace Audio
 
         [SerializeField]
         private AudioSource bgmSource;
+        
+        [SerializeField] AudioMixerGroup bgmAudioMixer, sfxAudioMixer;
+        public AudioMixerGroup BGMAudiMixer => bgmAudioMixer;
+        public AudioMixerGroup SFXAudiMixer => sfxAudioMixer;
 
         public void PlayOneShotBGM(AudioClip clip)
         {
@@ -38,6 +43,16 @@ namespace Audio
         public void StopAnyBGM()
         {
             bgmSource.Stop();
+        }
+
+        public void SetSFXVolume(float value)
+        {
+            sfxAudioMixer.audioMixer.SetFloat("SFX Volume", value);
+        }
+
+        public void SetBGMVolume(float value)
+        {
+            bgmAudioMixer.audioMixer.SetFloat("BGM Volume", value);
         }
     }
 }

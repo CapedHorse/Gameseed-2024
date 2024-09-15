@@ -1,5 +1,6 @@
 ﻿using Core;
 using UI.Panel;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
@@ -8,7 +9,7 @@ namespace UI
 {
     public class MainMenuUIManager : UIManager
     {
-        // [SerializeField] private PlayerInput mainMenuUIInput;
+        [SerializeField] private PlayerInput mainMenuUIInput;
         
         [Header("Main Menu")]
         [SerializeField] private InputActionReference navigateMenuActionRef; 
@@ -19,47 +20,38 @@ namespace UI
         public MainMenuPanel MainMenuPanel => _mainMenuPanel;
         
 
-        /*public void ToggleInput(bool on)
+        public void ToggleInput(bool on)
         {
             if(on)
                 mainMenuUIInput.ActivateInput();
             else
                 mainMenuUIInput.DeactivateInput();
                 
-        }*/
+        }
 
         #region Main Menu Navigation
 
         public override void InitiatePanel()
         {
             base.InitiatePanel();
-            
+            ToggleInput(false);
             _mainMenuPanel = (MainMenuPanel) panelMap["MainMenu"];
             _mainMenuPanel.OnPanelBeginShow.AddListener(MenuPanelStartShown);
             _mainMenuPanel.OnPanelFinishShow.AddListener(MenuPanelFinishShown);
             _mainMenuPanel.ShowPanel();
-
-            // mainMenuUIInput.onControlsChanged += ControlsChanged;
-        }
-        
-        public void ControlsChanged(PlayerInput obj)
-        {
-            Debug.Log("Current control is "+ obj.currentControlScheme);
         }
 
         private void MenuPanelStartShown()
         {
             _mainMenuPanel.OnPanelBeginShow.RemoveListener(MenuPanelStartShown);
-            // ToggleInput(false);
         }
 
         private void MenuPanelFinishShown()
         {
             _mainMenuPanel.OnPanelFinishShow.RemoveListener(MenuPanelFinishShown);
-            // BindInputMainMenu();
-            // mainMenuUIInput.SwitchCurrentActionMap("MainMenu");
-            // ToggleInput(true);
-            // _mainMenuPanel.thisButtonParent.NavigateButton(false);
+            mainMenuUIInput.SwitchCurrentActionMap("MainMenu");
+            BindInputMainMenu();
+            ToggleInput(true);
         }
 
         private void BindInputMainMenu()
@@ -84,7 +76,11 @@ namespace UI
 
         private void OnQuitPressed(InputAction.CallbackContext obj)
         {
-            QuitPopUp();
+#if UNITY_EDITOR
+
+            EditorApplication.isPlaying = false;
+#endif
+            Application.Quit();
         }
 
         #endregion
@@ -93,15 +89,22 @@ namespace UI
         
         public void PlayGame()
         {
-            // ToggleInput(false);
+            ToggleInput(false);
             FindObjectOfType<EventSystem>().SetSelectedGameObject(null);
             GameManager.instance.PlayGame();
         }
-        
-        public void QuitPopUp()
+
+        public void OpenSettings()
         {
-            //Show quit confirmation popup
-            Application.Quit();
+            ToggleInput(false);
+            GameManager.instance.SettingsPanel.ShowPanel();
+            GameManager.instance.SettingsPanel.OnPanelFinishHide.AddListener(ClosedSettings);
+        }
+
+        public void ClosedSettings()
+        {
+            ToggleInput(true);
+            GameManager.instance.SettingsPanel.OnPanelFinishHide.RemoveListener(ClosedSettings);
         }
 
         #endregion

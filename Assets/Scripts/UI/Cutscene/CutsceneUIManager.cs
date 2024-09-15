@@ -38,7 +38,8 @@ namespace UI.Cutscene
         {
             AudioBGMManager.instance.StopAnyBGM();
             cutscenePanel.gameObject.SetActive(true);
-            nextControlGuide.SetActive(true);
+            if(cutscenePanel.name == "Cutscene1" || cutscenePanel.name == "Cutscene4")
+                nextControlGuide.SetActive(true);
             for (int i = 0; i < cutscenePanel.childCount; i++)
             {
                 cutscenePanel.GetChild(i).gameObject.SetActive(false);
@@ -73,7 +74,6 @@ namespace UI.Cutscene
 
         private void NextPanel(Transform cutscenePanel)
         {
-            Debug.Log("Current panel id: "+ currentPanelId);
             currentPanelId++;
             if (currentPanelId >= cutscenePanel.childCount)
             {
