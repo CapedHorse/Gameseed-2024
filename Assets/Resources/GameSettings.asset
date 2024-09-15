@@ -74,7 +74,7 @@ MonoBehaviour:
       haveTime: 1
       playTimer: 10
       delayWhenShowingState: 1
-      gameBGM: {fileID: 8300000, guid: 0d9dd6054e93545349d864e69e0616fe, type: 3}
+      gameBGM: {fileID: 8300000, guid: 238d22a0b74704b68b8ecc0817ad34a2, type: 3}
     - gameSessionName: Align Bamboo!
       haveTime: 1
       playTimer: 10
@@ -84,7 +84,7 @@ MonoBehaviour:
       haveTime: 1
       playTimer: 10
       delayWhenShowingState: 1
-      gameBGM: {fileID: 8300000, guid: e41dc452e2cc54ac7adc9e72d60d02c7, type: 3}
+      gameBGM: {fileID: 8300000, guid: 5efa3a7f7bd2744c4b612f45fff6fbc1, type: 3}
   - levelName: Boss
     haveTutorial: 0
     tutorialSceneName: 
