@@ -31,21 +31,21 @@ namespace UI.Overlay
             Destroy(gameObject);
         }
 
-        public void FadeIn(bool isFading, UnityAction fadeInAction = null)
+        public void FadeIn(bool isFading, UnityAction fadeInAction = null, float fadingTime = 0)
         {
             if (isFading)
             {
                 fadingCG.DOFade(0, 0).SetUpdate(true);
                 fadingCG.gameObject.SetActive(true);
                 sfxPlayer.PlayClip(fadeInClip);
-                fadingCG.DOFade(1, fadingSpeed).SetUpdate(true).onComplete = () => fadeInAction?.Invoke();
+                fadingCG.DOFade(1,fadingTime == 0 ? fadingSpeed : fadingTime).SetUpdate(true).onComplete = () => fadeInAction?.Invoke();
             }
             else
             {
                 generalFadingPanel.SetActive(true);
                 fadingMaskTransform.gameObject.SetActive(true);
                 sfxPlayer.PlayClip(whukInClip);
-                fadingMaskTransform.DOScale(2.5f, cutoutSpeed).SetUpdate(true).onComplete = () => fadeInAction?.Invoke();    
+                fadingMaskTransform.DOScale(2.5f,fadingTime == 0 ?  cutoutSpeed : fadingTime).SetUpdate(true).onComplete = () => fadeInAction?.Invoke();    
             }
         }
 

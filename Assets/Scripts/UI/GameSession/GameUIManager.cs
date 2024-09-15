@@ -17,10 +17,11 @@ namespace UI.GameSession
         
         [SerializeField] private Transform inGameTransitionTransform;
         [SerializeField] private float transitionDuration = 0.25f;
-        
+
         [Header("HUD")]
-        [SerializeField] private TextMeshProUGUI currentCompletedGameText;
-        [SerializeField] private TextMeshProUGUI maxCompletedGameText;
+        [SerializeField] private Transform progressBarParent;
+        [SerializeField] private GameObject[] charactersProgress;
+        [SerializeField] private Slider progressBarSlider;
         [SerializeField] private Slider timerSlider;
         [SerializeField] Color kedutColor;
         [SerializeField] private Image timerBG;
@@ -36,8 +37,8 @@ namespace UI.GameSession
         [SerializeField] private HealthPointUI[] hpUI;
         [Tooltip("0 is begin, 1 is success, 2 is retrying, 3 is failed, 4 is completed")] [SerializeField] private GameObject[] gameStateTextImage;
         [SerializeField] private TextMeshProUGUI gameCountdownText;
-
         [SerializeField] GameObject[] charactersMarks;
+        [SerializeField] private GameObject failedButtonsParent;
         
         [SerializeField] private string startingStr = "Starting In..";
         [SerializeField] private string nextGameStr = "Next Start In..";
@@ -87,6 +88,7 @@ namespace UI.GameSession
             SetupCountdown(gameStateType);
             SetupPlayerHaveHeart(GameSessionManager.instance.haveHeart);
             SetupCharacterMark();
+            
 
             inGameTransitionTransform.DOScale(0, 0).SetUpdate(true);
             inGameTransitionTransform.gameObject.SetActive(true);
@@ -121,7 +123,8 @@ namespace UI.GameSession
 
         private void ShowFailedPanelAndInput()
         {
-            //show option to continue or back
+            healthTransform.gameObject.SetActive(false);
+            failedButtonsParent.SetActive(true);
         }
 
         public void TransitionOut(UnityAction transitionAction = null)
@@ -178,10 +181,28 @@ namespace UI.GameSession
         private void SetupGameProgress()
         {
             GameSessionManager gameSessionManager = GameSessionManager.instance;
-            currentCompletedGameText.text = (gameSessionManager.CompletedGameSessionCount + 1).ToString();
-            maxCompletedGameText.text = GameManager.instance.gameSettings
-                .levelList[gameSessionManager.CurrentLevelId].gameSessions.Count.ToString();
+            int currentCompletedGameCount = gameSessionManager.CompletedGameSessionCount + 1;
+            progressBarParent.gameObject.SetActive(true);
+            switch (gameSessionManager.CurrentLevelId)
+            {
+                case 0:
+                    currentCompletedGameCount *= 1;
+                    charactersProgress[0].transform.GetChild(0).gameObject.SetActive(true);
+                    break;
+                case 1:
+                    currentCompletedGameCount *= 2;
+                    charactersProgress[1].transform.GetChild(0).gameObject.SetActive(true);
+                    break;
+                case 2:
+                    currentCompletedGameCount *= 3;
+                    charactersProgress[2].transform.GetChild(0).gameObject.SetActive(true);
+                    break;
+                case 3:
+                    progressBarParent.gameObject.SetActive(false);
+                    return;
+            }
 
+            progressBarSlider.value = currentCompletedGameCount;
         }
 
         public void SetupPlayerHaveHeart(bool have)

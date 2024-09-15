@@ -2,264 +2,65 @@
     "name": "GameManager",
     "maps": [
         {
-            "name": "Settings",
-            "id": "7e1b96fb-3d9a-460e-b0ec-de35e84cb0dd",
-            "actions": [
-                {
-                    "name": "NavigateSetting",
-                    "type": "Value",
-                    "id": "06cd8e89-765c-41df-b455-813e59f16bf5",
-                    "expectedControlType": "Axis",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": true
-                },
-                {
-                    "name": "ConfirmSettings",
-                    "type": "Button",
-                    "id": "ecb5cce3-0304-4d0c-ad07-4ad71c57c2cd",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "Press",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "QuitSettings",
-                    "type": "Button",
-                    "id": "ad66f875-d072-45f6-a44b-29a9235f21f6",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                }
-            ],
-            "bindings": [
-                {
-                    "name": "Updown",
-                    "id": "16cbb75a-f42b-4473-8398-ad6cb22aa4a1",
-                    "path": "1DAxis",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "NavigateSetting",
-                    "isComposite": true,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "negative",
-                    "id": "c05b7a75-5974-4169-a9f6-2a410be6852d",
-                    "path": "<Keyboard>/downArrow",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard",
-                    "action": "NavigateSetting",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "positive",
-                    "id": "ae026337-8e59-4e56-a245-09e88302692f",
-                    "path": "<Keyboard>/upArrow",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard",
-                    "action": "NavigateSetting",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "DPad",
-                    "id": "27a24de1-636a-4d0e-bc15-e12b25a9f55f",
-                    "path": "1DAxis",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "NavigateSetting",
-                    "isComposite": true,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "negative",
-                    "id": "339e5f90-744b-4e37-9e3d-94bcdd31ed2e",
-                    "path": "<Gamepad>/dpad/down",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Gamepad",
-                    "action": "NavigateSetting",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "positive",
-                    "id": "8a137586-f128-4680-abaf-211829c05af8",
-                    "path": "<Gamepad>/dpad/up",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Gamepad",
-                    "action": "NavigateSetting",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "",
-                    "id": "d34a7948-bf64-4c87-9277-2a63b4b95448",
-                    "path": "<Keyboard>/enter",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard",
-                    "action": "ConfirmSettings",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "1a240dc1-8df4-4866-8387-defd1445332a",
-                    "path": "<Gamepad>/buttonSouth",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Gamepad",
-                    "action": "ConfirmSettings",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "5867ce5b-9f85-4081-b5c6-b0bec07f09d9",
-                    "path": "<Keyboard>/escape",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard",
-                    "action": "QuitSettings",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "57bf27f3-54e8-4a4f-b0ed-75604e99ba7f",
-                    "path": "<Gamepad>/buttonEast",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Gamepad",
-                    "action": "QuitSettings",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                }
-            ]
-        },
-        {
-            "name": "Tutorial",
-            "id": "ece0be5d-bd30-4d7c-bfdb-4d891d4fc95a",
-            "actions": [
-                {
-                    "name": "StartGame",
-                    "type": "Button",
-                    "id": "acc55f7f-88ce-4759-af83-0ec861ad5ac7",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "Press",
-                    "initialStateCheck": false
-                }
-            ],
-            "bindings": [
-                {
-                    "name": "",
-                    "id": "0c87a9e0-e71d-46fd-bcdd-cf38dea033f1",
-                    "path": "<Keyboard>/enter",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard",
-                    "action": "StartGame",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "db287673-d7b0-4ad0-bc81-8baa496380ba",
-                    "path": "<Gamepad>/buttonSouth",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Gamepad",
-                    "action": "StartGame",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "82a0d133-b65e-4077-a3d7-775940078cfa",
-                    "path": "<XInputController>/buttonNorth",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "StartGame",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                }
-            ]
-        },
-        {
-            "name": "PopUp",
-            "id": "26bfd3c2-f70f-4629-9095-f2c80511f5c7",
-            "actions": [
-                {
-                    "name": "Confirm",
-                    "type": "Button",
-                    "id": "a459e401-1a70-4b25-bfd1-6d7d087c5a69",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "Cancel",
-                    "type": "Button",
-                    "id": "7ed2b8dd-0eb6-4ce6-9242-30bc721fadfd",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                }
-            ],
-            "bindings": [
-                {
-                    "name": "",
-                    "id": "031b24ac-eeb6-4a4c-9034-13d4998cda97",
-                    "path": "<Keyboard>/enter",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard",
-                    "action": "Confirm",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "eb11517f-2e86-4b58-a30f-4a96ff9134e6",
-                    "path": "<Gamepad>/buttonSouth",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Confirm",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "aa6f3200-4e90-486a-a7a4-f7b3e851bd71",
-                    "path": "<Keyboard>/escape",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Cancel",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                }
-            ]
-        },
-        {
-            "name": "None",
+            "name": "Gameplay",
             "id": "1b530350-8f3f-4ffa-bab8-25e2e37e6869",
-            "actions": [],
-            "bindings": []
+            "actions": [
+                {
+                    "name": "Pause",
+                    "type": "Button",
+                    "id": "7c16db71-0fb3-47a0-a06c-0ba096c25be7",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "1e73e057-46a1-466d-aa61-1b8d6673e774",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "Pause",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "06a86d01-2745-4428-bf5f-a01d3a3d3697",
+                    "path": "<Gamepad>/start",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "Pause",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "35499104-deca-44ef-abea-df0985ac6850",
+                    "path": "<XInputController>/start",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "Pause",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "6f5aaefd-7f3e-43bf-a2f5-43e8b3056a87",
+                    "path": "<Keyboard>/backspace",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Pause",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": [

@@ -6,10 +6,8 @@ namespace UI.Panel
     public class UIPanel : MonoBehaviour
     {
         [SerializeField] private GameObject panelParent;
-
-        [HideInInspector]
+        
         public UnityEvent OnPanelBeginShow, OnPanelFinishShow;
-        [HideInInspector]
         public UnityEvent OnPanelBeginHide, OnPanelFinishHide;
 
         public virtual void ShowPanel()

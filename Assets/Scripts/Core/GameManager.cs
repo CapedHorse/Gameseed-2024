@@ -1,3 +1,4 @@
+using Audio;
 using DG.Tweening;
 using Level;
 using Tutorial;
@@ -5,6 +6,7 @@ using UI;
 using UI.Cutscene;
 using UI.Overlay;
 using UI.Panel;
+using UI.Pause_Settings;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
@@ -18,8 +20,13 @@ namespace Core
         private FadingManager fadingManager;
         private CutsceneUIManager cutsceneManager;
         [SerializeField] private PlayerInput gameManagerInput;
+        [SerializeField] private InputActionReference gameplayPauseInputRef;
+        [SerializeField] private PausePanel pausePanel;
+        [SerializeField] private SettingsPanel settingsPanel;
+
+        public SettingsPanel SettingsPanel => settingsPanel;
         [SerializeField] bool isTest;
-        // [SerializeField] private LevelSelectionPanel levelSelectionPanel;
+        
         
         public GameSettings gameSettings;
         public PlayerData playerData;
@@ -42,7 +49,7 @@ namespace Core
         {
             fadingManager = FadingManager.instance;
             cutsceneManager = CutsceneUIManager.instance;
-            ToggleGameManagerInput(true);
+            ToggleGameManagerInput(false);
             playerData = new PlayerData();
             foreach (var level in gameSettings.levelList)
             {
@@ -54,22 +61,42 @@ namespace Core
             
             if(!isTest)
                 UIManager.instance.InitiatePanel();
-
-            gameManagerInput.controlsChangedEvent.AddListener(ControlsChanged);
-            gameManagerInput.onControlsChanged += ControlsChanged;
-        }
-
-        public void ControlsChanged(PlayerInput obj)
-        {
-            Debug.Log("Current control is "+ obj.currentControlScheme);
+            
         }
 
         public void ToggleGameManagerInput(bool on)
         {
-            if(on)
+            if (on)
+            {
                 gameManagerInput.ActivateInput();
+                gameplayPauseInputRef.action.started += OnGameplayPauseToggled;
+            }
             else
+            {
                 gameManagerInput.DeactivateInput();
+                gameplayPauseInputRef.action.started -= OnGameplayPauseToggled;
+            }
+        }
+
+        private void OnGameplayPauseToggled(InputAction.CallbackContext obj)
+        {
+            TogglePause();
+        }
+
+        public void TogglePause()
+        {
+            if (Time.timeScale == 0)
+            {
+                if (!_timeIsFrozen)
+                    Time.timeScale = 1;
+                
+                pausePanel.HidePanel();
+            }
+            else
+            {
+                Time.timeScale = 0;
+                pausePanel.ShowPanel();
+            }
         }
 
         public void PlayGame()
@@ -82,22 +109,10 @@ namespace Core
                     cutsceneManager.SetCutsceneInputEnabled(true);
                 });
             });
-            
-            /*if (playerData.hasIntro)
-            {
-                StartLevel(_currentLevelId);
-            }
-            else
-            {
-                
-                
-            }*/
-            
         }
         
         public void CompleteIntroCutscene()
         {
-            Debug.Log("Cutscene Finished");
             playerData.hasIntro = true;
             playerData.levelDatas[_currentLevelId].unlocked = true;
             if (_currentLevelId > 0)
@@ -107,7 +122,6 @@ namespace Core
             }
             else
             {
-                Debug.Log("Start level krn habis cutscene pertama");
                 StartLevel(_currentLevelId, true);
             }
         }
@@ -115,13 +129,11 @@ namespace Core
         private void CurrentGameSceneUnloaded(Scene arg0)
         {
             SceneManager.sceneUnloaded -= CurrentGameSceneUnloaded;
-            Debug.Log("Start level habis unload sebelumnya");
             StartLevel(_currentLevelId, true);
         }
 
         public void CompleteOutroCutscene()
         {
-            Debug.Log("Outro Cutscene Finished");
             //Might Show Credits first
             BackToMainMenu();
         }
@@ -140,6 +152,8 @@ namespace Core
             SceneManager.sceneLoaded -= MainMenuSceneLoaded;
             fadingManager.FadeOut(false, () =>
             {
+                AudioBGMManager.instance.StopAnyBGM();
+                UnfreezeTime();
                 UIManager.instance.InitiatePanel();
             });
         }
@@ -156,15 +170,12 @@ namespace Core
                 if (!gameSettings.levelList[levelId].haveTutorial)
                 {
                     playerData.levelDatas[levelId].hasPlayed = true;
-                    Debug.Log("Opening GameSes cuz dont have tutorial");
                     OpenGameSession(levelId);
                 }
                 else
                 {
                     if (playerData.levelDatas[levelId].hasPlayed)
                     {
-                        //ini masuk ke sini 2 kali
-                        Debug.Log("Opening GameSes cuz played have tutorial");
                         OpenGameSession(levelId);
                     }
                     else
@@ -247,12 +258,12 @@ namespace Core
                 {
                     cutsceneManager.IntroCutscene(_currentLevelId, true);
                 }
-                
+
                 fadingManager.FadeOut(true, () =>
                 {
                     cutsceneManager.SetCutsceneInputEnabled(true);
-                });
-            });
+                }, 0.75f);
+            }, 0.75f);
             
         }
 

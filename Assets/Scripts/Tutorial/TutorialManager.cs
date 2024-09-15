@@ -56,11 +56,10 @@ namespace Tutorial
                 controlGuide.gameObject.SetActive(false);
             }
             controlGuideImages[_thisLevelId].gameObject.SetActive(true);
-            // controlGuideImage.sprite = gameSettingsLevel.levelTutorControlSprite;
             descGuideImage.sprite = gameSettingsLevel.levelTutorDescSprite;
             GameManager.instance.FreezeTime();
-            SceneManager.sceneLoaded += TutorialSceneLoaded;
             AudioBGMManager.instance.PlayBGM(gameSettingsLevel.tutorialBGM);
+            SceneManager.sceneLoaded += TutorialSceneLoaded;
             SceneManager.LoadScene(_tutorialSessionName, LoadSceneMode.Additive);
 
         }
@@ -69,7 +68,7 @@ namespace Tutorial
         {
             SceneManager.sceneLoaded -= TutorialSceneLoaded;
             _tutorialSession = FindObjectOfType<TutorialSession>();
-            FadingManager.instance.FadeOut(false, CanStartTutor, 0.5f);
+            FadingManager.instance.FadeOut(false, CanStartTutor);
         }
         
         private void ReloadSession()
