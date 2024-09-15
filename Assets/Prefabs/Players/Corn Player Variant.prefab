@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &3794971100650099081
+--- !u!1 &4964335141804248961
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,24 +8,24 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 4478458698117220008}
-  m_Layer: 3
-  m_Name: GroundCheck
+  - component: {fileID: 53209131359099336}
+  m_Layer: 0
+  m_Name: GroundChecker
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4478458698117220008
+--- !u!4 &53209131359099336
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3794971100650099081}
+  m_GameObject: {fileID: 4964335141804248961}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.5, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.483, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -58,6 +58,10 @@ PrefabInstance:
     - target: {fileID: 3949789940426844219, guid: c3a20852e1a20764fa2f2946b4634d63, type: 3}
       propertyPath: m_LocalScale.z
       value: 0.075
+      objectReference: {fileID: 0}
+    - target: {fileID: 3949789940426844219, guid: c3a20852e1a20764fa2f2946b4634d63, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.436
       objectReference: {fileID: 0}
     - target: {fileID: 4868795064709348295, guid: c3a20852e1a20764fa2f2946b4634d63, type: 3}
       propertyPath: m_LocalPosition.x
@@ -111,16 +115,20 @@ PrefabInstance:
       propertyPath: m_CollisionDetection
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8696038296048839583, guid: c3a20852e1a20764fa2f2946b4634d63, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 5.28
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 6157370230816011312, guid: c3a20852e1a20764fa2f2946b4634d63, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 4868795064709348295, guid: c3a20852e1a20764fa2f2946b4634d63, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 4478458698117220008}
+      addedObject: {fileID: 8590980332893112553}
     - targetCorrespondingSourceObject: {fileID: 4868795064709348295, guid: c3a20852e1a20764fa2f2946b4634d63, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 8590980332893112553}
+      addedObject: {fileID: 53209131359099336}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 1256869173096001161, guid: c3a20852e1a20764fa2f2946b4634d63, type: 3}
       insertIndex: 2
@@ -137,6 +145,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1256869173096001161, guid: c3a20852e1a20764fa2f2946b4634d63, type: 3}
       insertIndex: -1
       addedObject: {fileID: -6652399588327909615}
+    - targetCorrespondingSourceObject: {fileID: 1256869173096001161, guid: c3a20852e1a20764fa2f2946b4634d63, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1395008889442604478}
   m_SourcePrefab: {fileID: 100100000, guid: c3a20852e1a20764fa2f2946b4634d63, type: 3}
 --- !u!1 &1642203663862144131 stripped
 GameObject:
@@ -216,12 +227,19 @@ MonoBehaviour:
   mainActionInputRef: {fileID: -7493825663748469437, guid: 7e30df38041ab064fb414373347f3cec, type: 3}
   rb: {fileID: 7808223513394013921}
   moveSpeed: 10
+  animator: {fileID: 1395008889442604478}
   playerMovingEventInterval: 0.5
+  onPlayerStartMovingEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  onPlayerStopMovingEvent:
+    m_PersistentCalls:
+      m_Calls: []
   onPlayerMovingEvent:
     m_PersistentCalls:
       m_Calls: []
   jumpPower: 850
-  groundCheck: {fileID: 4478458698117220008}
+  groundCheck: {fileID: 53209131359099336}
   groundCheckRadius: 0.1
   groundLayerMask:
     serializedVersion: 2
@@ -282,6 +300,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pushingForce: 50
+--- !u!95 &1395008889442604478
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1642203663862144131}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 2bd73d4c39e450842900d6cacbc9e5de, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!114 &2315787340319029909 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2853127136495028383, guid: c3a20852e1a20764fa2f2946b4634d63, type: 3}

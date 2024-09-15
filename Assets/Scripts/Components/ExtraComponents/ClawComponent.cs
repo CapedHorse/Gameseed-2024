@@ -20,6 +20,7 @@ namespace Components.ExtraComponents
         private GrabableComponent _grabbed;
 
         public UnityEvent onClawLaunchedEvent, onClawRetractedEvent;
+        public UnityEvent onClawBlocked;
 
         private void Start()
         {
@@ -97,6 +98,7 @@ namespace Components.ExtraComponents
         {
             if (other.GetComponent<ClawBlocker>())
             {
+                onClawBlocked.Invoke();
                 ForceRetract();
                 return;
             }

@@ -34,6 +34,7 @@ namespace Components.Player_Control
             // _hasJumped = true;
             rb.AddForce(Vector2.up * jumpPower);
             onPlayerJumpEvent.Invoke();
+            animator.SetTrigger("Action");
         }
 
     }

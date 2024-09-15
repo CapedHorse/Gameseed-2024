@@ -12,8 +12,10 @@ namespace Components.Player_Control
         [SerializeField]
         protected float moveSpeed;
 
+        [SerializeField] protected Animator animator;
+        
         [SerializeField] protected float playerMovingEventInterval = 0.5f;
-        public UnityEvent onPlayerMovingEvent;
+        public UnityEvent onPlayerStartMovingEvent, onPlayerStopMovingEvent, onPlayerMovingEvent;
         
         private float _moveDirection;
         private float _playerMovedEventIntervalCounter;
@@ -26,6 +28,17 @@ namespace Components.Player_Control
         protected virtual void FixedUpdateVirtual()
         {
             Move();
+        }
+
+        protected override void MovingInputStarted(InputAction.CallbackContext obj)
+        {
+            if (!playerInput.inputIsActive)
+                return;
+            
+            base.MovingInputStarted(obj);
+            
+            onPlayerStartMovingEvent.Invoke();
+            animator.SetBool("Moving", true);
         }
 
         protected override void MovingInputPerformed(InputAction.CallbackContext obj)
@@ -58,7 +71,8 @@ namespace Components.Player_Control
         private void StopMove()
         {
             _moveDirection = 0;
-            // rb.velocity = new Vector2(0, rb.velocity.y);
+            onPlayerStopMovingEvent.Invoke();
+            animator.SetBool("Moving", false);
         }
 
         private void OnCollisionEnter2D(Collision2D other)
