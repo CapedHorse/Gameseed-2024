@@ -124,6 +124,8 @@ namespace Level
             _playerHealth = haveHeart ? gameSettings.playerHealthEachLevel : 1;
             _currentGameSessionName = gameSettingsLevel.gameSessions[_completedGameSessionCount].gameSessionName;
             
+            SetupTime(gameSettingsLevel);
+            
             GameManager.instance.FreezeTime();
 
             SceneManager.sceneLoaded += OnNewGameSceneLoaded;
