@@ -9,9 +9,11 @@ namespace Components.Objects.SpecificObjects.Boss
     {
         [SerializeField] private bool warnXPos = true;
         [SerializeField] private bool warnYPos = true;
-
+        public UnityEvent onWarningEvent;
+        
         public void Warn(Transform target, float warnTime, UnityAction actionAfterWarn)
         {
+            onWarningEvent.Invoke();
             gameObject.SetActive(true);
             StartCoroutine(StartWarning(target, warnTime, actionAfterWarn));
         }

@@ -94,6 +94,11 @@ namespace Level
             _currentGameSession = FindObjectOfType<GameSession>();
             GameSettings gameSettings = GameManager.instance.gameSettings;
             LevelSettings gameSettingsLevel = gameSettings.levelList[_currentGameLevelId];
+            haveHeart = gameSettingsLevel.haveHeart;
+            _playerHealth = haveHeart ? gameSettings.playerHealthEachLevel : 1;
+            _currentGameSessionName = SceneManager.GetSceneAt(1).name;
+            
+            
             SetupTime(gameSettingsLevel);
             gameUIManager.TransitionIn(GameStateType.Begin, () =>
             {

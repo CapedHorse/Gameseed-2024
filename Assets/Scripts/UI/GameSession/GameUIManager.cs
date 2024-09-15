@@ -182,23 +182,27 @@ namespace UI.GameSession
         {
             GameSessionManager gameSessionManager = GameSessionManager.instance;
             int currentCompletedGameCount = gameSessionManager.CompletedGameSessionCount + 1;
-            progressBarParent.gameObject.SetActive(true);
+            progressBarParent.gameObject.SetActive(false);
+            
             switch (gameSessionManager.CurrentLevelId)
             {
                 case 0:
                     currentCompletedGameCount *= 1;
                     charactersProgress[0].transform.GetChild(0).gameObject.SetActive(true);
+                    progressBarParent.gameObject.SetActive(true);
                     break;
                 case 1:
                     currentCompletedGameCount *= 2;
                     charactersProgress[1].transform.GetChild(0).gameObject.SetActive(true);
+                    progressBarParent.gameObject.SetActive(true);
                     break;
                 case 2:
                     currentCompletedGameCount *= 3;
                     charactersProgress[2].transform.GetChild(0).gameObject.SetActive(true);
+                    progressBarParent.gameObject.SetActive(true);
                     break;
                 case 3:
-                    progressBarParent.gameObject.SetActive(false);
+                    
                     return;
             }
 
