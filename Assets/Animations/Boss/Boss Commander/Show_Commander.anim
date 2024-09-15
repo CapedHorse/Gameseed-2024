@@ -606,7 +606,7 @@ AnimationClip:
   - time: 0
     functionName: PlayClip
     data: 
-    objectReferenceParameter: {fileID: 8300000, guid: bf19beea464ce41a8991db9fa1392b5b, type: 3}
+    objectReferenceParameter: {fileID: 8300000, guid: 17b6538f2db0944be90db1dd4e0c098c, type: 3}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0

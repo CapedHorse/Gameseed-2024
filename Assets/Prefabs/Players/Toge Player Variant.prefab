@@ -493,6 +493,21 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  onClawBlocked:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7934339049928757724}
+        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
+        m_MethodName: PlayOneShot
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 8300000, guid: 2c06fe1c909474e80a91f36681621951, type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!50 &5138527593131069285
 Rigidbody2D:
   serializedVersion: 4
@@ -789,7 +804,14 @@ MonoBehaviour:
   mainActionInputRef: {fileID: 3199168532419013817, guid: 7e30df38041ab064fb414373347f3cec, type: 3}
   rb: {fileID: 4038121417000511002}
   moveSpeed: 10
+  animator: {fileID: 0}
   playerMovingEventInterval: 0.5
+  onPlayerStartMovingEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  onPlayerStopMovingEvent:
+    m_PersistentCalls:
+      m_Calls: []
   onPlayerMovingEvent:
     m_PersistentCalls:
       m_Calls: []

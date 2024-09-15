@@ -37,7 +37,7 @@ MonoBehaviour:
     - gameSessionName: Water Plant!
       haveTime: 1
       playTimer: 10
-      delayWhenShowingState: 1
+      delayWhenShowingState: 2
       gameBGM: {fileID: 8300000, guid: ee9d35a6e64a84ed1a64750d2bce6854, type: 3}
   - levelName: Pistachio
     haveTutorial: 1
@@ -60,7 +60,7 @@ MonoBehaviour:
     - gameSessionName: Fight Bugs!
       haveTime: 1
       playTimer: 10
-      delayWhenShowingState: 1
+      delayWhenShowingState: 2
       gameBGM: {fileID: 8300000, guid: 43cde85271ee44732b4c048524dd0686, type: 3}
   - levelName: Bean Sprout
     haveTutorial: 1
@@ -83,7 +83,7 @@ MonoBehaviour:
     - gameSessionName: Bring To Flower!
       haveTime: 1
       playTimer: 10
-      delayWhenShowingState: 1
+      delayWhenShowingState: 2
       gameBGM: {fileID: 8300000, guid: 5efa3a7f7bd2744c4b612f45fff6fbc1, type: 3}
   - levelName: Boss
     haveTutorial: 0
