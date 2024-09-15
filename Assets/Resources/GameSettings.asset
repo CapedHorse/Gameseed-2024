@@ -88,7 +88,7 @@ MonoBehaviour:
   - levelName: Boss
     haveTutorial: 0
     tutorialSceneName: 
-    haveHeart: 0
+    haveHeart: 1
     levelTutorDescSprite: {fileID: 0}
     levelTutorControlSprite: {fileID: 0}
     tutorialBGM: {fileID: 0}
