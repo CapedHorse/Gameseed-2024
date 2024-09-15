@@ -58,14 +58,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2414571362476364426}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2869836647390752533}
   - {fileID: 4259947308308647938}
-  m_Father: {fileID: 1187904532461832502}
+  m_Father: {fileID: 3582547268027845184}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &1586649196343134089
 BoxCollider2D:
@@ -240,6 +240,38 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &5470272195116763028
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3582547268027845184}
+  m_Layer: 3
+  m_Name: VineAnimPivot
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3582547268027845184
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5470272195116763028}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 6219755131879277827}
+  m_Father: {fileID: 1187904532461832502}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6120590102662757254
 GameObject:
   m_ObjectHideFlags: 0
@@ -493,6 +525,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  onClawBlocked:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!50 &5138527593131069285
 Rigidbody2D:
   serializedVersion: 4
@@ -748,7 +783,7 @@ PrefabInstance:
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 4868795064709348295, guid: c3a20852e1a20764fa2f2946b4634d63, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 6219755131879277827}
+      addedObject: {fileID: 3582547268027845184}
     - targetCorrespondingSourceObject: {fileID: 4868795064709348295, guid: c3a20852e1a20764fa2f2946b4634d63, type: 3}
       insertIndex: -1
       addedObject: {fileID: 4061305084301326950}
@@ -756,6 +791,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1256869173096001161, guid: c3a20852e1a20764fa2f2946b4634d63, type: 3}
       insertIndex: -1
       addedObject: {fileID: 6891842700638408943}
+    - targetCorrespondingSourceObject: {fileID: 1256869173096001161, guid: c3a20852e1a20764fa2f2946b4634d63, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3119818172689702992}
   m_SourcePrefab: {fileID: 100100000, guid: c3a20852e1a20764fa2f2946b4634d63, type: 3}
 --- !u!4 &1187904532461832502 stripped
 Transform:
@@ -789,11 +827,39 @@ MonoBehaviour:
   mainActionInputRef: {fileID: 3199168532419013817, guid: 7e30df38041ab064fb414373347f3cec, type: 3}
   rb: {fileID: 4038121417000511002}
   moveSpeed: 10
+  animator: {fileID: 3119818172689702992}
   playerMovingEventInterval: 0.5
+  onPlayerStartMovingEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  onPlayerStopMovingEvent:
+    m_PersistentCalls:
+      m_Calls: []
   onPlayerMovingEvent:
     m_PersistentCalls:
       m_Calls: []
   clawComponent: {fileID: 3273369480185491323}
+--- !u!95 &3119818172689702992
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4799830509013998712}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 22100000, guid: cc73b3f7318171b4b8fa6fcf5bd2117e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!114 &8391753890764847726 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2853127136495028383, guid: c3a20852e1a20764fa2f2946b4634d63, type: 3}

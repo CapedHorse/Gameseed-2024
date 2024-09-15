@@ -13,6 +13,7 @@ namespace Components.Player_Control
         protected override void MainActionInputStarted(InputAction.CallbackContext obj)
         {
             clawComponent.MoveClaw();
+            animator.SetTrigger("Action");
         }
 
         protected override void MainActionInputCanceled(InputAction.CallbackContext obj)
