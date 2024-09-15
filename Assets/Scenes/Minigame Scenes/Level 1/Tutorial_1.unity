@@ -166,6 +166,10 @@ PrefabInstance:
       propertyPath: m_Offset.x
       value: -0.30166292
       objectReference: {fileID: 0}
+    - target: {fileID: 7237792380643835324, guid: b0ad68882cc0f114ea4f13b4155b253c, type: 3}
+      propertyPath: onPlayerMovingEvent.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7889076538522068197, guid: b0ad68882cc0f114ea4f13b4155b253c, type: 3}
       propertyPath: m_Name
       value: TutorialSession_Corn

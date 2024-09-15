@@ -134,6 +134,38 @@ PrefabInstance:
       propertyPath: isIndependent
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2342385584113590509, guid: 628137370b9b79d489ca18df23855760, type: 3}
+      propertyPath: onGrabbedEvent.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2342385584113590509, guid: 628137370b9b79d489ca18df23855760, type: 3}
+      propertyPath: onGrabbedEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2342385584113590509, guid: 628137370b9b79d489ca18df23855760, type: 3}
+      propertyPath: onGrabbedEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1183348820}
+    - target: {fileID: 2342385584113590509, guid: 628137370b9b79d489ca18df23855760, type: 3}
+      propertyPath: onGrabbedEvent.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2342385584113590509, guid: 628137370b9b79d489ca18df23855760, type: 3}
+      propertyPath: onGrabbedEvent.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: PlayOneShot
+      objectReference: {fileID: 0}
+    - target: {fileID: 2342385584113590509, guid: 628137370b9b79d489ca18df23855760, type: 3}
+      propertyPath: onGrabbedEvent.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: UnityEngine.AudioSource, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 2342385584113590509, guid: 628137370b9b79d489ca18df23855760, type: 3}
+      propertyPath: onGrabbedEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 8300000, guid: 611fa3f73b906425e946ada2043205c7, type: 3}
+    - target: {fileID: 2342385584113590509, guid: 628137370b9b79d489ca18df23855760, type: 3}
+      propertyPath: onGrabbedEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.AudioClip, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 4223457508821383488, guid: 628137370b9b79d489ca18df23855760, type: 3}
       propertyPath: onTutorialStarted.m_PersistentCalls.m_Calls.Array.size
       value: 2
@@ -165,6 +197,14 @@ PrefabInstance:
     - target: {fileID: 4223457508821383488, guid: 628137370b9b79d489ca18df23855760, type: 3}
       propertyPath: onTutorialStarted.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 6289788914456725310, guid: 628137370b9b79d489ca18df23855760, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 3.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6289788914456725310, guid: 628137370b9b79d489ca18df23855760, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.74
       objectReference: {fileID: 0}
     - target: {fileID: 7889076538522068197, guid: 628137370b9b79d489ca18df23855760, type: 3}
       propertyPath: m_Name
@@ -211,7 +251,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 3134362573926307380, guid: 628137370b9b79d489ca18df23855760, type: 3}
+    - {fileID: 3198650217076945203, guid: 628137370b9b79d489ca18df23855760, type: 3}
+    - {fileID: 5753373243179789257, guid: 628137370b9b79d489ca18df23855760, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 628137370b9b79d489ca18df23855760, type: 3}
@@ -226,6 +269,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5459d72c4884db1a191be1169b42254, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!82 &1183348820 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 4197402155922966290, guid: 628137370b9b79d489ca18df23855760, type: 3}
+  m_PrefabInstance: {fileID: 749022433}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
