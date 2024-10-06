@@ -44,7 +44,7 @@ MonoBehaviour:
     tutorialSceneName: Tutorial_2
     haveHeart: 1
     levelTutorDescSprite: {fileID: 21300000, guid: 2bd8bdf8ad0431347bcc7478c6d959af, type: 3}
-    levelTutorControlSprite: {fileID: 21300000, guid: 1bcb918d981a4aa478e473996f88633a, type: 3}
+    levelTutorControlSprite: {fileID: 21300000, guid: 71467cd58a4bc493094aa1b5f9951747, type: 3}
     tutorialBGM: {fileID: 8300000, guid: 06c0334d3eac2479789270926997fa89, type: 3}
     gameSessions:
     - gameSessionName: Move Cloud!
