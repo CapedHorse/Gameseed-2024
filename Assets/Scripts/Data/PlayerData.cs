@@ -12,7 +12,7 @@ public class PlayerData
     //Score related
     public float totalPlayTime;
     public float avgCompletitionEachGame;
-    
+
     //others data
 
     public bool hasIntro = false;

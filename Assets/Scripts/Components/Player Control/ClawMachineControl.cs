@@ -25,6 +25,8 @@ namespace Components.Player_Control
         {
             if(!_stoppedMovement)
                 base.FixedUpdateVirtual();
+            else
+                rb.velocity = Vector2.zero;
         }
 
         public void SetStopMovement(bool stop)

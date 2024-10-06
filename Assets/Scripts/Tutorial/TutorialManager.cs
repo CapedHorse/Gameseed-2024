@@ -1,3 +1,4 @@
+using System;
 using Audio;
 using Core;
 using Level;
@@ -44,6 +45,11 @@ namespace Tutorial
             endLevelGuideUI.SetActive(false);
             tutorialPlayerInput.DeactivateInput();
             endTutorialReference.action.started += EndTutorial;
+        }
+
+        private void OnDestroy()
+        {
+            endTutorialReference.action.started -= EndTutorial;
         }
 
         public void LoadTutorialSession(int levelId)
@@ -105,6 +111,7 @@ namespace Tutorial
         {
             GameManager.instance.UnfreezeTime();
             _tutorialSession.StartTutor();
+            Cursor.visible = false;
         }
         
         public void CanEndTutor()
