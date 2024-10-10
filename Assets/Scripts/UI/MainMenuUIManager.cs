@@ -17,8 +17,9 @@ namespace UI
 
         //cache
         private MainMenuPanel _mainMenuPanel;
-        public MainMenuPanel MainMenuPanel => _mainMenuPanel;
-        
+        private PopUpPanel _continuePopUpPanel;
+        private PopUpPanel _quitPopUpPanel;
+
 
         public void ToggleInput(bool on)
         {
@@ -35,9 +36,14 @@ namespace UI
         {
             base.InitiatePanel();
             ToggleInput(false);
+            
             _mainMenuPanel = (MainMenuPanel) panelMap["MainMenu"];
+            _continuePopUpPanel = (PopUpPanel) panelMap["Continue"];
+            _quitPopUpPanel = (PopUpPanel) panelMap["Quit"];
+            
             _mainMenuPanel.OnPanelBeginShow.AddListener(MenuPanelStartShown);
             _mainMenuPanel.OnPanelFinishShow.AddListener(MenuPanelFinishShown);
+            
             _mainMenuPanel.ShowPanel();
         }
 
@@ -73,8 +79,20 @@ namespace UI
                 _mainMenuPanel.thisButtonParent.NavigateButton(false);
             }
         }
-
+        
         private void OnQuitPressed(InputAction.CallbackContext obj)
+        {
+            if (_quitPopUpPanel.IsOpened)
+            {
+                _quitPopUpPanel.HidePanel();
+            }
+            else
+            {
+                _quitPopUpPanel.ShowPanel();
+            }
+        }
+
+        public void RealQuit()
         {
 #if UNITY_EDITOR
 
@@ -91,7 +109,26 @@ namespace UI
         {
             ToggleInput(false);
             FindObjectOfType<EventSystem>().SetSelectedGameObject(null);
-            GameManager.instance.PlayGame();
+            
+            //Check first if last game is
+            if (GameManager.instance.HasLastGameUnfinished())
+            {
+                _continuePopUpPanel.ShowPanel();   
+            }
+            else
+            {
+                PlayNewGame();
+            }
+        }
+
+        public void ContinueLastGame()
+        {
+            GameManager.instance.ContinueLastGame();
+        }
+
+        public void PlayNewGame()
+        {
+            GameManager.instance.PlayNewGame();
         }
 
         public void OpenSettings()

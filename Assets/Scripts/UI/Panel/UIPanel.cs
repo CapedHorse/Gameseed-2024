@@ -10,6 +10,9 @@ namespace UI.Panel
         public UnityEvent OnPanelBeginShow, OnPanelFinishShow;
         public UnityEvent OnPanelBeginHide, OnPanelFinishHide;
 
+        private bool _isOpened;
+        public bool IsOpened => _isOpened;
+
         public virtual void ShowPanel()
         {
             OnPanelBeginShow.Invoke();    
@@ -20,6 +23,7 @@ namespace UI.Panel
         public virtual void FinishShowPanel()
         {
             OnPanelFinishShow.Invoke();
+            _isOpened = true;
         }
         
         public virtual void HidePanel()
@@ -32,6 +36,7 @@ namespace UI.Panel
         {
             panelParent.SetActive(false);
             OnPanelFinishHide.Invoke();
+            _isOpened = false;
         }
 
        

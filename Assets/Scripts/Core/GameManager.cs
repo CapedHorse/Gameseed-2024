@@ -31,7 +31,9 @@ namespace Core
         public GameSettings gameSettings;
         public PlayerData playerData;
         private int _currentLevelId;
+        private int _lastGameSessionId;
         private bool _timeIsFrozen;
+        private bool _isNewGame = true;
 
         private void Awake()
         {
@@ -78,11 +80,6 @@ namespace Core
             }
         }
 
-        private void OnGameplayPauseToggled(InputAction.CallbackContext obj)
-        {
-            TogglePause();
-        }
-
         public void TogglePause()
         {
             if (Time.timeScale == 0)
@@ -91,16 +88,57 @@ namespace Core
                     Time.timeScale = 1;
                 
                 pausePanel.HidePanel();
+                Cursor.visible = false;
             }
             else
             {
                 Time.timeScale = 0;
                 pausePanel.ShowPanel();
+                Cursor.visible = true;
             }
         }
 
-        public void PlayGame()
+        public bool HasLastGameUnfinished()
         {
+            int levelDatasCount = playerData.levelDatas.Count - 1;
+            
+            //Checking if last level is the boss level and completed
+            if (_currentLevelId == levelDatasCount)
+            {
+                if (playerData.levelDatas[levelDatasCount].completedGames >=
+                    gameSettings.levelList[levelDatasCount].gameSessions.Count)
+                {
+                    return false;
+                }
+            }
+            for (int i = 0; i < playerData.levelDatas.Count; i++)
+            {
+                LevelData levelData = playerData.levelDatas[i];
+                if (levelData.unlocked)
+                {
+                    if (levelData.completedGames < gameSettings.levelList[i].gameSessions.Count)
+                    {
+                        return true;
+                    }
+                }
+            }
+
+            return false;
+        }
+        
+        public void ContinueLastGame()
+        {
+            //Check last level, then play last game id of that level
+            _lastGameSessionId = playerData.levelDatas[_currentLevelId].completedGames;
+            _isNewGame = false;
+            StartLevel(_currentLevelId);
+        }
+
+        public void PlayNewGame()
+        {
+            _isNewGame = true;
+            _currentLevelId = 0;
+            _lastGameSessionId = 0;
             fadingManager.FadeIn(true, () =>
             {
                 cutsceneManager.IntroCutscene(_currentLevelId, true);
@@ -156,7 +194,6 @@ namespace Core
             SceneManager.sceneLoaded -= MainMenuSceneLoaded;
             fadingManager.FadeOut(false, () =>
             {
-                _currentLevelId = 0;
                 AudioBGMManager.instance.StopAnyBGM();
                 UnfreezeTime();
                 UIManager.instance.InitiatePanel();
@@ -165,6 +202,7 @@ namespace Core
 
         public void StartLevel(int levelId, bool fromCutscene = false)
         {
+            Debug.Log("Starting New Level!");
             fadingManager.FadeIn(false, () =>
             {
                 if (fromCutscene)
@@ -220,6 +258,13 @@ namespace Core
             if (arg0.name == "GameSession")
             {
                 SceneManager.sceneLoaded -= GameSceneLoaded;
+                
+                if (!_isNewGame)
+                {
+                    GameSessionManager.instance.SetContinuedGame(_lastGameSessionId);
+                    _isNewGame = true;
+                }
+                
                 GameSessionManager.instance.InitializeGameSession(_currentLevelId);    
             }
          
@@ -247,6 +292,7 @@ namespace Core
         public void CompletedLevel()
         {
             _currentLevelId++;
+            _lastGameSessionId = 0;
             fadingManager.FadeIn(true, () =>
             {
                 if (_currentLevelId >= gameSettings.levelList.Count)
@@ -278,6 +324,12 @@ namespace Core
         {
             SceneManager.sceneUnloaded -= FailedGameSceneUnloaded;
             StartLevel(_currentLevelId);
+        }
+
+        public void CompletedGame()
+        {
+            _lastGameSessionId++;
+            playerData.levelDatas[_currentLevelId].completedGames = _lastGameSessionId;
         }
     }
 }

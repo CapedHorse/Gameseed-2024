@@ -111,6 +111,15 @@ namespace Level
 
         #endregion
 
+        #region ContinuingGame
+
+        public void SetContinuedGame(int lastGameId)
+        {
+            _completedGameSessionCount = lastGameId;
+        }
+
+        #endregion
+
         #region New Level Session
 
         public void InitializeGameSession(int levelId)
@@ -178,6 +187,7 @@ namespace Level
                 _startGame = true;
                 GameManager.instance.ToggleGameManagerInput(true);
                 GameManager.instance.UnfreezeTime();
+                Cursor.visible = false;
             });
             
         }
@@ -263,6 +273,7 @@ namespace Level
                     case GameStateType.Success:
                     {
                         _completedGameSessionCount++;
+                        GameManager.instance.CompletedGame();
                         if (_completedGameSessionCount >= gameSettingsLevel.gameSessions.Count)
                         {
                             GameManager.instance.CompletedLevel();

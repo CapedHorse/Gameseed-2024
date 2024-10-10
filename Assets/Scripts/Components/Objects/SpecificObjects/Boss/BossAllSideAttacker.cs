@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections;
 using DG.Tweening;
+using DG.Tweening.Core;
+using DG.Tweening.Plugins.Options;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -22,6 +24,7 @@ namespace Components.Objects.SpecificObjects.Boss
 
         private Vector2 _initialPos;
         private Vector2 _currentTarget;
+        private TweenerCore<Vector3,Vector3,VectorOptions> thisTweener;
 
         public void SetTarget(Vector2 targetPos)
         {
@@ -33,13 +36,26 @@ namespace Components.Objects.SpecificObjects.Boss
             {
                 transform.localPosition = new Vector2(transform.localPosition.x, _currentTarget.y);
                 _initialPos = transform.localPosition;
-                transform.DOLocalMoveX(targetXPos, speed).onComplete = Retreat;
+
+                if (thisTweener != null)
+                {
+                    thisTweener.Kill(true);
+                }
+                
+                thisTweener = transform.DOLocalMoveX(targetXPos, speed);
+                thisTweener.onComplete = Retreat;
             }
             else
             {
                 transform.localPosition = new Vector2(_currentTarget.x, transform.localPosition.y);
                 _initialPos = transform.localPosition;
-                transform.DOLocalMoveY(targetYPos, speed).onComplete = Retreat;
+                if (thisTweener != null)
+                {
+                    thisTweener.Kill(true);
+                }
+
+                thisTweener = transform.DOLocalMoveY(targetYPos, speed);
+                thisTweener.onComplete = Retreat;
             }
 
             onAttackingEvent.Invoke();
@@ -75,8 +91,14 @@ namespace Components.Objects.SpecificObjects.Boss
             Vector2 targetRetreat = _initialPos;
             targetRetreat.x = targetAxis == 0 ? targetRetreat.x : transform.localPosition.x;
             targetRetreat.y = targetAxis == 0 ? transform.localPosition.y : targetRetreat.y;
+            
+            if (thisTweener != null)
+            {
+                thisTweener.Kill(true);
+            }
 
-            transform.DOLocalMove(_initialPos, speed).onComplete = () =>
+            thisTweener = transform.DOLocalMove(_initialPos, speed);
+            thisTweener.onComplete = () =>
             {
                 attackPoint.SetActive(false);
                 onDoneRetreatingEvent.Invoke();

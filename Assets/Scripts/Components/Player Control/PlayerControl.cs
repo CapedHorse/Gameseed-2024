@@ -38,7 +38,6 @@ namespace Components.Player_Control
 
         private void OnDestroy()
         {
-            
             movingInputRef.action.started -= MovingInputStarted;
             movingInputRef.action.performed -= MovingInputPerformed;
             movingInputRef.action.canceled -= MovingInputCanceled;
@@ -94,6 +93,8 @@ namespace Components.Player_Control
             mainActionInputRef.action.started -= MainActionInputStarted;
             mainActionInputRef.action.performed -= MainActionInputPerformed;
             mainActionInputRef.action.canceled -= MainActionInputCanceled;
+            
+            playerPauseInputRef.action.started -= OnPaused;
         }
 
         public void EnableInput()

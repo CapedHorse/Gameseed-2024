@@ -11,6 +11,8 @@ namespace UI.Pause_Settings
         [SerializeField] private Image parentFadeImage;
         [SerializeField] private Transform tweenedBG;
         [SerializeField] private float tweenTime = 0.25f;
+        [SerializeField] private UIPanel settingsPanel;
+        [SerializeField] private UIPanel backToMenuPopUpPanel;
 
         public override void ShowPanel()
         {
@@ -24,6 +26,13 @@ namespace UI.Pause_Settings
         public override void HidePanel()
         {
             base.HidePanel();
+            
+            if(settingsPanel.IsOpened)
+                settingsPanel.HidePanel();
+            
+            if(backToMenuPopUpPanel.IsOpened)
+                backToMenuPopUpPanel.HidePanel();
+            
             parentFadeImage.DOFade(0, tweenTime).SetUpdate(true);
             tweenedBG.DOScale(0, tweenTime).SetUpdate(true).onComplete = FinishHidePanel;
         }
