@@ -139,6 +139,7 @@ namespace Core
             _isNewGame = true;
             _currentLevelId = 0;
             _lastGameSessionId = 0;
+            playerData.levelDatas[_currentLevelId].hasPlayed = false;
             fadingManager.FadeIn(true, () =>
             {
                 cutsceneManager.IntroCutscene(_currentLevelId, true);

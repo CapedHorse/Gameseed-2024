@@ -263,7 +263,8 @@ namespace Level
             _startGame = false;
             GameManager.instance.FreezeTime();
             GameManager.instance.ToggleGameManagerInput(false);
-            
+            Cursor.visible = true;
+
             DOVirtual.DelayedCall(gameSettingsLevel.gameSessions[_completedGameSessionCount].delayWhenShowingState, () =>
             {
                 switch (type)

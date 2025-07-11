@@ -132,7 +132,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2342385584113590509, guid: 628137370b9b79d489ca18df23855760, type: 3}
       propertyPath: isIndependent
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2342385584113590509, guid: 628137370b9b79d489ca18df23855760, type: 3}
       propertyPath: onGrabbedEvent.m_PersistentCalls.m_Calls.Array.size
